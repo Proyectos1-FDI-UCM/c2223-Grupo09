@@ -8,10 +8,10 @@ public class movLatEnemigos : MonoBehaviour
     private Transform[] waypoints;
 
     private Vector2 siguientePosicion;
+    private int numeroSigPosicion = 0;
 
     private float distanciaCambio = 0.5f;
 
-    private int numeroSigPosicion = 0;
 
     [SerializeField]
     private float velocidad;
@@ -31,11 +31,12 @@ public class movLatEnemigos : MonoBehaviour
         {
             numeroSigPosicion++;
 
-            if (numeroSigPosicion <= waypoints.Length)
+            if (numeroSigPosicion == waypoints.Length)
             {
                 numeroSigPosicion = 0;
-                siguientePosicion = waypoints[numeroSigPosicion].position;
-            }
+               
+            } 
+            siguientePosicion = waypoints[numeroSigPosicion].position;
 
         }
     }
