@@ -30,4 +30,9 @@ public class MovementComponent : MonoBehaviour
         playerPosition = playerPosition + new Vector2 (movementX, 0f) * _myForce * Time.deltaTime;
         transform.position = playerPosition;
     }
+
+    void Jump()
+    {
+
+    }
 }
