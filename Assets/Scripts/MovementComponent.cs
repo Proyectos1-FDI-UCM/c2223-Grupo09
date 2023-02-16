@@ -13,8 +13,6 @@ public class MovementComponent : MonoBehaviour
     private Rigidbody _myRigidBody2D; //referencia al rigidbody del player
     #endregion
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +28,8 @@ public class MovementComponent : MonoBehaviour
         playerPosition = playerPosition + new Vector2 (movementX, 0f) * _myForce * Time.deltaTime;
         transform.position = playerPosition;
     }
-
-    void Jump()
+    public void Jump()
     {
-
+        
     }
 }
