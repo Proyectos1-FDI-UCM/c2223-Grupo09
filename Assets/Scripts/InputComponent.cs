@@ -22,12 +22,12 @@ public class InputComponent : MonoBehaviour
         //Movimiento lateral (izquierda) -> Parametro determina direccion
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //_movementComponent.Walk(-1);
+            _movementComponent.Walk();
         }
         //Movimiento lateral (derecha) -> Parametro determina direccion
         if (Input.GetKeyDown(KeyCode.D))
         {
-            //_movementComponent.Walk(1);
+            _movementComponent.Walk();
         }
         //Salto
         if (Input.GetKeyDown(KeyCode.W))
