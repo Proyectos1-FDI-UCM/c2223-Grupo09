@@ -20,12 +20,12 @@ public class InputComponent : MonoBehaviour
     void Update()
     {
         //Movimiento lateral (izquierda) -> Parametro determina direccion
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             _movementComponent.Walk();
         }
         //Movimiento lateral (derecha) -> Parametro determina direccion
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             _movementComponent.Walk();
         }
@@ -35,17 +35,17 @@ public class InputComponent : MonoBehaviour
             _movementComponent.Jump();
         }
         //Apuntar (derecha)
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             //_aimComponent.Aim();
         }
         //Apuntar (izquierda)
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             //_aimComponent.Aim();
         }
         //Apuntar (arriba)
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             //_aimComponent.Aim();
         }

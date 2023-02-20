@@ -23,7 +23,7 @@ public class MovementComponent : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        Walk();      //se llama al metodo en cada frame porque si no el personaje resbala
+      //  Walk();      //se llama al metodo en cada frame porque si no el personaje resbala
 
     }
 
