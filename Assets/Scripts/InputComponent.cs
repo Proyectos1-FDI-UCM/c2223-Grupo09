@@ -20,7 +20,7 @@ public class InputComponent : MonoBehaviour
     void Update()
     {
         //Movimiento lateral (izquierda) -> Parametro determina direccion
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))        // GetKey se utiliza mientras esté pulsado
         {
             _movementComponent.Walk();
         }
@@ -30,7 +30,7 @@ public class InputComponent : MonoBehaviour
             _movementComponent.Walk();
         }
         //Salto
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))        // GetKeyDown se utiliza una vez al pulsarse la tecla
         {
             _movementComponent.Jump();
         }
