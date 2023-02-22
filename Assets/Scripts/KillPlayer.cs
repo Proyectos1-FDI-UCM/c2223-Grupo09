@@ -5,12 +5,28 @@ using UnityEngine;
 public class KillPlayer : MonoBehaviour
 {
     private PlayerLifeComponent _myPlayerLifeComponent;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private Collider2D _myBoxCollider;
+    private Rigidbody2D _myRigidbody;
+    void Start()
     {
-        if (collision.CompareTag("Player"))//si el enemigo entra en contacto con el jugador
+        _myBoxCollider = GetComponent<Collider2D>();
+        _myRigidbody = GetComponent<Rigidbody2D>();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null)//si el enemigo entra en contacto con el jugador
         {
-           _myPlayerLifeComponent = collision.GetComponent<PlayerLifeComponent>();// se toma el Script PlayerLifeComponent de la colision (jugador)
-           _myPlayerLifeComponent.Die();//se llama al metodo Die de ese script
+            _myPlayerLifeComponent = collision.gameObject.GetComponent<PlayerLifeComponent>();// se toma el Script PlayerLifeComponent de la colision (jugador)
+            _myPlayerLifeComponent.Hit();//se llama al metodo Die de ese script
+            StartCoroutine(I_Hit());
         }
+    }
+    IEnumerator I_Hit()
+    {
+        _myRigidbody.gravityScale = 0;
+        _myBoxCollider.enabled = false;
+        yield return new WaitForSeconds(2f);
+        _myBoxCollider.enabled = true;
+        _myRigidbody.gravityScale = 1;
     }
 }
