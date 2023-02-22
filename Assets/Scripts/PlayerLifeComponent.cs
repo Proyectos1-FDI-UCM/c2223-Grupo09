@@ -5,20 +5,13 @@ using UnityEngine;
 public class PlayerLifeComponent : MonoBehaviour
 {
     [SerializeField]
-    Vector2 _respawn;
+    Vector2 _respawn;//posicion donde hace respawn el jugador
     SpriteRenderer _mySpriteRenderer;
 
     #region Methods
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Die()//metodo llamado desde el script KillPlayer de los enemigos
     {
-        if (collision.CompareTag("Enemy"))
-        {
-            Die();
-        }
-    }
-    private void Die()
-    {
-        StartCoroutine(Respawn(0.5f));
+        StartCoroutine(Respawn(0.5f));//tras 0,5 segundos llama al metodo Respawn
     }
     #endregion
     private void Awake()
@@ -27,9 +20,9 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     IEnumerator Respawn(float duration)
     {
-        _mySpriteRenderer.enabled = false;
+        _mySpriteRenderer.enabled = false;//se vuelve invisible el jugador
         yield return new WaitForSeconds(duration);
-        transform.position = _respawn;
-        _mySpriteRenderer.enabled = true;
+        transform.position = _respawn;//el transform del jugador en el momento en el que es eliminado pasa a ser la posicion del respawn
+        _mySpriteRenderer.enabled = true;//se vuelve visible el jugador 
     }
 }
