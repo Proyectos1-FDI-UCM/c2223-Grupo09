@@ -5,8 +5,16 @@ using UnityEngine;
 public class MovementComponent : MonoBehaviour
 {
     #region Parameters
+    [Header("Jump")]
+    [SerializeField]
+    private float _jumpForce;
+    [HideInInspector]
+    public bool _onGround;
+    [SerializeField]
+    private float _downforce; //Se activa al dejar de presionar
     [SerializeField]
     private float _myForce; //fuerza con la que se mueve el player
+    
     float movementX = 0f; //para asignar la dirección donde vaya a ir el jugador
     #endregion
 
@@ -18,13 +26,21 @@ public class MovementComponent : MonoBehaviour
     void Start()
     {
         _myRigidBody2D= GetComponent<Rigidbody2D>();
+        _onGround = true;
     }
 
     // Update is called once per frame
     public void Update()
     {
-      //  Walk();      //se llama al metodo en cada frame porque si no el personaje resbala
+        //  Walk();      //se llama al metodo en cada frame porque si no el personaje resbala
+    }
 
+    private void FixedUpdate()
+    {
+        if (!_onGround) //Bajada
+        {
+            _myRigidBody2D.AddForce(Vector2.down * _downforce, ForceMode2D.Impulse);
+        }
     }
 
     public void Walk()
@@ -34,6 +50,10 @@ public class MovementComponent : MonoBehaviour
     }
     public void Jump()
     {
-        
+        if (_onGround)
+        {
+            _myRigidBody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            _onGround = false;
+        }
     }
 }
