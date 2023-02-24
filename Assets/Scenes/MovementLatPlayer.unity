@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &409087994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409087995}
+  m_Layer: 0
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &409087995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409087994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364354381}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364354376
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +187,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4b3bb8425754342b738c23d6fdb336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jumpForce: 100
+  _onGround: 0
+  _downforce: 50
+  _ground:
+    serializedVersion: 2
+    m_Bits: 64
+  _feet: {fileID: 409087995}
+  _feetDimension: {x: 1.5, y: 0.5, z: 0}
   _myForce: 7
 --- !u!70 &1364354378
 CapsuleCollider2D:
@@ -166,7 +205,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1364354376}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 586e5b7ab97ddc1458934c93fddedd12, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -189,7 +228,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 586e5b7ab97ddc1458934c93fddedd12, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -257,7 +296,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 3.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 409087995}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -284,7 +324,7 @@ GameObject:
   - component: {fileID: 1770259241}
   - component: {fileID: 1770259240}
   - component: {fileID: 1770259239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
