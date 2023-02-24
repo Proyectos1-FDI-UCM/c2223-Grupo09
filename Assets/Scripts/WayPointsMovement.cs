@@ -24,6 +24,12 @@ public class WayPointsMovement : MonoBehaviour
         siguientePosicion = waypoints[0].position; //se establece la primera posición a alcanzar
     }
 
+    public void goToPlayer()
+    {
+        Debug.Log("Recibido");
+    }
+
+
     // Update is called once per frame
     void Update()
     {
