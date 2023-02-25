@@ -13,6 +13,9 @@ public class WayPointsMovement : MonoBehaviour
     private int numeroSigPosicion = 0; //contador de posiciones
 
     [SerializeField]
+    private Transform player;
+
+    [SerializeField]
     private float distanciaCambio = 1f; //distancia entre gameobject-waypoint en la que se debe cambiar de dirección
 
     [SerializeField]
@@ -22,13 +25,17 @@ public class WayPointsMovement : MonoBehaviour
     void Start()
     {
         siguientePosicion = waypoints[0].position; //se establece la primera posición a alcanzar
+       // player = GameObject.FindGameObjectWithTag("Player").transform;        
     }
 
     public void goToPlayer()
     {
         Debug.Log("Recibido");
-    }
 
+        siguientePosicion = player.position;
+        velocidad = 5.0f;
+
+    }
 
     // Update is called once per frame
     void Update()

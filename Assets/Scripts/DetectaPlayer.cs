@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class DetectaPlayer : MonoBehaviour
 {
-    //[field: SerializeField]
-    /*public bool PlayerInArea { get; private set; }
-    public Transform Player { get; private set; }*/
-    private WayPointsMovement myWayPoints;
+    [field: SerializeField]
+    public bool PlayerInArea { get; private set; }
+    public Transform Player { get; private set; }
+    
+    WayPointsMovement myWayPoints;
 
     public bool EnterArea;
 
-    /*[SerializeField]
-    private string detectionTag = "Player";*/
+    [SerializeField]
+    private string detectionTag = "Player";
 
     private void Start()
     {
-        myWayPoints = GetComponent<WayPointsMovement>();
+        myWayPoints = GameObject.FindGameObjectWithTag("Enemy").GetComponent<WayPointsMovement>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag(detectionTag))
         {
             Debug.Log("player detected");
-            EnterArea = true;
+            EnterArea = true; 
+            PlayerInArea = true; 
+            
+            Player = collision.gameObject.transform;
 
             myWayPoints.goToPlayer();
-
-           /* PlayerInArea = true;            
-            Player = collision.gameObject.transform;     */
+   
         }
     }
 
