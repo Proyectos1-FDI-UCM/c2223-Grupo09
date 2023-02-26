@@ -12,8 +12,10 @@ public class WayPointsMovement : MonoBehaviour
     private Vector2 siguientePosicion; //posición siguiente a la que se debe llegar
     private int numeroSigPosicion = 0; //contador de posiciones
 
+
+    //SOLO se asignará en los casos en los que el enemigo vaya a detectar al jugador en un área determinada, en otro caso podría resultar en un comportamiento indeseado en los enemigos
     [SerializeField]
-    private Transform player;
+    private Transform player;  
 
     [SerializeField]
     private float distanciaCambio = 1f; //distancia entre gameobject-waypoint en la que se debe cambiar de dirección
@@ -28,18 +30,19 @@ public class WayPointsMovement : MonoBehaviour
        // player = GameObject.FindGameObjectWithTag("Player").transform;        
     }
 
-    public void goToPlayer()
+    public void goToPlayer()  //Este método se usará para cambiar la dirección hacia la posición del jugador
     {
         Debug.Log("Recibido");
 
         siguientePosicion = player.position;
-        velocidad = 5.0f;
+        //velocidad = 5.0f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
         transform.position = Vector2.MoveTowards(transform.position, siguientePosicion, velocidad * Time.deltaTime); /*el gameobject se mueve desde su posición hasta la siguiente
                                                                                                                      con una velocidad determinada*/
 

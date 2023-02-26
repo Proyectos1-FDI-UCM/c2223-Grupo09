@@ -4,34 +4,37 @@ using UnityEngine;
 
 public class DetectaPlayer : MonoBehaviour
 {
-    [field: SerializeField]
-    public bool PlayerInArea { get; private set; }
-    public Transform Player { get; private set; }
-    
-    WayPointsMovement myWayPoints;
+    //Este script se asigna a un área determinada en la que queramos detectar movimiento del jugador
 
-    public bool EnterArea;
+    [field: SerializeField]
+    public bool PlayerInArea { get; private set; }  //booleano que indica si el jugador está en el área
+    //public Transform Player { get; private set; }   //transform del player
+    
+    private WayPointsMovement myWayPoints;          //referencia al componente de movimiento de los enemigos
 
     [SerializeField]
-    private string detectionTag = "Player";
+    private string detectionTag = "Player";         //tag del player
 
     private void Start()
     {
-        myWayPoints = GameObject.FindGameObjectWithTag("Enemy").GetComponent<WayPointsMovement>();
+        /*Para cambiar la dirección del enemigo al detectar al jugador en el área debemos establecer como nuevo punto de dirección la posición del jugador, 
+        por ello necesitamos el componente WayPointsMovement*/
+
+        myWayPoints = GetComponent<WayPointsMovement>();
+        myWayPoints = GameObject.FindGameObjectWithTag("Enemy").GetComponent<WayPointsMovement>();    //el gameobject que queremos que actue
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(detectionTag))
         {
+            //Si el tag de la colision es "Player", se reconoce que el jugador está en el área
             Debug.Log("player detected");
-            EnterArea = true; 
             PlayerInArea = true; 
             
-            Player = collision.gameObject.transform;
+            myWayPoints.goToPlayer(); //Se invoca al método que cambiará la dirección del enemigo a la del jugador
 
-            myWayPoints.goToPlayer();
-   
+            //Player = collision.gameObject.transform;
         }
     }
 
@@ -39,9 +42,8 @@ public class DetectaPlayer : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            EnterArea = false;
-            /* PlayerInArea = false;
-            Player = null;*/
+            PlayerInArea = false;
+            //Player = null;
         }
     }
 
