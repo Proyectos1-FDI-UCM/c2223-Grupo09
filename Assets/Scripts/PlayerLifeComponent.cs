@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class PlayerLifeComponent : MonoBehaviour
 {
-    static private PlayerLifeComponent _instance;
-    static public PlayerLifeComponent Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    public static PlayerLifeComponent Instance;//Para hacer Singleton este script y asi poder acceder a sus variables y/o Metodos
     #region references
     [SerializeField]
     private Vector2 _respawn;                   //posicion donde hace respawn el jugador (Debería ajustarse según el nivel)
@@ -43,16 +36,24 @@ public class PlayerLifeComponent : MonoBehaviour
     public void Botiquín()                      //metodo llamado desde el script Botiquín
     {
         puntos_vida = número_vidas_máx;         //se curan todas las vidas del jugador
+        
     }
     #endregion
-    private void Awake()
-    {
-        _instance = this;
+     void Awake()
+     {
+        if (Instance != null && Instance != this) //Instanciar, hacer Singlenton este script
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
-        puntos_vida = 3;
-        número_vidas_máx = 3;
+        puntos_vida = 3;//siempre se va a empezar con 3 corazones de vida
+        número_vidas_máx = 3;//variable que ira cambiando despues cuando se puedan añadir mas corazones
         invulnerable = false;
-    }
+     }
     IEnumerator Respawn(float duration)
     {
         _mySpriteRenderer.enabled = false;              //se vuelve invisible el jugador
