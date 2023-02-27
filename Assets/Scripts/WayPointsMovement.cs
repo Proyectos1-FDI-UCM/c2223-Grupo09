@@ -21,33 +21,38 @@ public class WayPointsMovement : MonoBehaviour
     private float distanciaCambio = 1f; //distancia entre gameobject-waypoint en la que se debe cambiar de dirección
 
     [SerializeField]
-    private float velocidad; //velocidad del gameobject
+    private float velocidadInicial; //velocidad del gameobject
+    [SerializeField]
+    private float velocidadAtaque;
+
+    public float velocidad;
 
     // Start is called before the first frame update
     void Start()
     {
         siguientePosicion = waypoints[0].position; //se establece la primera posición a alcanzar
-       // player = GameObject.FindGameObjectWithTag("Player").transform;        
+       // player = GameObject.FindGameObjectWithTag("Player").transform;
+        velocidad = velocidadInicial;
     }
 
     public void goToPlayer()  //Este método se usará para cambiar la dirección hacia la posición del jugador
     {
         Debug.Log("Recibido");
 
-        siguientePosicion = player.position;
-        //velocidad = 5.0f;
-
+        siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
+        velocidad = velocidadAtaque;   //se aumenta la velocidad
     }
 
     // Update is called once per frame
     void Update()
     {
-
         transform.position = Vector2.MoveTowards(transform.position, siguientePosicion, velocidad * Time.deltaTime); /*el gameobject se mueve desde su posición hasta la siguiente
                                                                                                                      con una velocidad determinada*/
 
         if (Vector2.Distance(transform.position, siguientePosicion) < distanciaCambio)
         {
+            velocidad = velocidadInicial; //en caso de que la velocidad hubiese cambiado a la velocidad de ataque, se reestablece a la velocidad inicial
+
             numeroSigPosicion++; /*cuando la distancia entre el gameobject y la siguiente posición sea < 0.5f, 
                                  la siguiente posición cambia al siguiente elemento en el array de waypoints*/
 
@@ -55,6 +60,7 @@ public class WayPointsMovement : MonoBehaviour
             {
                 numeroSigPosicion = 0;
             }
+           
             siguientePosicion = waypoints[numeroSigPosicion].position; //se establece la nueva posición
 
         }

@@ -180,12 +180,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828823738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.087885, y: 0.59883136, z: -10}
+  m_LocalScale: {x: 0.86089426, y: 0.8678715, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1552926238}
-  m_RootOrder: 3
+  m_Father: {fileID: 1088524136}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &828823740
 MonoBehaviour:
@@ -214,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.6554134, y: -0.7146616}
+  m_Offset: {x: 2.7362678, y: -1.3626416}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -225,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.170281, y: 7.136241}
+  m_Size: {x: 7.9873376, y: 5.400144}
   m_EdgeRadius: 0
 --- !u!1 &905452373
 GameObject:
@@ -289,7 +289,8 @@ Transform:
   m_LocalPosition: {x: 7.06, y: -0.69, z: 10}
   m_LocalScale: {x: 1.1615828, y: 1.1522443, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 828823739}
   m_Father: {fileID: 1552926238}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,7 +304,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -378,6 +379,8 @@ MonoBehaviour:
   - {fileID: 905452374}
   player: {fileID: 1180825153}
   distanciaCambio: 1
+  velocidadInicial: 2
+  velocidadAtaque: 4
   velocidad: 2
 --- !u!114 &1088524141
 MonoBehaviour:
@@ -516,7 +519,6 @@ GameObject:
   - component: {fileID: 1180825153}
   - component: {fileID: 1180825156}
   - component: {fileID: 1180825158}
-  - component: {fileID: 1180825164}
   - component: {fileID: 1180825160}
   - component: {fileID: 1180825161}
   - component: {fileID: 1180825165}
@@ -644,22 +646,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawn: {x: -7.88, y: -1.46}
---- !u!70 &1180825164
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180825152}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.99999994, y: 2}
-  m_Direction: 0
 --- !u!114 &1180825165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,6 +662,8 @@ MonoBehaviour:
   - {fileID: 1548607656}
   player: {fileID: 0}
   distanciaCambio: 1
+  velocidadInicial: 2
+  velocidadAtaque: 0
   velocidad: 1
 --- !u!1 &1548607655
 GameObject:
@@ -701,7 +689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548607655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.107, y: -2.15, z: 0}
+  m_LocalPosition: {x: -0.107, y: -1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -792,7 +780,6 @@ Transform:
   - {fileID: 1088524136}
   - {fileID: 1119503603}
   - {fileID: 1180825153}
-  - {fileID: 828823739}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
