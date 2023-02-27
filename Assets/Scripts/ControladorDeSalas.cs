@@ -43,7 +43,7 @@ public class ControladorDeSalas : MonoBehaviour
     }
     #endregion
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _sección = -1;
         _sala = 0;
