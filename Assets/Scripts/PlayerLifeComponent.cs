@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerLifeComponent : MonoBehaviour
 {
+    static private PlayerLifeComponent _instance;
+    static public PlayerLifeComponent Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
     #region references
     [SerializeField]
     private Vector2 _respawn;                   //posicion donde hace respawn el jugador (Debería ajustarse según el nivel)
@@ -39,6 +47,7 @@ public class PlayerLifeComponent : MonoBehaviour
     #endregion
     private void Awake()
     {
+        _instance = this;
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
         puntos_vida = 3;
         número_vidas_máx = 3;
