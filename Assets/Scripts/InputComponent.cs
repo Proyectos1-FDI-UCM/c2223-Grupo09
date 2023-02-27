@@ -23,11 +23,13 @@ public class InputComponent : MonoBehaviour
         if (Input.GetKey(KeyCode.A))        // GetKey se utiliza mientras esté pulsado
         {
             _movementComponent.Walk(-1);
+            transform.localScale = new Vector3(-4, 4, 4);
         }
         //Movimiento lateral (derecha) -> Parametro determina direccion
         if (Input.GetKey(KeyCode.D))
         {
             _movementComponent.Walk(1);
+            transform.localScale = new Vector3(4, 4, 4);
         }
         //Salto
         if (Input.GetKeyDown(KeyCode.W))        // GetKeyDown se utiliza una vez al pulsarse la tecla
