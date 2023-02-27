@@ -9,8 +9,6 @@ public class WayPointsMovement : MonoBehaviour
     [SerializeField]
     private Transform[] waypoints; //puntos de cambio de dirección
 
-    [SerializeField] private bool LockX;
-
     private Vector2 siguientePosicion; //posición siguiente a la que se debe llegar
     private int numeroSigPosicion = 0; //contador de posiciones
 
@@ -18,36 +16,12 @@ public class WayPointsMovement : MonoBehaviour
     private float distanciaCambio = 1f; //distancia entre gameobject-waypoint en la que se debe cambiar de dirección
 
     [SerializeField]
-    private Transform player;
-
-    [SerializeField]
-    private float velocidadinicial; //velocidad del gameobject
-    [SerializeField]
-    private float velocidad;
-    [SerializeField]
-    private float velocidadAtaque;
+    private float velocidad; //velocidad del gameobject
 
     // Start is called before the first frame update
     void Start()
     {
-        if (LockX)
-        {
-            siguientePosicion = new Vector2 (waypoints[0].position.x,transform.position.y); //se establece la primera posición a alcanzar sin contar la diferencia en Y
-        }
-        else
-        {
-            siguientePosicion = waypoints[0].position;  //se establece la primera posición a alcanzar
-        }        
-
-        velocidad = velocidadinicial;
-    }
-
-    public void goToPlayer()  //Este m?todo se usar? para cambiar la direcci?n hacia la posici?n del jugador
-    {
-        Debug.Log("Recibido");
-
-        siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
-        velocidad = velocidadAtaque;   //se aumenta la velocidad
+        siguientePosicion = waypoints[0].position; //se establece la primera posición a alcanzar
     }
 
     // Update is called once per frame
@@ -58,8 +32,6 @@ public class WayPointsMovement : MonoBehaviour
 
         if (Vector2.Distance(transform.position, siguientePosicion) < distanciaCambio)
         {
-            velocidad = velocidadinicial;
-
             numeroSigPosicion++; /*cuando la distancia entre el gameobject y la siguiente posición sea < 0.5f, 
                                  la siguiente posición cambia al siguiente elemento en el array de waypoints*/
 
@@ -67,14 +39,8 @@ public class WayPointsMovement : MonoBehaviour
             {
                 numeroSigPosicion = 0;
             }
-            if (LockX)
-            {
-                siguientePosicion = new Vector2(waypoints[numeroSigPosicion].position.x, transform.position.y); //se establece la nueva posición sin contar la diferencia en Y
-            }
-            else
-            {
-                siguientePosicion = waypoints[numeroSigPosicion].position; //se establece la nueva posición
-            }
+            siguientePosicion = waypoints[numeroSigPosicion].position; //se establece la nueva posición
+
         }
     }
 }

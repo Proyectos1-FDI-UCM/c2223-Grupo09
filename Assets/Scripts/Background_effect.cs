@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Background_effect : MonoBehaviour
 {
-    #region references    
-    private GameObject cam;     //referencias a la cámara
-    private Camera _cam;        
+    #region references
+    [SerializeField] private GameObject cam;    //referencia a la cámara (meter en el editor)
     #endregion
     #region properties
     private float _lenght;                  //variable que almacena el tamaño del sprite    
@@ -18,8 +17,6 @@ public class Background_effect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _cam = Camera.main;     //referencia a la cámara de forma automática
-        cam = _cam.gameObject;
         _startPos = transform.position.x;                           
         _lenght = GetComponent<SpriteRenderer>().bounds.size.x;     
     }
