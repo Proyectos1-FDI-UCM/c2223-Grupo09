@@ -15,37 +15,36 @@ public class ControladorDeSalas : MonoBehaviour
     private int _sección;               //Cada sección del juego
     private int _sala;                  //Cada sala dentro de una sección
     const float ESPACIO_EXTRA = 2.0f;   //Espacio extra que tiene que avanzar el jugador para que haya un cambio de sala
+    public int Sala          //acceso público a la variable de _sala
+    {
+        get { return _sala; }
+    }
+    public int Sección          //acceso público a la variable de _sección
+    {
+        get { return _sección; }
+    }
     #endregion
     #region Methods
     private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara
     {
-        if (_sección == -1)
+        if (_sección == 1)
         {
             if (_sala == 0)
             {
-                Punto1.Translate(new Vector2(-7f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(15.21f - Punto2.position.x, 0));
+                Punto1.Translate(new Vector2(-9f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(60.9f - Punto2.position.x, 0));
             } else if (_sala == 1)
             {
-                Punto1.Translate(new Vector2(15.21f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(42.3f - Punto2.position.x, 0));
-            } else if (_sala == 2)
-            {
-                Punto1.Translate(new Vector2(42.3f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(79f - Punto2.position.x, 0));
-            }
-            else if (_sala == 3)
-            {
-                Punto1.Translate(new Vector2(79f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(100f - Punto2.position.x, 0));
-            }
+                Punto1.Translate(new Vector2(60.9f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(150f - Punto2.position.x, 0));
+            } 
         }
     }
     #endregion
     // Start is called before the first frame update
     void Awake()
     {
-        _sección = -1;
+        _sección = 1;
         _sala = 0;
         //Estos dos primeros parámetros son solo para la prueba. Deben cambiarse más tarde
         cam = Camera.main;

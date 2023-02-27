@@ -9,6 +9,8 @@ public class WayPointsMovement : MonoBehaviour
     [SerializeField]
     private Transform[] waypoints; //puntos de cambio de dirección
 
+    [SerializeField] private bool LockX;
+
     private Vector2 siguientePosicion; //posición siguiente a la que se debe llegar
     private int numeroSigPosicion = 0; //contador de posiciones
 
@@ -21,7 +23,14 @@ public class WayPointsMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        siguientePosicion = waypoints[0].position; //se establece la primera posición a alcanzar
+        if (LockX)
+        {
+            siguientePosicion = new Vector2 (waypoints[0].position.x,transform.position.y); //se establece la primera posición a alcanzar sin contar la diferencia en Y
+        }
+        else
+        {
+            siguientePosicion = waypoints[0].position;  //se establece la primera posición a alcanzar
+        }        
     }
 
     // Update is called once per frame
@@ -39,8 +48,14 @@ public class WayPointsMovement : MonoBehaviour
             {
                 numeroSigPosicion = 0;
             }
-            siguientePosicion = waypoints[numeroSigPosicion].position; //se establece la nueva posición
-
+            if (LockX)
+            {
+                siguientePosicion = new Vector2(waypoints[numeroSigPosicion].position.x, transform.position.y); //se establece la nueva posición sin contar la diferencia en Y
+            }
+            else
+            {
+                siguientePosicion = waypoints[numeroSigPosicion].position; //se establece la nueva posición
+            }
         }
     }
 }

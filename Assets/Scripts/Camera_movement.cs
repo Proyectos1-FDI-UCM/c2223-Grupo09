@@ -23,15 +23,15 @@ public class Camera_movement : MonoBehaviour
     }
     #endregion
     #region constantes
-    const float DIST_LATERAL = 2.5f;
-    const float DIST_VERTICAL= 1.0f;
+    const float DIST_LATERAL = 1.5f;
+    const float DIST_VERTICAL= 2.0f;
     const float TAMAÑO_CAM = 9.0f;
     private float _posYMinim;
     private int _borde;
     #endregion
     void Start()
     {
-        _borde = 0;
+        _borde = -1;
         cam_Transform = transform;
         _posYMinim = cam_Transform.position.y;
         if (PuntoBorde1.position.x > PuntoBorde2.position.x) //Un poco de programación defensiva, para que _punto1 sea el punto situado más a la izquierda
