@@ -26,11 +26,11 @@ public class UIManager : MonoBehaviour
     }
     void MuestraCorazones(GameObject[] _hearts)
     {
-      /*  //muestra los corazones "sanos"
+        //muestra los corazones "sanos"
         for (int i = 0; i < _numHearts; i++)
         {
             _hearts[i].SetActive(true);
-        }*/
+        }
         //muestra los corazones "dañados"
         for(int i = _numHearts; i < _hearts.Length; i++)
         {
