@@ -36,8 +36,12 @@ public class ControladorDeSalas : MonoBehaviour
             } else if (_sala == 1)
             {
                 Punto1.Translate(new Vector2(60.9f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(150f - Punto2.position.x, 0));
-            } 
+                Punto2.Translate(new Vector2(112.5f - Punto2.position.x, 0));
+            } else if (_sala == 2)
+            {
+                Punto1.Translate(new Vector2(112.5f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(200f - Punto2.position.x, 0));
+            }
         }
     }
     #endregion
