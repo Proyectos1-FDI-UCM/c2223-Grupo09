@@ -238,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127449123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5124, y: -2.8348, z: 0}
+  m_LocalPosition: {x: -12.83, y: -2.872, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 127449123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95619f342fc13f5438d021c19b1dc495, type: 3}
+  m_Script: {fileID: 11500000, guid: d33d9e4073aa00a439e7b9796ceee2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _myShootController: {fileID: 1664547535}
@@ -497,7 +497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335990488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -5.63, y: 0.04, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1439,6 +1439,7 @@ GameObject:
   - component: {fileID: 1723750468}
   - component: {fileID: 1723750467}
   - component: {fileID: 1723750470}
+  - component: {fileID: 1723750471}
   m_Layer: 0
   m_Name: Nini
   m_TagString: Enemy
@@ -1506,7 +1507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723750465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.91, y: -3.99, z: 0}
+  m_LocalPosition: {x: -6.96, y: -4.03, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1539,6 +1540,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &1723750471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723750465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4bb06c23441814294af357c9aa7117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 3
+  _deadEffect: {fileID: 0}
 --- !u!1 &1728389335
 GameObject:
   m_ObjectHideFlags: 0

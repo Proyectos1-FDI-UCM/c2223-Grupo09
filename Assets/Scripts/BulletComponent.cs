@@ -5,7 +5,9 @@ using UnityEngine;
 public class BulletComponent : MonoBehaviour
 {
     #region Parameters
+    [SerializeField]
     private float _speed;
+    [SerializeField]
     private float _damage;
     #endregion
 
@@ -19,7 +21,8 @@ public class BulletComponent : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().IsAttacked(_damage);
+            other.GetComponent<EnemyComponent>().IsAttacked(_damage);
+            Destroy(gameObject);
         }
     }
     #endregion
