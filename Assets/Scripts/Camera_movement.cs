@@ -96,19 +96,19 @@ public class Camera_movement : MonoBehaviour
     }
     IEnumerator MovIzquierda()  //Crea una transición fluida a la sala situada a la izquierda
     {        
-        for (float i = 0; i < TAMAÑO_CAM * 2; i++)
+        for (float i = 0; i < TAMAÑO_CAM * 4; i++)
         {
-            cam_Transform.Translate(new Vector2(-1, 0));
-            yield return new WaitForSeconds(0.02f);
+            cam_Transform.Translate(new Vector2(-0.5f, 0));
+            yield return new WaitForSeconds(0.01f);
         }
         _borde = 1;
     }
     IEnumerator MovDerecha()    //Crea una transición fluida a la sala situada a la derecha
     {        
-        for (float i = 0; i < TAMAÑO_CAM * 2; i++)                          
+        for (float i = 0; i < TAMAÑO_CAM * 4; i++)                          
         {
-            cam_Transform.Translate(new Vector2(1, 0));
-            yield return new WaitForSeconds(0.02f);
+            cam_Transform.Translate(new Vector2(0.5f, 0));
+            yield return new WaitForSeconds(0.01f);
         }
         _borde = -1;
     }

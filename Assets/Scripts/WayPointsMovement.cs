@@ -44,7 +44,6 @@ public class WayPointsMovement : MonoBehaviour
 
     public void goToPlayer()  //Este m?todo se usar? para cambiar la direcci?n hacia la posici?n del jugador
     {
-        Debug.Log("Recibido");
 
         siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
         velocidad = velocidadAtaque;   //se aumenta la velocidad

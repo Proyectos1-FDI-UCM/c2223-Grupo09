@@ -8,6 +8,7 @@ public class DetectaPlayer : MonoBehaviour
 
     [field: SerializeField]
     public bool PlayerInArea { get; private set; } //booleano que indica si el jugador está en el área
+    [SerializeField] GameObject Enemy;
 
     private WayPointsMovement myWayPoints;  //referencia al componente de movimiento de los enemigos
 
@@ -20,7 +21,7 @@ public class DetectaPlayer : MonoBehaviour
         por ello necesitamos el componente WayPointsMovement*/
 
         myWayPoints = GetComponent<WayPointsMovement>();
-        myWayPoints = GameObject.FindGameObjectWithTag("Enemy").GetComponent<WayPointsMovement>();   //el gameobject que queremos que actue
+        myWayPoints = Enemy.GetComponent<WayPointsMovement>();   //el gameobject que queremos que actue
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +29,6 @@ public class DetectaPlayer : MonoBehaviour
         if (collision.CompareTag(detectionTag))
         {
             //Si el tag de la colision es "Player", se reconoce que el jugador está en el área
-            Debug.Log("player detected");
             PlayerInArea = true; 
             
             myWayPoints.goToPlayer(); //Se invoca al método que cambiará la dirección del enemigo a la del jugador

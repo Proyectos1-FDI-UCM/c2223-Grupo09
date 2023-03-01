@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerInArea>k__BackingField: 0
+  Enemy: {fileID: 7413394698436130401}
   detectionTag: Player
 --- !u!1 &7413394698436130401
 GameObject:
@@ -85,6 +86,7 @@ GameObject:
   - component: {fileID: 5100827609275551401}
   - component: {fileID: 7371728809678099239}
   - component: {fileID: 1268901405606262023}
+  - component: {fileID: 213786547938918710}
   m_Layer: 0
   m_Name: Rugby Volador
   m_TagString: Enemy
@@ -195,3 +197,15 @@ MonoBehaviour:
   velocidadinicial: 2
   velocidad: 0
   velocidadAtaque: 4
+--- !u!114 &213786547938918710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413394698436130401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de07332d574ac4c42aaee51f852e1abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
