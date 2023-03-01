@@ -12,18 +12,13 @@ public class BulletComponent : MonoBehaviour
     #endregion
 
     #region Methods
+    public float Damage() 
+    { return _damage; }
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.right * _speed * Time.deltaTime);
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            other.GetComponent<EnemyComponent>().IsAttacked(_damage);
-            Destroy(gameObject);
-        }
-    }
+    
     #endregion
 }
