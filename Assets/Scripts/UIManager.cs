@@ -40,14 +40,15 @@ public class UIManager : MonoBehaviour
     #endregion
     void Start() 
     {
-        _numTotalVidas = 3;//asi por ahora
+        _numHearts = PlayerLifeComponent.Instance.Puntos_vida;//El número de corazones sanos se obtiene del script PlayerLifeComponent.
+        _numTotalVidas = PlayerLifeComponent.Instance.Puntos_vida_max;//El número maximo de corazones se obtiene del script PlayerLifeComponent.
         //MuestraVidas(_totalVidas);
-       // MuestraCorazones(_hearts);
+        // MuestraCorazones(_hearts);
     }
     void Update()
     {
-        //El número de corazones sanos se obtiene del script PlayerLifeComponent. En el update porque se va actualizando cada vez que recibe daño o recoge botiquín
-        _numHearts = PlayerLifeComponent.Instance.Puntos_vida;
+        _numHearts = PlayerLifeComponent.Instance.Puntos_vida;// En el update porque se va actualizando cada vez que recibe daño o recoge botiquín
+        _numTotalVidas = PlayerLifeComponent.Instance.Puntos_vida_max;//En el update porque se va actualizando si el jugador compra corazones
         MuestraVidas(_totalVidas);
         MuestraCorazones(_hearts);
     }
