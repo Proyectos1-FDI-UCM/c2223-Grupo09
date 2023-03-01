@@ -12,11 +12,15 @@ public class PlayerLifeComponent : MonoBehaviour
     #endregion
     #region properties
     private bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
-    private int número_vidas_máx;   //variable que controla el número máximo de vidas que puede tener el jugador. Esta empieza con 3, pero puede aumentar según vaya comprando más vidas con los engranajes
+    private int puntos_vida_max;   //variable que controla el número máximo de vidas que puede tener el jugador. Esta empieza con 3, pero puede aumentar según vaya comprando más vidas con los engranajes
     private int puntos_vida;        //variable privada que cuenta el número de vidas actuales del jugador
     public int Puntos_vida          //acceso público a la variable de puntos de vida
     {
         get { return puntos_vida; }
+    }
+    public int Puntos_vida_max   //acceso público a la variable de puntos de vida maximos
+    {
+        get { return puntos_vida_max; }
     }
     #endregion
     #region Methods
@@ -35,7 +39,7 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     public void Botiquín()                      //metodo llamado desde el script Botiquín
     {
-        puntos_vida = número_vidas_máx;         //se curan todas las vidas del jugador
+        puntos_vida = puntos_vida_max;         //se curan todas las vidas del jugador
         
     }
     #endregion
@@ -51,14 +55,14 @@ public class PlayerLifeComponent : MonoBehaviour
         }
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
         puntos_vida = 3;//siempre se va a empezar con 3 corazones de vida
-        número_vidas_máx = 3;//variable que ira cambiando despues cuando se puedan añadir mas corazones
+        puntos_vida_max = 3;//variable que ira cambiando despues cuando se puedan añadir mas corazones
         invulnerable = false;
      }
     IEnumerator Respawn(float duration)
     {
         _mySpriteRenderer.enabled = false;              //se vuelve invisible el jugador
         yield return new WaitForSeconds(duration);      //se espera
-        puntos_vida = número_vidas_máx;                 //se recuperan todas las vidas
+        puntos_vida = puntos_vida_max;                 //se recuperan todas las vidas
         _mySpriteRenderer.enabled = true;               //se vuelve visible el jugador 
         transform.position = _respawn;                  //el transform del jugador en el momento en el que es eliminado pasa a ser la posicion del respawn
     }
