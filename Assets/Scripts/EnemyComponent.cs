@@ -11,8 +11,16 @@ public class EnemyComponent : MonoBehaviour
     //private GameObject _deadEffect;
     #endregion
 
+    #region
+    private BulletComponent bulletComponent;
+    #endregion
+
     #region Methods
     // Update is called once per frame
+    private void Start()
+    {
+        bulletComponent = GetComponent<BulletComponent>();
+    }
     public void IsAttacked(float damage)
     {
         _hp -= damage;
@@ -26,6 +34,15 @@ public class EnemyComponent : MonoBehaviour
     {
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<BulletComponent>() != null)
+        {
+            IsAttacked(bulletComponent.Damage());
+            Destroy(gameObject);
+        }
     }
     #endregion
 }
