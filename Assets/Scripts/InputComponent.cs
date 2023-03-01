@@ -7,6 +7,7 @@ public class InputComponent : MonoBehaviour
     #region References
     private MovementComponent _movementComponent;
     private AimComponent _aimComponent;
+    private ShootComponent _shootComponent;
     #endregion
 
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class InputComponent : MonoBehaviour
     {
         _movementComponent = GetComponent<MovementComponent>();
         _aimComponent = GetComponent<AimComponent>();
+        _shootComponent = GetComponent<ShootComponent>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,11 @@ public class InputComponent : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             //_aimComponent.Aim();
+        }
+        //Disparar
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _shootComponent.Shoot();
         }
     }
 }
