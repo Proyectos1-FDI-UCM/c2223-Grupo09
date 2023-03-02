@@ -20,6 +20,7 @@ public class MovementComponent : MonoBehaviour
     private Transform _feet;
     [SerializeField]
     private Vector3 _feetDimension;
+    private bool _coyoteTime;
 
     [Header("Movement")]
     [SerializeField]
@@ -56,9 +57,14 @@ public class MovementComponent : MonoBehaviour
     private void FixedUpdate()
     {
         if (_canMove)           //solo si se puede mover puede realizarlo
-        {
-            _onGround = Physics2D.OverlapBox(_feet.position, _feetDimension, 0f, _ground);
-            if (!_onGround)
+        {            
+            _coyoteTime = Physics2D.OverlapBox(_feet.position, _feetDimension, 0f, _ground);
+            if (_coyoteTime != _onGround)
+            {
+                if (_coyoteTime) _onGround = true;
+                else StartCoroutine(CoyoteTime());
+            }
+            if (!_coyoteTime)
             {
                 _myRigidBody2D.AddForce(Vector2.down * _downforce);
             }
@@ -81,6 +87,7 @@ public class MovementComponent : MonoBehaviour
         {
             _myRigidBody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _onGround = false;
+            _coyoteTime = false;
         }
     }
 
@@ -108,5 +115,10 @@ public class MovementComponent : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(_feet.position, _feetDimension);
+    }
+    IEnumerator CoyoteTime()
+    {
+        yield return new WaitForSeconds(0.04f);
+        _onGround = false;
     }
 }
