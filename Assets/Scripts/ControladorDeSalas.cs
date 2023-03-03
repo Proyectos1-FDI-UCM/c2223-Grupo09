@@ -32,15 +32,20 @@ public class ControladorDeSalas : MonoBehaviour
             if (_sala == 0)
             {
                 Punto1.Translate(new Vector2(-9f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(60.9f - Punto2.position.x, 0));
+                Punto2.Translate(new Vector2(56f - Punto2.position.x, 0));
             } else if (_sala == 1)
             {
-                Punto1.Translate(new Vector2(60.9f - Punto1.position.x, 0));
+                Punto1.Translate(new Vector2(56f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(112.5f - Punto2.position.x, 0));
             } else if (_sala == 2)
             {
                 Punto1.Translate(new Vector2(112.5f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(200f - Punto2.position.x, 0));
+                Punto2.Translate(new Vector2(158.8f - Punto2.position.x, 0));
+            }
+            else if (_sala == 3)
+            {
+                Punto1.Translate(new Vector2(158.8f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(256.6f - Punto2.position.x, 0));
             }
         }
     }
