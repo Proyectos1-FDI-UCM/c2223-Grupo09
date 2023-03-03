@@ -8,6 +8,7 @@ public class InputComponent : MonoBehaviour
     private MovementComponent _movementComponent;
     private AimComponent _aimComponent;
     private ShootComponent _shootComponent;
+    private SpriteRenderer _mySpriteRenderer;
     #endregion
 
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class InputComponent : MonoBehaviour
         _movementComponent = GetComponent<MovementComponent>();
         _aimComponent = GetComponent<AimComponent>();
         _shootComponent = GetComponent<ShootComponent>();
+        _mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,13 +27,13 @@ public class InputComponent : MonoBehaviour
         if (Input.GetKey(KeyCode.A))        // GetKey se utiliza mientras esté pulsado
         {
             _movementComponent.Walk(-1);
-            transform.localScale = new Vector3(-4, 4, 4);
+            _mySpriteRenderer.flipX = true;
         }
         //Movimiento lateral (derecha) -> Parametro determina direccion
         if (Input.GetKey(KeyCode.D))
         {
             _movementComponent.Walk(1);
-            transform.localScale = new Vector3(4, 4, 4);
+            _mySpriteRenderer.flipX = false;
         }
         //Salto
         if (Input.GetKeyDown(KeyCode.W))        // GetKeyDown se utiliza una vez al pulsarse la tecla
