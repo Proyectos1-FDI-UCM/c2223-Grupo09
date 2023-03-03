@@ -271,11 +271,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _feet: {fileID: 9077355745586075883}
-  _feetDimension: {x: 0.3, y: 0.25, z: 0}
+  _feetDimension: {x: 0.42, y: 0.25, z: 0}
   _myForce: 7
   _dashVelocity: 5
   _dashDuration: 0.2
-  _cooldown: 2
+  _cooldown: 0.8
   _myTrailRenderer: {fileID: 1367837175015200736}
 --- !u!50 &9077355744803971430
 Rigidbody2D:
@@ -311,7 +311,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009596109, y: -0.04300466}
+  m_Offset: {x: 0.00980024, y: -0.04300466}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0.21, w: 0}
     pivot: {x: 0.2803617, y: 0.4612404}
@@ -322,7 +322,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20918798, y: 0.35861415}
+  m_Size: {x: 0.12948665, y: 0.35861415}
   m_EdgeRadius: 0
 --- !u!114 &1856127311892358024
 MonoBehaviour:

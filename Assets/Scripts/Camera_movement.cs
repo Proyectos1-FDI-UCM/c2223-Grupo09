@@ -64,18 +64,7 @@ public class Camera_movement : MonoBehaviour
                     cam_Transform.Translate(new Vector2((player_Transform.position.x + DIST_LATERAL) - cam_Transform.position.x, 0)); //Se mueve a la izquierda lo mismo que el jugador
                 }
                 else _borde = -1;
-            }
-            if (cam_Transform.position.y > (player_Transform.position.y + DIST_VERTICAL))   //si la cámara esta mucho más arriba que el jugador
-            {
-                if (cam_Transform.position.y > _posYMinim)                                    //si está más arriba de la posición mínima de Y
-                {
-                    cam_Transform.Translate(new Vector2(0, (player_Transform.position.y + DIST_VERTICAL) - cam_Transform.position.y)); //Se mueve hacia abajo lo mismo que el jugador
-                }                
-            }
-            if (cam_Transform.position.y < (player_Transform.position.y - DIST_VERTICAL))   //si la cámara esta mucho más debajo que el jugador
-            {
-                cam_Transform.Translate(new Vector2(0, (player_Transform.position.y - DIST_VERTICAL) - cam_Transform.position.y)); //Se mueve hacia arriba lo mismo que el jugador
-            }
+            }            
         } else if (_borde == 1)     //este método situa la cámara lo más a la derecha posible sin que se asome a la siguiente sala
         {
             cam_Transform.Translate(new Vector2((_punto2.position.x - TAMAÑO_CAM)- cam_Transform.position.x, 0));           
@@ -92,6 +81,17 @@ public class Camera_movement : MonoBehaviour
         {
             StartCoroutine(MovDerecha());
             _borde = 3;
+        }
+        if (cam_Transform.position.y > (player_Transform.position.y + DIST_VERTICAL))   //si la cámara esta mucho más arriba que el jugador
+        {
+            if (cam_Transform.position.y > _posYMinim)                                    //si está más arriba de la posición mínima de Y
+            {
+                cam_Transform.Translate(new Vector2(0, (player_Transform.position.y + DIST_VERTICAL) - cam_Transform.position.y)); //Se mueve hacia abajo lo mismo que el jugador
+            }
+        }
+        if (cam_Transform.position.y < (player_Transform.position.y - DIST_VERTICAL))   //si la cámara esta mucho más debajo que el jugador
+        {
+            cam_Transform.Translate(new Vector2(0, (player_Transform.position.y - DIST_VERTICAL) - cam_Transform.position.y)); //Se mueve hacia arriba lo mismo que el jugador
         }
     }
     IEnumerator MovIzquierda()  //Crea una transición fluida a la sala situada a la izquierda
