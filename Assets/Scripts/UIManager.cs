@@ -13,28 +13,40 @@ public class UIManager : MonoBehaviour
     private int _numHearts;           
     #endregion
     #region Methods
-    void MuestraVidas(GameObject[] _totalVidas)//muestra todos los corazones disponibles, ya sean "sano o dañados"
+    void MuestraVidas(GameObject[] _totalVidas) //muestra todos los corazones disponibles, ya sean "sano o dañados"
      {
-        for (int i = 0; i < _numTotalVidas; i++)
+        if (_numTotalVidas > -1)
         {
-            _totalVidas[i].SetActive(true);
+            for (int i = 0; i < _numTotalVidas; i++)
+            {
+                _totalVidas[i].SetActive(true);
+            }
         }
-        for (int i = _numTotalVidas; i < _totalVidas.Length; i++)
+        if (_numTotalVidas > -1)
         {
-            _totalVidas[i].SetActive(false);
+            for (int i = _numTotalVidas; i < _totalVidas.Length; i++)
+            {
+                _totalVidas[i].SetActive(false);
+            }
         }
     }
     void MuestraCorazones(GameObject[] _hearts)
     {
         //muestra los corazones "sanos"
-        for (int i = 0; i < _numHearts; i++)
+        if (_numHearts > -1)
         {
-            _hearts[i].SetActive(true);
+            for (int i = 0; i < _numHearts; i++)
+            {
+                _hearts[i].SetActive(true);
+            }
         }
         //muestra los corazones "dañados"
-        for(int i = _numHearts; i < _hearts.Length; i++)
+        if (_numHearts > -1)
         {
-            _hearts[i].SetActive(false);
+            for (int i = _numHearts; i < _hearts.Length; i++)
+            {
+                _hearts[i].SetActive(false);
+            }
         }
     }
     #endregion

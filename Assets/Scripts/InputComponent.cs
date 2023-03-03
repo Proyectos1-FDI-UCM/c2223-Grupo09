@@ -60,5 +60,20 @@ public class InputComponent : MonoBehaviour
         {
             _shootComponent.Shoot();
         }
+        //Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+           StartCoroutine(_movementComponent.Dash());
+        }
+        //Correr izquierda
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.A))
+        {
+            _movementComponent.Run(-1);
+        }
+        //Correr derecha
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.D))
+        {
+            _movementComponent.Run(1);
+        }
     }
 }

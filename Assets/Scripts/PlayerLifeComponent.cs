@@ -42,6 +42,11 @@ public class PlayerLifeComponent : MonoBehaviour
         puntos_vida = puntos_vida_max;         //se curan todas las vidas del jugador
         
     }
+    public void SpikeDamage() //metodo llamado desde el script SpikeSaws (matan al jugador, es decir eliminan todas las vidas)
+    {
+        puntos_vida = 0;
+        Die();
+    }
     #endregion
      void Awake()
      {

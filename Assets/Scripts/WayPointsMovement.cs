@@ -19,6 +19,7 @@ public class WayPointsMovement : MonoBehaviour
 
     [SerializeField]
     private Transform player;
+    private bool FollowPlayer=false;
 
     [SerializeField]
     private float velocidadinicial; //velocidad del gameobject
@@ -46,6 +47,7 @@ public class WayPointsMovement : MonoBehaviour
     {
 
         siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
+        FollowPlayer= true;
         velocidad = velocidadAtaque;   //se aumenta la velocidad
     }
 
@@ -74,6 +76,11 @@ public class WayPointsMovement : MonoBehaviour
             {
                 siguientePosicion = waypoints[numeroSigPosicion].position; //se establece la nueva posición
             }
+            FollowPlayer= false;
+        }
+        if (FollowPlayer)
+        {
+            siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
         }
     }
 }
