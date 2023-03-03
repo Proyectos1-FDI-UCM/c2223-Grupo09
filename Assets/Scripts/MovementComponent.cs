@@ -25,6 +25,8 @@ public class MovementComponent : MonoBehaviour
     [Header("Movement")]
     [SerializeField]
     private float _myForce; //fuerza con la que se mueve el player
+    [SerializeField]
+    private float _myRunForce;
     float movementX = 0f; //para asignar la dirección donde vaya a ir el jugador
     float direction;
 
@@ -80,6 +82,10 @@ public class MovementComponent : MonoBehaviour
     {
        // direction = Input.GetAxisRaw("Horizontal"); //este valor puede ser -1, 0 o 1 indicando si va hacia la derecha, izquierda o no hay movimiento (funciona con joystick)
         movementX = direction* _myForce;
+    }
+    public void Run(float direction)
+    {
+        movementX = direction * _myRunForce; //el jugador corre en el eje X con la fuerza establecida y en la direccion correspondiente
     }
     public void Jump()
     {

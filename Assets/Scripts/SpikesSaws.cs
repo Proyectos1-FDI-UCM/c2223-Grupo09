@@ -12,12 +12,11 @@ public class SpikesSaws : MonoBehaviour
     #region methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<PlayerLifeComponent>() != null)
+        if(collision.GetComponent<PlayerLifeComponent>() != null) //si se ha colisionado con un objeto que contiene un PlayerLifeComponent
         {
-            Debug.Log("hola");
             _playerCollider = collision;                                                             //se toma el collider del jugador
-            _myPlayerLifeComponent = _playerCollider.gameObject.GetComponent<PlayerLifeComponent>(); //se toma el Script PlayerLifeComponent  
-            _myPlayerLifeComponent.SpikeDamage();
+            _myPlayerLifeComponent = _playerCollider.gameObject.GetComponent<PlayerLifeComponent>(); //se toma el Script PlayerLifeComponent gracias al collider del jugador
+            _myPlayerLifeComponent.SpikeDamage();                                                    //se llama al metodo SpikeDamage del PlayerLifeComponent
         }
     }
     #endregion
