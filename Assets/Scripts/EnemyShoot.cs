@@ -9,22 +9,41 @@ public class EnemyShoot : MonoBehaviour
     private Transform _myEnemyController;
     [SerializeField]
     private GameObject _bullet;
-    private float _restingTime = 2.0f; 
+    private float _restingTime = 2.0f;
     #endregion
 
-    // Start is called before the first frame update
+    #region References
+    [SerializeField]
+    private Transform _myPlayerTransform;
+
+    BulletEnemy bulletEnemy;
+    #endregion
+
+    void Start()
+    {
+        bulletEnemy = GetComponent<BulletEnemy>();
+        bulletEnemy = _bullet.GetComponent<BulletEnemy>();
+    }
 
     IEnumerator BulletTime()
     {
         for(int i = 0; i < 3; i++)
         {
            yield return new WaitForSeconds(0.2f);
-           _bullet = Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);           
+           _bullet = Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);  
+            
+           if(_myPlayerTransform.position.x > transform.position.x)
+           {
+                Debug.Log("bala derecha");
+                bulletEnemy.BalaRight();
+           }
+
+           else if (_myPlayerTransform.position.x < transform.position.x)
+           {
+                Debug.Log("bala izquierda");
+                bulletEnemy.BalaLeft();
+           }
         }
-    }
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -34,7 +53,6 @@ public class EnemyShoot : MonoBehaviour
 
         if (_restingTime <= 0)
         {
-            //Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);
             StartCoroutine(BulletTime());
             _restingTime = 2.0f;
         }

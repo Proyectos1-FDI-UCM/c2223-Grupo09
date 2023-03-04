@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletEnemy : MonoBehaviour
 {
@@ -11,31 +13,38 @@ public class BulletEnemy : MonoBehaviour
     private float _damage;
     #endregion
 
-    #region References
-    [SerializeField]
-    private Transform _myPlayerTransform;
-    #endregion
-
     #region Methods
     public float Damage()
     { return _damage; }
 
+
+    public void BalaRight()
+    {
+        Debug.Log("Bala se mueve dcha");
+        transform.Translate(Vector3.right * _speed * Time.deltaTime);
+    }
+
+    public void BalaLeft()
+    {
+        Debug.Log("Bala se mueve izq");
+        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(_myPlayerTransform.position.x > transform.position.x)
+        if (transform.position.x > -11.0f)
         {
-            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+            BalaLeft();
         }
-        
-        else if (_myPlayerTransform.position.x < transform.position.x)
+        else if (transform.position.x < 10.0f)
         {
-            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            BalaRight();
         }
 
-        if(transform.position.x < -5.0f || transform.position.x > 10.0f)
+        if((transform.position.x < -11.0f || transform.position.x > 10.0f)) 
         {
-            Destroy(gameObject);
+           Destroy(gameObject);
         }
     }
     #endregion

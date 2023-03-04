@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1728786229723500476, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.53
+      value: -3.9345026
       objectReference: {fileID: 0}
     - target: {fileID: 1728786229723500476, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1728786229723500476, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4800884932027838703, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8218202537837499360, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Name
       value: BulletEnemigo Variant
@@ -89,4 +93,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _damage: 1
-  _myPlayerTransform: {fileID: 9077355744803971432, guid: 98013b893958845419da8d6e950f70f9, type: 3}
