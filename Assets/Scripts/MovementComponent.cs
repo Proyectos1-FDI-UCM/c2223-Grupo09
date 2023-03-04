@@ -46,6 +46,7 @@ public class MovementComponent : MonoBehaviour
     private Rigidbody2D _myRigidBody2D; //referencia al rigidbody del player
     [SerializeField]
     private TrailRenderer _myTrailRenderer;
+    private SpriteRenderer _mySpriteRenderer;   
     #endregion
 
     // Start is called before the first frame update
@@ -54,6 +55,7 @@ public class MovementComponent : MonoBehaviour
         _myRigidBody2D= GetComponent<Rigidbody2D>();
         _onGround = true;
         _initialGravity = _myRigidBody2D.gravityScale;      //gravedad del jugador al inicio
+        _mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -104,7 +106,15 @@ public class MovementComponent : MonoBehaviour
             _canMove = false;   //se desabilita el movimiento
             _canDash = false;   //no se puede volver a hacer dash
             _myRigidBody2D.gravityScale = 0f;   // la gravedad se deja a 0
-            _myRigidBody2D.velocity = new Vector2(_dashVelocity * transform.localScale.x, 0);   //se mueve al player con la velocidad y en la dirección donde esté mirando
+            if (_mySpriteRenderer.flipX == true)
+            {
+                transform.Translate(Vector3.left * _dashVelocity * Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector3.right * _dashVelocity * Time.fixedDeltaTime);
+            }
+            
             _myTrailRenderer.emitting = true;       //se activa la estela
             yield return new WaitForSeconds(_dashDuration);     //tiempo que dura el dash
             _canMove = true;    //se activa de nuevo el movimiento
