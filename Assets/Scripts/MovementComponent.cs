@@ -75,10 +75,8 @@ public class MovementComponent : MonoBehaviour
             //La nueva posicion del personaje dada por la x que se calcule con el GetAxis * la fuerza
             //que le queramos aplicar y sin modificar la posición Y
             _myRigidBody2D.velocity = new Vector2(movementX, _myRigidBody2D.velocity.y);
-
             movementX = 0f;
         }
-        
     }
     public void Walk(float direction)
     {
@@ -96,9 +94,9 @@ public class MovementComponent : MonoBehaviour
             _myRigidBody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _onGround = false;
             _coyoteTime = false;
+
         }
     }
-
     public IEnumerator Dash()
     {
         if (_canDash)
@@ -106,26 +104,25 @@ public class MovementComponent : MonoBehaviour
             _canMove = false;   //se desabilita el movimiento
             _canDash = false;   //no se puede volver a hacer dash
             _myRigidBody2D.gravityScale = 0f;   // la gravedad se deja a 0
-            if (_mySpriteRenderer.flipX == true)
+            //dependiendo de hacia donde mire el jugador, el dash se realiza hacia un lado u otro
+            if (_mySpriteRenderer.flipX == true) 
             {
-                transform.Translate(Vector3.left * _dashVelocity * Time.fixedDeltaTime);
+                _myRigidBody2D.velocity = new Vector2(_dashVelocity * (-1f),0f);
             }
             else
             {
-                transform.Translate(Vector3.right * _dashVelocity * Time.fixedDeltaTime);
+                _myRigidBody2D.velocity = new Vector2(_dashVelocity * (1f), 0f);
             }
-            
-            _myTrailRenderer.emitting = true;       //se activa la estela
+            _myTrailRenderer.emitting = true;                   //se activa la estela
             yield return new WaitForSeconds(_dashDuration);     //tiempo que dura el dash
-            _canMove = true;    //se activa de nuevo el movimiento
+            _myTrailRenderer.emitting = false;                  //se desactiva la estela
+            _canMove = true;                                    //se activa de nuevo el movimiento
             _myRigidBody2D.gravityScale = _initialGravity;      //se devuelve la gravedad inicial
-            _myTrailRenderer.emitting = false;      //se desactiva la estela
-            yield return new WaitForSeconds(_cooldown);     //tiempo de espera para volver a realizar el dash
-            _canDash = true;     //se vuelve a activar el dash
+           
+            yield return new WaitForSeconds(_cooldown);         //tiempo de espera para volver a realizar el dash
+            _canDash = true;                                    //se vuelve a activar el dash
         }
-       
     }
-
     //Funcion que muestra los "pies" del personaje
     private void OnDrawGizmos() 
     {

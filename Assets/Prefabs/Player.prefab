@@ -105,7 +105,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Time: 0.25
+  m_Time: 0.15
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -131,8 +131,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0.37398618
       - serializedVersion: 3
-        time: 1
-        value: 0.108695656
+        time: 0.7844238
+        value: 0.06405607
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
   _feetDimension: {x: 0.59, y: 0.1, z: 0}
   _myForce: 6
   _myRunForce: 9
-  _dashVelocity: 3.5
+  _dashVelocity: 20
   _dashDuration: 0.3
   _cooldown: 0.5
   _myTrailRenderer: {fileID: 7883262607666615661}
