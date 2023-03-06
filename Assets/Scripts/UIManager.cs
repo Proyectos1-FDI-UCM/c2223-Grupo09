@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -10,7 +11,11 @@ public class UIManager : MonoBehaviour
     private int _numTotalVidas;         //más tarde también se tendrá que leer mediante getter, por ahora son 3
     [SerializeField]
     private GameObject[] _hearts;       //los corazones que llevan el contador de vidas que tiene el jugador. Inicialmente son 3, cada vez que el jugador recibe daño disminuye
-    private int _numHearts;           
+    private int _numHearts;
+    public TextMeshProUGUI enemigoText;
+    public TextMeshProUGUI contEnemigoText;
+    private int _numEnemigos;
+    private int _contEnemigos;
     #endregion
     #region Methods
     void MuestraVidas(GameObject[] _totalVidas) //muestra todos los corazones disponibles, ya sean "sano o dañados"
@@ -52,16 +57,19 @@ public class UIManager : MonoBehaviour
     #endregion
     void Start() 
     {
-        _numHearts = PlayerLifeComponent.Instance.Puntos_vida;//El número de corazones sanos se obtiene del script PlayerLifeComponent.
-        _numTotalVidas = PlayerLifeComponent.Instance.Puntos_vida_max;//El número maximo de corazones se obtiene del script PlayerLifeComponent.
+        _numHearts = PlayerLifeComponent.Instance.Puntos_vida;         //El número de corazones sanos se obtiene del script PlayerLifeComponent.
+        _numTotalVidas = PlayerLifeComponent.Instance.Puntos_vida_max; //El número maximo de corazones se obtiene del script PlayerLifeComponent.
+        _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;        //El número de enemigos en cada sala
         //MuestraVidas(_totalVidas);
         // MuestraCorazones(_hearts);
     }
     void Update()
     {
-        _numHearts = PlayerLifeComponent.Instance.Puntos_vida;// En el update porque se va actualizando cada vez que recibe daño o recoge botiquín
-        _numTotalVidas = PlayerLifeComponent.Instance.Puntos_vida_max;//En el update porque se va actualizando si el jugador compra corazones
+        _numHearts = PlayerLifeComponent.Instance.Puntos_vida;         // En el update porque se va actualizando cada vez que recibe daño o recoge botiquín
+        _numTotalVidas = PlayerLifeComponent.Instance.Puntos_vida_max; //En el update porque se va actualizando si el jugador compra corazones
+        _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;        // En el update porque cuando cambia de sala, cambia el numero de enemigos
         MuestraVidas(_totalVidas);
         MuestraCorazones(_hearts);
+        enemigoText.text = _numEnemigos.ToString();
     }
 }
