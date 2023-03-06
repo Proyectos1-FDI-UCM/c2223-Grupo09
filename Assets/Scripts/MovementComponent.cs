@@ -126,6 +126,7 @@ public class MovementComponent : MonoBehaviour
             _myTrailRenderer.emitting = true;                   //se activa la estela
             yield return new WaitForSeconds(_dashDuration);     //tiempo que dura el dash
             _myTrailRenderer.emitting = false;                  //se desactiva la estela
+            _onGround = Physics2D.OverlapBox(_feet.position, _feetDimension, 0f, _ground);
             _canMove = true;                                    //se activa de nuevo el movimiento
             _myRigidBody2D.gravityScale = _initialGravity;      //se devuelve la gravedad inicial
            
