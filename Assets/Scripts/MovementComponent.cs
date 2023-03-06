@@ -21,6 +21,7 @@ public class MovementComponent : MonoBehaviour
     [SerializeField]
     private Vector3 _feetDimension;
     private bool _coyoteTime;
+    private bool _canJump=false;
 
     [Header("Movement")]
     [SerializeField]
@@ -76,6 +77,10 @@ public class MovementComponent : MonoBehaviour
             //que le queramos aplicar y sin modificar la posición Y
             _myRigidBody2D.velocity = new Vector2(movementX, _myRigidBody2D.velocity.y);
             movementX = 0f;
+            Walk(direction);
+            Run(direction);
+            Jump();
+            
         }
     }
     public void Walk(float direction)
@@ -87,20 +92,25 @@ public class MovementComponent : MonoBehaviour
     {
         movementX = direction * _myRunForce; //el jugador corre en el eje X con la fuerza establecida y en la direccion correspondiente
     }
-    public void Jump()
+    public void CanJump()
     {
-        if (_onGround)
+        _canJump = true;
+    }
+    private void Jump()
+    {
+        if (_canJump && _onGround)
         {
             _myRigidBody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _onGround = false;
             _coyoteTime = false;
-
+            _canJump = false;
         }
     }
     public IEnumerator Dash()
     {
         if (_canDash)
         {
+            _canJump = false;
             _canMove = false;   //se desabilita el movimiento
             _canDash = false;   //no se puede volver a hacer dash
             _myRigidBody2D.gravityScale = 0f;   // la gravedad se deja a 0
