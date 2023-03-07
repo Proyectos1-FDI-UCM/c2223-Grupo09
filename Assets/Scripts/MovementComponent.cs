@@ -46,7 +46,8 @@ public class MovementComponent : MonoBehaviour
     public float getDirection()
     {
         if (lookingRight) return 1;
-        else return -1;
+        else if(!lookingRight) return -1;
+        else return 0;
     }
 
     #region References
@@ -95,13 +96,13 @@ public class MovementComponent : MonoBehaviour
        // direction = Input.GetAxisRaw("Horizontal"); //este valor puede ser -1, 0 o 1 indicando si va hacia la derecha, izquierda o no hay movimiento (funciona con joystick)
         movementX = direction* _myForce;
         if (direction == 1) lookingRight = true;
-        else if (direction == 0) lookingRight = false;
+        else if (direction == -1) lookingRight = false;
     }
     public void Run(float direction)
     {
         movementX = direction * _myRunForce; //el jugador corre en el eje X con la fuerza establecida y en la direccion correspondiente
         if (direction == 1) lookingRight = true;
-        else if (direction == 0) lookingRight = false;
+        else if (direction == -1) lookingRight = false;
     }
     public void CanJump()
     {
