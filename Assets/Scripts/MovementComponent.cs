@@ -43,6 +43,8 @@ public class MovementComponent : MonoBehaviour
     private bool _canMove = true;
     #endregion
 
+    public float getDirection() { return direction; }
+
     #region References
     private Rigidbody2D _myRigidBody2D; //referencia al rigidbody del player
     [SerializeField]
