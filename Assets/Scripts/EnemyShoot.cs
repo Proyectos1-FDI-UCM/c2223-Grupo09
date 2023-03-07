@@ -30,19 +30,20 @@ public class EnemyShoot : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
            yield return new WaitForSeconds(0.2f);
-           _bullet = Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);  
-            
-           if(_myPlayerTransform.position.x > transform.position.x)
-           {
-                Debug.Log("bala derecha");
-                bulletEnemy.BalaRight();
-           }
+           Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);  
+          
+            if(_myPlayerTransform.position.x > transform.position.x)
+            {
+                //Debug.Log("bala derecha");
+                 bulletEnemy.BalaRight();
+            }
 
-           else if (_myPlayerTransform.position.x < transform.position.x)
-           {
-                Debug.Log("bala izquierda");
+            else if (_myPlayerTransform.position.x < transform.position.x)
+            {
+               //Debug.Log("bala izquierda");
                 bulletEnemy.BalaLeft();
-           }
+            }
+
         }
     }
 

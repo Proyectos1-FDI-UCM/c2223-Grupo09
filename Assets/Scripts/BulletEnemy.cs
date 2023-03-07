@@ -29,25 +29,26 @@ public class BulletEnemy : MonoBehaviour
         Debug.Log("Bala se mueve izq");
         transform.Translate(Vector3.left * _speed * Time.deltaTime);
     }
+    #endregion
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > -11.0f)
+        if(transform.position.x > -11.0f)
         {
-            BalaLeft();
+           BalaLeft();
         }
-        else if (transform.position.x < 10.0f)
+
+        else if(transform.position.x < 11.0f)
         {
             BalaRight();
         }
-
-        if((transform.position.x < -11.0f || transform.position.x > 10.0f)) 
+        
+        if(transform.position.x < -11.0f || transform.position.x > 10.0f)
         {
-           Destroy(gameObject);
+            Destroy(gameObject);
         }
+        
     }
-    #endregion
-
 }
 
