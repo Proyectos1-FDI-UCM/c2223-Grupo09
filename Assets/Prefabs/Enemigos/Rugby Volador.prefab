@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerInArea>k__BackingField: 0
   Enemy: {fileID: 7413394698436130401}
+  myWayPoints: {fileID: 0}
   detectionTag: Player
 --- !u!58 &6940308183455761642
 CircleCollider2D:
@@ -63,7 +64,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5.8171535
+  m_Radius: 1.43
 --- !u!1 &7413394698436130401
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.21
 --- !u!114 &1268901405606262023
 MonoBehaviour:
   m_ObjectHideFlags: 0
