@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLifeComponent : MonoBehaviour
 {
@@ -29,14 +30,19 @@ public class PlayerLifeComponent : MonoBehaviour
         if (!invulnerable)                      //si no es invulnerable (por escudo o porque ya ha sido golpeado)
         {
         puntos_vida--;                          //menos una vida
-        if(puntos_vida <= 0) Die();             //si llega a cero vidas, se activa el void de muerte
-        else StartCoroutine(Invulnerable());    //si no ha llegado a cero vidas, se vuelve invulnerable  
+            if (puntos_vida <= 0) GameOver();//Die();             //si llega a cero vidas, se activa el void de muerte
+            else StartCoroutine(Invulnerable());    //si no ha llegado a cero vidas, se vuelve invulnerable  
         }
     }
-    public void Die()       
+    public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
+    {
+        string sceneName = "GameOver";
+        SceneManager.LoadScene(sceneName);
+    }
+   /* public void Die()       
     {
         StartCoroutine(Respawn(0.5f));          //reaparece al principio del nivel
-    }
+    }*/
     public void Botiquín()                      //metodo llamado desde el script Botiquín
     {
         puntos_vida = puntos_vida_max;         //se curan todas las vidas del jugador
@@ -45,7 +51,8 @@ public class PlayerLifeComponent : MonoBehaviour
     public void SpikeDamage() //metodo llamado desde el script SpikeSaws (matan al jugador, es decir eliminan todas las vidas)
     {
         puntos_vida = 0;
-        Die();
+        //Die();
+        GameOver();
     }
     #endregion
      void Awake()
@@ -63,14 +70,14 @@ public class PlayerLifeComponent : MonoBehaviour
         puntos_vida_max = 3;//variable que ira cambiando despues cuando se puedan añadir mas corazones
         invulnerable = false;
      }
-    IEnumerator Respawn(float duration)
+   /* IEnumerator Respawn(float duration)
     {
         _mySpriteRenderer.enabled = false;              //se vuelve invisible el jugador
         yield return new WaitForSeconds(duration);      //se espera
         puntos_vida = puntos_vida_max;                 //se recuperan todas las vidas
         _mySpriteRenderer.enabled = true;               //se vuelve visible el jugador 
         transform.position = _respawn;                  //el transform del jugador en el momento en el que es eliminado pasa a ser la posicion del respawn
-    }
+    }*/
     IEnumerator Invulnerable()
     {
         invulnerable = true;                                //se vuelve invulnerable al jugador

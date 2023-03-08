@@ -29,7 +29,7 @@ public class MovementComponent : MonoBehaviour
     [SerializeField]
     private float _myRunForce;
     float movementX = 0f; //para asignar la dirección donde vaya a ir el jugador
-    float direction;
+    bool lookingRight;
 
     [Header("Dash")]
     [SerializeField]
@@ -43,7 +43,12 @@ public class MovementComponent : MonoBehaviour
     private bool _canMove = true;
     #endregion
 
-    public float getDirection() { return direction; }
+    public float getDirection()
+    {
+        if (lookingRight) return 1;
+        else if(!lookingRight) return -1;
+        else return 0;
+    }
 
     #region References
     private Rigidbody2D _myRigidBody2D; //referencia al rigidbody del player
@@ -55,6 +60,7 @@ public class MovementComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lookingRight = true;
         _myRigidBody2D= GetComponent<Rigidbody2D>();
         _onGround = true;
         _initialGravity = _myRigidBody2D.gravityScale;      //gravedad del jugador al inicio
@@ -79,8 +85,8 @@ public class MovementComponent : MonoBehaviour
             //que le queramos aplicar y sin modificar la posición Y
             _myRigidBody2D.velocity = new Vector2(movementX, _myRigidBody2D.velocity.y);
             movementX = 0f;
-            Walk(direction);
-            Run(direction);
+            Walk(0);
+            Run(0);
             Jump();
             
         }
@@ -89,10 +95,14 @@ public class MovementComponent : MonoBehaviour
     {
        // direction = Input.GetAxisRaw("Horizontal"); //este valor puede ser -1, 0 o 1 indicando si va hacia la derecha, izquierda o no hay movimiento (funciona con joystick)
         movementX = direction* _myForce;
+        if (direction == 1) lookingRight = true;
+        else if (direction == -1) lookingRight = false;
     }
     public void Run(float direction)
     {
         movementX = direction * _myRunForce; //el jugador corre en el eje X con la fuerza establecida y en la direccion correspondiente
+        if (direction == 1) lookingRight = true;
+        else if (direction == -1) lookingRight = false;
     }
     public void CanJump()
     {

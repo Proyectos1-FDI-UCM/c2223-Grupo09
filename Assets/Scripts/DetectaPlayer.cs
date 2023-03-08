@@ -10,7 +10,7 @@ public class DetectaPlayer : MonoBehaviour
     public bool PlayerInArea { get; private set; } //booleano que indica si el jugador está en el área
     [SerializeField] GameObject Enemy;
 
-    private WayPointsMovement myWayPoints;  //referencia al componente de movimiento de los enemigos
+    public WayPointsMovement myWayPoints;  //referencia al componente de movimiento de los enemigos
 
     [SerializeField]
     private string detectionTag = "Player";  //tag del player

@@ -9,9 +9,11 @@ public class BulletComponent : MonoBehaviour
     private float _speed;
     [SerializeField]
     private float _damage;
+    private float direction;
     #endregion
 
     #region References
+    private GameObject _player;
     private MovementComponent _movementComponent;
     #endregion
 
@@ -21,12 +23,14 @@ public class BulletComponent : MonoBehaviour
 
     private void Start()
     {
-        _movementComponent = GetComponent<MovementComponent>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _movementComponent = _player.GetComponent<MovementComponent>();
+        direction = _movementComponent.getDirection();
     }
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * _speed * Time.deltaTime *_movementComponent.getDirection());
+        transform.Translate(new Vector2(1 * _speed * Time.deltaTime *direction,0));
     }
     
     #endregion
