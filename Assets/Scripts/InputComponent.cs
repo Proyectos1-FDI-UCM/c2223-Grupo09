@@ -6,16 +6,13 @@ public class InputComponent : MonoBehaviour
 {
     #region References
     private MovementComponent _movementComponent;
-    private AimComponent _aimComponent;
     private ShootComponent _shootComponent;
     private SpriteRenderer _mySpriteRenderer;
     #endregion
-
     // Start is called before the first frame update
     void Start()
     {
         _movementComponent = GetComponent<MovementComponent>();
-        _aimComponent = GetComponent<AimComponent>();
         _shootComponent = GetComponent<ShootComponent>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -40,25 +37,45 @@ public class InputComponent : MonoBehaviour
         {
             _movementComponent.CanJump();
         }
-        //Apuntar (derecha)
+        //Disparar (derecha)
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            //_aimComponent.Aim();
+            _shootComponent.Shoot(Vector2.right);
         }
-        //Apuntar (izquierda)
+        //Disparar (izquierda)
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            //_aimComponent.Aim();
+            _shootComponent.Shoot(Vector2.left);
         }
-        //Apuntar (arriba)
+        //Disparar (arriba)
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            //_aimComponent.Aim();
+            _shootComponent.Shoot(Vector2.up);
         }
-        //Disparar
-        if (Input.GetKeyDown(KeyCode.Space))
+        //Disparar (abajo)
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            _shootComponent.Shoot();
+            _shootComponent.Shoot(Vector2.down);
+        }
+        //Disparar diagonal arriba izquierda
+        if(Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftArrow))
+        {
+            _shootComponent.Shoot(Vector2.up * Vector2.left);
+        }
+        //Disparar diagonal arriba derecha
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow))
+        {
+            _shootComponent.Shoot(Vector2.up * Vector2.right);
+        }
+        //Disparar diagonal abajo izquierda
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.LeftArrow))
+        {
+            _shootComponent.Shoot(Vector2.down * Vector2.left);
+        }
+        //Disparar diagonal abajo derecha
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.RightArrow))
+        {
+            _shootComponent.Shoot(Vector2.up * Vector2.right);
         }
         //Dash
         if (Input.GetKeyDown(KeyCode.LeftShift))

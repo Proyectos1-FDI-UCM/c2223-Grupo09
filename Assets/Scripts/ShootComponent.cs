@@ -10,8 +10,18 @@ public class ShootComponent : MonoBehaviour
     [SerializeField]
     private GameObject _bullet;
     #endregion
-    public void Shoot()
+    #region References
+    private BulletComponent _bulletComponent;
+    #endregion
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _bulletComponent = GetComponent<BulletComponent>();
+    }
+    public void Shoot(Vector2 dir)
     {
         Instantiate(_bullet, _myShootController.position, _myShootController.rotation);
+        _bullet.GetComponent<BulletComponent>().setDir(dir);
     }
 }

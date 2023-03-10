@@ -9,28 +9,20 @@ public class BulletComponent : MonoBehaviour
     private float _speed;
     [SerializeField]
     private float _damage;
-    private float direction;
-    #endregion
-
-    #region References
-    private GameObject _player;
-    private MovementComponent _movementComponent;
+    [HideInInspector]
+    private Vector2 _dir;
     #endregion
 
     #region Methods
-    public float Damage() 
+    public float getDamage() 
     { return _damage; }
+    public Vector2 setDir(Vector2 d)
+    { return _dir = d; }
 
-    private void Start()
-    {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _movementComponent = _player.GetComponent<MovementComponent>();
-        direction = _movementComponent.getDirection();
-    }
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector2(1 * _speed * Time.deltaTime *direction,0));
+        transform.Translate(_dir * _speed * Time.deltaTime);
     }
     
     #endregion

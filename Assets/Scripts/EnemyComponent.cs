@@ -40,7 +40,7 @@ public class EnemyComponent : MonoBehaviour
     {
         if (other.GetComponent<BulletComponent>() != null)
         {
-            IsAttacked(bulletComponent.Damage());
+            IsAttacked(bulletComponent.getDamage());
             Destroy(gameObject);
         }
     }
