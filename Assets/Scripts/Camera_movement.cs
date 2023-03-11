@@ -6,7 +6,7 @@ public class Camera_movement : MonoBehaviour
 {
     #region references
     private Transform cam_Transform;                        //Transform de la cámara principal
-    [SerializeField]private Transform player_Transform;     //Transform del jugador (Se selecciona en el menú de Unity) 
+    [SerializeField] private Transform player_Transform;     //Transform del jugador (Se selecciona en el menú de Unity) 
     [SerializeField] private Transform PuntoBorde1;         //Transform de los puntos que marcan el principio y el final de cada sala
     [SerializeField] private Transform PuntoBorde2;         
     private Transform _punto1;
@@ -25,7 +25,7 @@ public class Camera_movement : MonoBehaviour
     #region constantes
     const float DIST_LATERAL = 1.5f;
     const float DIST_VERTICAL= 2.0f;
-    const float TAMAÑO_CAM = 9.0f;
+    [SerializeField] float TAMAÑO_CAM = 9.0f;
     private float _posYMinim;
     private int _borde;
     #endregion
