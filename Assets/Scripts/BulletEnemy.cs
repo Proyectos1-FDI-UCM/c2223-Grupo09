@@ -11,6 +11,8 @@ public class BulletEnemy : MonoBehaviour
     private float _speed;
     [SerializeField]
     private float _damage;
+    private GameObject _player;
+    private bool _dir = false;
     #endregion
 
     #region Methods
@@ -31,19 +33,34 @@ public class BulletEnemy : MonoBehaviour
     }
     #endregion
 
+    void Start()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        if (transform.position.x > _player.transform.position.x)
+        {
+            _dir = false;
+        }
+
+        else if (transform.position.x < _player.transform.position.x)
+        {
+            _dir = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x > -11.0f)
-        {
-           BalaLeft();
-        }
-
-        else if(transform.position.x < 11.0f)
+        if(_dir)
         {
             BalaRight();
         }
-        
+
+        else
+        {
+            BalaLeft();
+        }
+
         if(transform.position.x < -11.0f || transform.position.x > 10.0f)
         {
             Destroy(gameObject);
