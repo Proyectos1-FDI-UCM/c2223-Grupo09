@@ -9,6 +9,7 @@ public class EnemyComponent : MonoBehaviour
     private float _hp;
     //[SerializeField]
     //private GameObject _deadEffect;
+    public Animator _animator;
     #endregion
 
     #region
@@ -32,6 +33,7 @@ public class EnemyComponent : MonoBehaviour
 
     private void Dead()
     {
+        _animator.SetBool("Muerto", true);
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
