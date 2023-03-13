@@ -58,7 +58,6 @@ public class MovementComponent : MonoBehaviour
     #endregion
 
     #region Methods
-    // Start is called before the first frame update
     void Start()
     {
         lookingRight = true;
