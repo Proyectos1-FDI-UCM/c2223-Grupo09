@@ -60,6 +60,11 @@ public class ControladorDeSalas : MonoBehaviour
             else if (_sala == 4)
             {
                 Punto1.Translate(new Vector2(215.6f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(264.8f - Punto2.position.x, 0));
+            }
+            else if (_sala == 5)
+            {
+                Punto1.Translate(new Vector2(264.8f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(400f - Punto2.position.x, 0));
             }
         }
