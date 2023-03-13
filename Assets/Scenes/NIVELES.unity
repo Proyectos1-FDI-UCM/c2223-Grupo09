@@ -169,7 +169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1003418, y: -0.021105051}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -180,7 +180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 50.16707, y: 0.9577899}
   m_EdgeRadius: 0
 --- !u!212 &133546893
 SpriteRenderer:
@@ -241,6 +241,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_Size.y
+      value: 7.8381023
+      objectReference: {fileID: 0}
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.04221022
+      objectReference: {fileID: 0}
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.02255
+      objectReference: {fileID: 0}
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 7.8323994
+      objectReference: {fileID: 0}
     - target: {fileID: 744635566993210008, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -631,6 +647,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_Size.y
+      value: 7.795893
+      objectReference: {fileID: 0}
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.021106005
+      objectReference: {fileID: 0}
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.93235147
+      objectReference: {fileID: 0}
+    - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 7.854947
+      objectReference: {fileID: 0}
     - target: {fileID: 744635566993210008, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
       propertyPath: m_Size.x
       value: 0.93235147
