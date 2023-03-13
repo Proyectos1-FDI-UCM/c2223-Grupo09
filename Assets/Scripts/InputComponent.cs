@@ -9,6 +9,8 @@ public class InputComponent : MonoBehaviour
     private ShootComponent _shootComponent;
     private SpriteRenderer _mySpriteRenderer;
     #endregion
+
+    #region Methods
     // Start is called before the first frame update
     void Start()
     {
@@ -93,4 +95,5 @@ public class InputComponent : MonoBehaviour
             _movementComponent.Run(1);
         }
     }
+    #endregion
 }

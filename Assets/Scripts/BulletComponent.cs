@@ -9,21 +9,28 @@ public class BulletComponent : MonoBehaviour
     private float _speed;
     [SerializeField]
     private float _damage;
-    [HideInInspector]
+    [SerializeField]
     private Vector2 _dir;
+    #endregion
+
+    #region References
+    private ShootComponent _shootComponent;
     #endregion
 
     #region Methods
     public float getDamage() 
     { return _damage; }
-    public Vector2 setDir(Vector2 d)
-    { return _dir = d; }
-
+    public void setDir(Vector2 v)
+    { _dir = v; }
+    private void Start()
+    {
+        _speed = 5.0f;
+        _shootComponent = GetComponent<ShootComponent>();
+    }   
     // Update is called once per frame
     void Update()
     {
         transform.Translate(_dir * _speed * Time.deltaTime);
     }
-    
     #endregion
 }

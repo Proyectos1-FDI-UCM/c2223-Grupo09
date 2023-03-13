@@ -29,13 +29,11 @@ public class EnemyComponent : MonoBehaviour
             Dead();
         }
     }
-
     private void Dead()
     {
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<BulletComponent>() != null)

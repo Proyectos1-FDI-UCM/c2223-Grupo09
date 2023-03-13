@@ -9,11 +9,18 @@ public class ShootComponent : MonoBehaviour
     private Transform _myShootController;
     [SerializeField]
     private GameObject _bullet;
+    [HideInInspector]
+    private Vector2 _bulletDirection;
     #endregion
     #region References
     private BulletComponent _bulletComponent;
     #endregion
 
+    #region Methods
+    public Vector2 getBulletDirection()
+    {
+        return _bulletDirection;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +28,9 @@ public class ShootComponent : MonoBehaviour
     }
     public void Shoot(Vector2 dir)
     {
-        Instantiate(_bullet, _myShootController.position, _myShootController.rotation);
-        _bullet.GetComponent<BulletComponent>().setDir(dir);
+        //Assigns the dir to the bullet instaciated
+        GameObject go = Instantiate(_bullet, _myShootController.position, _myShootController.rotation);
+        go.GetComponent<BulletComponent>().setDir(dir);
     }
+    #endregion
 }

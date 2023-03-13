@@ -54,9 +54,10 @@ public class MovementComponent : MonoBehaviour
     private Rigidbody2D _myRigidBody2D; //referencia al rigidbody del player
     [SerializeField]
     private TrailRenderer _myTrailRenderer;
-    private SpriteRenderer _mySpriteRenderer;   
+    private SpriteRenderer _mySpriteRenderer;
     #endregion
 
+    #region Methods
     // Start is called before the first frame update
     void Start()
     {
@@ -157,4 +158,5 @@ public class MovementComponent : MonoBehaviour
         yield return new WaitForSeconds(0.04f);
         _onGround = false;
     }
+    #endregion
 }
