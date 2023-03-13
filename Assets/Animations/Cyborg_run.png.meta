@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 783c0d476a6e21d4a82fa6bb9a8c5a5a
+guid: 407abbdfad1f7074f90720f8da81c96b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,85 +104,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle
+      name: Cyborg_run_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.2803617, y: 0.4612404}
-      border: {x: 0, y: 0, z: 21, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0f6bd1a08343c9458964d88e2b3f4a6
-      internalID: -274797740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle1_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.28036174, y: 0.4741603}
-      border: {x: 0, y: 0, z: 20, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97cdebf816a3a9b41b43ec9d36ae1756
-      internalID: -324633246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle1_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 26
-        height: 48
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d976fc07dcf6297478c3799be9deccf1
-      internalID: -1360815783
+      spriteID: 0a47a84e5d474054eb4b8c5b0bacb402
+      internalID: -1721790669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle1_3
+      name: Cyborg_run_1
       rect:
         serializedVersion: 2
-        x: 144
+        x: 47
         y: 0
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.29328156, y: 0.4612404}
-      border: {x: 0, y: 0, z: 22, w: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a3c765af7783af4aa66a115c50486b0
-      internalID: -878730730
+      spriteID: 096a04b8bdb003a4fb9e7d5dd779e45c
+      internalID: -2038959859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cyborg_run_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777b62a7e88c2b8439d24d25974119c0
+      internalID: 644229715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cyborg_run_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382d93216b5efa843a761f184dd213d8
+      internalID: 60392370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cyborg_run_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d89568a7bd39c36419a525878893ce00
+      internalID: -609725801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cyborg_run_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45bd07d56b9195c4d83739bd72161131
+      internalID: -1519836740
       vertices: []
       indices: 
       edges: []
@@ -198,10 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle1_2: -1360815783
-      Idle1_1: -324633246
-      Idle: -274797740
-      Idle1_3: -878730730
+      Cyborg_run_5: -1519836740
+      Cyborg_run_2: 644229715
+      Cyborg_run_0: -1721790669
+      Cyborg_run_1: -2038959859
+      Cyborg_run_3: 60392370
+      Cyborg_run_4: -609725801
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

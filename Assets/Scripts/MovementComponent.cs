@@ -23,6 +23,11 @@ public class MovementComponent : MonoBehaviour
     private bool _coyoteTime;
     private bool _canJump=false;
 
+    [Header("Animation")]
+    private bool _isRunning = false;    //para saber si está corriendo
+    private bool _isWalking = false;    //para saber si está caminando
+
+
     [Header("Movement")]
     [SerializeField]
     private float _myForce; //fuerza con la que se mueve el player
@@ -41,6 +46,10 @@ public class MovementComponent : MonoBehaviour
     private float _cooldown = 2f;
     private bool _canDash = true;
     private bool _canMove = true;
+
+    
+
+
     #endregion
 
     public float getDirection()
@@ -55,6 +64,7 @@ public class MovementComponent : MonoBehaviour
     [SerializeField]
     private TrailRenderer _myTrailRenderer;
     private SpriteRenderer _mySpriteRenderer;
+    private Animator _myAnimator;
     #endregion
 
     #region Methods
@@ -66,6 +76,7 @@ public class MovementComponent : MonoBehaviour
         _onGround = true;
         _initialGravity = _myRigidBody2D.gravityScale;      //gravedad del jugador al inicio
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
+        _myAnimator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -92,21 +103,56 @@ public class MovementComponent : MonoBehaviour
             
         }
     }
+
+    private void Update()
+    {
+        if (_myRigidBody2D.velocity.x == 0)     //si no se está moviendo se desactivan animaciones
+        {
+            _isWalking = false;
+            _isRunning = false;
+        }
+        _myAnimator.SetBool("isRunning", _isRunning);
+        _myAnimator.SetBool("isWalking", _isWalking);
+        _myAnimator.SetBool("onGround", _onGround);
+    }
     public void Walk(float direction)
     {
        // direction = Input.GetAxisRaw("Horizontal"); //este valor puede ser -1, 0 o 1 indicando si va hacia la derecha, izquierda o no hay movimiento (funciona con joystick)
         movementX = direction* _myForce;
-        if (direction == 1) lookingRight = true;
-        else if (direction == -1) lookingRight = false;
+        if (direction == 1)
+        {
+            lookingRight = true;
+            _isWalking = true;  //se aciva caminar
+            _isRunning = false; //no está corriendo
+        }
+        else if (direction == -1)
+        {
+            lookingRight = false;
+            _isWalking = true;  //se activa caminar
+            _isRunning = false; //no está corriendo
+        }
+        
+        
     }
     public void Run(float direction)
     {
         movementX = direction * _myRunForce; //el jugador corre en el eje X con la fuerza establecida y en la direccion correspondiente
-        if (direction == 1) lookingRight = true;
-        else if (direction == -1) lookingRight = false;
+        if (direction == 1)
+        {
+            lookingRight = true;
+            _isRunning = true;  //está corriendo
+            _isWalking = false; //no anda
+        }
+        else if (direction == -1)
+        {
+            lookingRight = false;
+            _isRunning = true;  //está corriendo
+            _isWalking= false;  //no anda
+        }
     }
     public void CanJump()
     {
+
         _canJump = true;
     }
     private void Jump()
@@ -117,6 +163,7 @@ public class MovementComponent : MonoBehaviour
             _onGround = false;
             _coyoteTime = false;
             _canJump = false;
+
         }
     }
     public IEnumerator Dash()
