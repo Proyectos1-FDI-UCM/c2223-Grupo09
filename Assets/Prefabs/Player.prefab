@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7768277567886473827}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0124, y: -0.197, z: -10.023256}
+  m_LocalPosition: {x: 0.02, y: -0.165, z: -10.023256}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 4800138505120819217}
   - component: {fileID: 4560723593605689382}
   - component: {fileID: 7197746776326166509}
+  - component: {fileID: -4482042802291907282}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -294,15 +295,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -274797740, guid: 783c0d476a6e21d4a82fa6bb9a8c5a5a, type: 3}
+  m_Sprite: {fileID: 111493081, guid: 783c0d476a6e21d4a82fa6bb9a8c5a5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.48, y: 0.48}
+  m_Size: {x: 0.19, y: 0.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7883262608657425673
@@ -391,18 +392,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006595336, y: -0.056784295}
+  m_Offset: {x: 0.006595336, y: 0.00551755}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.21, w: 0}
-    pivot: {x: 0.2803617, y: 0.4612404}
-    oldSize: {x: 0.48, y: 0.48}
-    newSize: {x: 0.48, y: 0.48}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.19, y: 0.35}
+    newSize: {x: 0.19, y: 0.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15753154, y: 0.29246038}
+  m_Size: {x: 0.15753154, y: 0.3211925}
   m_EdgeRadius: 0
 --- !u!114 &4560723593605689382
 MonoBehaviour:
@@ -432,3 +433,23 @@ MonoBehaviour:
   _dashImage: {fileID: 0}
   _dashCooldown: 0.5
   _dashActivado: {fileID: 0}
+--- !u!95 &-4482042802291907282
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883262608657425669}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 752369b448bc738438a0de913c65eeb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
