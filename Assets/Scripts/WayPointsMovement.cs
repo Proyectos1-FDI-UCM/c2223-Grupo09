@@ -50,6 +50,10 @@ public class WayPointsMovement : MonoBehaviour
         FollowPlayer= true;
         velocidad = velocidadAtaque;   //se aumenta la velocidad
     }
+    public void DontGoToPlayer()  //Este m?todo se usar? para cambiar la direcci?n hacia la posici?n del jugador
+    {        
+        FollowPlayer = false;
+    }
 
     // Update is called once per frame
     void Update()
