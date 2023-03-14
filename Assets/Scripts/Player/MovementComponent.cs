@@ -26,6 +26,7 @@ public class MovementComponent : MonoBehaviour
     [Header("Animation")]
     private bool _isRunning = false;    //para saber si está corriendo
     private bool _isWalking = false;    //para saber si está caminando
+    private bool _isDashing = false;    //para saber si está haciendo dash
 
 
     [Header("Movement")]
@@ -110,9 +111,18 @@ public class MovementComponent : MonoBehaviour
             _isWalking = false;
             _isRunning = false;
         }
+        if (_myRigidBody2D.gravityScale == 0)
+        {
+            _isDashing = true;
+        }
+        else
+        {
+            _isDashing = false;
+        }
         _myAnimator.SetBool("isRunning", _isRunning);
         _myAnimator.SetBool("isWalking", _isWalking);
         _myAnimator.SetBool("onGround", _onGround);
+        _myAnimator.SetBool("isDashing", _isDashing);
     }
     public void Walk(float direction)
     {
@@ -174,13 +184,15 @@ public class MovementComponent : MonoBehaviour
             _canDash = false;   //no se puede volver a hacer dash
             _myRigidBody2D.gravityScale = 0f;   // la gravedad se deja a 0
             //dependiendo de hacia donde mire el jugador, el dash se realiza hacia un lado u otro
-            if (_mySpriteRenderer.flipX == true) 
+            if (_mySpriteRenderer.flipX == true)
             {
-                _myRigidBody2D.velocity = new Vector2(_dashVelocity * (-1f),0f);
+                _myRigidBody2D.velocity = new Vector2(_dashVelocity * (-1f), 0f);
+                
             }
             else
             {
                 _myRigidBody2D.velocity = new Vector2(_dashVelocity * (1f), 0f);
+                
             }
             _myTrailRenderer.emitting = true;                   //se activa la estela
             yield return new WaitForSeconds(_dashDuration);     //tiempo que dura el dash
@@ -188,10 +200,12 @@ public class MovementComponent : MonoBehaviour
             _onGround = Physics2D.OverlapBox(_feet.position, _feetDimension, 0f, _ground);
             _canMove = true;                                    //se activa de nuevo el movimiento
             _myRigidBody2D.gravityScale = _initialGravity;      //se devuelve la gravedad inicial
-           
+
             yield return new WaitForSeconds(_cooldown);         //tiempo de espera para volver a realizar el dash
             _canDash = true;                                    //se vuelve a activar el dash
         }
+       
+        
     }
     //Funcion que muestra los "pies" del personaje
     private void OnDrawGizmos() 

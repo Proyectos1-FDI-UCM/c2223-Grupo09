@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: caba64e1147f14a46b211bd47f97bcc7
+guid: bfc324e23b9781d4a8bb65892a1756d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cyborg_hurt_0
+      name: Dash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 28
-        height: 36
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66f1427a944f8cf418ea8ad6a00bb6df
-      internalID: 810729464
+      spriteID: d32de1aed51c92d4d8b2ac80997d67a8
+      internalID: -1756468932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cyborg_hurt_1
+      name: Dash_1
       rect:
         serializedVersion: 2
-        x: 46
+        x: 41
         y: 0
-        width: 28
-        height: 36
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +139,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35594bd0587232e449cd4ffd008e92b6
-      internalID: -296947322
+      spriteID: 0a2aa90298fc1584a8a44f9193c66815
+      internalID: 946858922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b0742349bd785942b3d3e479747b45f
+      internalID: 1217939949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_3
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c0c234267796e4bac69043095794cd
+      internalID: -511700342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_4
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 314893f947d1f1846b16ab1a8ef6528c
+      internalID: 523028661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_5
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1365e55e2af75d4a831b93406e7a7fd
+      internalID: 1548895728
       vertices: []
       indices: 
       edges: []
@@ -156,8 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cyborg_hurt_0: 589094772
-      Cyborg_hurt_1: 810729464
+      Dash_3: -511700342
+      Dash_0: -1756468932
+      Dash_4: 523028661
+      Dash_1: 946858922
+      Dash_2: 1217939949
+      Dash_5: 1548895728
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
