@@ -24,7 +24,7 @@ public class BulletComponent : MonoBehaviour
     { _dir = v; }
     private void Start()
     {
-        _speed = 5.0f;
+        _speed = 30.0f;
         _enemyComponent = GetComponent<EnemyComponent>();
     }   
     // Update is called once per frame

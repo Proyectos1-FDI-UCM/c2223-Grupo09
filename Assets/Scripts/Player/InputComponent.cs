@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class InputComponent : MonoBehaviour
 {
+    #region Atributes
+    [SerializeField]
+    private float _coolDownShoot;
+    [SerializeField]
+    private float _lastTimeShot;
+    #endregion
+
     #region References
     private MovementComponent _movementComponent;
     private ShootComponent _shootComponent;
@@ -15,6 +22,7 @@ public class InputComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _coolDownShoot = 1.5f;
         _movementComponent = GetComponent<MovementComponent>();
         _shootComponent = GetComponent<ShootComponent>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,46 +49,50 @@ public class InputComponent : MonoBehaviour
         {
             _movementComponent.CanJump();
         }
-       
+
         //Disparar diagonal arriba izquierda
-        if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftArrow)
+            && _lastTimeShot >= _coolDownShoot)
         {
+            FlipBeforeAttack(Vector2.left);
             _shootComponent.Shoot(Vector2.up + Vector2.left);
+            _lastTimeShot = 0;
+            _mySpriteRenderer.flipX = false;
         }
         //Disparar diagonal arriba derecha
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow)
+            && _lastTimeShot >= _coolDownShoot)
         {
+            FlipBeforeAttack(Vector2.right);
             _shootComponent.Shoot(Vector2.up + Vector2.right);
-        }
-        //Disparar diagonal abajo izquierda
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            _shootComponent.Shoot(Vector2.down + Vector2.left);
-        }
-        //Disparar diagonal abajo derecha
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            _shootComponent.Shoot(Vector2.down + Vector2.right);
+            _lastTimeShot = 0;
         }
         //Disparar (arriba)
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.UpArrow)
+            && _lastTimeShot >= _coolDownShoot)
         {
             _shootComponent.Shoot(Vector2.up);
-        }
-        //Disparar (abajo)
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            _shootComponent.Shoot(Vector2.down);
+            _lastTimeShot = 0;
         }
         //Disparar (derecha)
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow)
+            && _lastTimeShot >= _coolDownShoot)
         {
+            FlipBeforeAttack(Vector2.right);
             _shootComponent.Shoot(Vector2.right);
+            _lastTimeShot = 0;
         }
         //Disparar (izquierda)
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow)
+            && _lastTimeShot >= _coolDownShoot)
         {
+            FlipBeforeAttack(Vector2.right);
             _shootComponent.Shoot(Vector2.left);
+            _lastTimeShot = 0;
+        }
+        else
+        {
+            _lastTimeShot += Time.deltaTime;
         }
 
         //Dash
@@ -98,6 +110,18 @@ public class InputComponent : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.D))
         {
             _movementComponent.Run(1);
+        }
+    }
+
+    private void FlipBeforeAttack(Vector2 dir)
+    {
+        if(dir == Vector2.right && _mySpriteRenderer.flipX)
+        {
+            _mySpriteRenderer.flipX = false;
+        }
+        if(dir == Vector2.left && !_mySpriteRenderer.flipX)
+        {
+            _mySpriteRenderer.flipX = true;
         }
     }
     #endregion

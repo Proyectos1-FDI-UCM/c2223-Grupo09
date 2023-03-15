@@ -32,7 +32,6 @@ public class PlayerLifeComponent : MonoBehaviour
     {
         if (!invulnerable)                      //si no es invulnerable (por escudo o porque ya ha sido golpeado)
         {
-            _isHit = true;
         puntos_vida--;                          //menos una vida
             if (puntos_vida <= 0) GameOver();//Die();             //si llega a cero vidas, se activa el void de muerte
             else StartCoroutine(Invulnerable());    //si no ha llegado a cero vidas, se vuelve invulnerable  
@@ -41,9 +40,9 @@ public class PlayerLifeComponent : MonoBehaviour
     public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
     {
         _isDeath = true;
-        _myAnimator.SetBool("isDeath", _isDeath);
-        string sceneName = "GameOver";
-        SceneManager.LoadScene(sceneName);
+
+       // string sceneName = "GameOver";
+        //SceneManager.LoadScene(sceneName);
     }
    /* public void Die()       
     {
@@ -96,13 +95,12 @@ public class PlayerLifeComponent : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
             
         }
-        _isHit = false;
         invulnerable = false;                               //después del tiempo de espera, se le quita la invulnerabilidad al jugador [ATENCIÓN: Cuando se haga el script del escudo protector
                                                             //hay que vijilar que este IEnumerator no pueda desactivar la invencibilidad antes de que se acabe el tiempo del propio escudo]
     }
 
     private void Update()
     {
-        _myAnimator.SetBool("isHit", _isHit);
+        _myAnimator.SetBool("isDeath", _isDeath);
     }
 }
