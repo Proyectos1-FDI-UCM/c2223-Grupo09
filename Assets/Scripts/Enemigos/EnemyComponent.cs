@@ -42,7 +42,7 @@ public class EnemyComponent : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         Dead();
     }
     #endregion
