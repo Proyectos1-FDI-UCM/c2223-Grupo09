@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyComponent : MonoBehaviour
 {
+    #region references
+    private WayPointsMovement _myWayPoints;
+    #endregion
     #region Parameters
     [SerializeField]
     private float _hp;
     //[SerializeField]
     //private GameObject _deadEffect;
     public Animator _animator;
-    private WayPointsMovement _myWayPoints;
     #endregion
 
     #region Methods
@@ -44,4 +46,9 @@ public class EnemyComponent : MonoBehaviour
         Dead();
     }
     #endregion
+    private void Start()
+    {
+        _myWayPoints = GetComponent<WayPointsMovement>();
+    }
 }
+

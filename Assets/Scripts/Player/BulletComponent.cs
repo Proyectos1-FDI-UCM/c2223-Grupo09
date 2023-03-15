@@ -37,7 +37,11 @@ public class BulletComponent : MonoBehaviour
         if(collider.GetComponent<KillPlayer>() != null)
         {
             collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
-            Destroy(gameObject);
+            if(gameObject != null)
+            {
+                Destroy(gameObject);
+            }
+           
         }
     }
     #endregion
