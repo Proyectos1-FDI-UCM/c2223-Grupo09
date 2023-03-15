@@ -82,10 +82,9 @@ public class WayPointsMovement : MonoBehaviour
             
             FollowPlayer = false;
 
-            if (numeroSigPosicion == 0)
-            {
+            
                 Flip();
-            }
+            
 
         }
         
