@@ -15,7 +15,6 @@ public class InputComponent : MonoBehaviour
     private MovementComponent _movementComponent;
     private ShootComponent _shootComponent;
     private SpriteRenderer _mySpriteRenderer;
-    private UIDash _myUIDash;
     #endregion
 
     #region Methods
@@ -26,7 +25,7 @@ public class InputComponent : MonoBehaviour
         _movementComponent = GetComponent<MovementComponent>();
         _shootComponent = GetComponent<ShootComponent>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
-        _myUIDash = GetComponent<UIDash>();
+        
     }
 
     // Update is called once per frame
@@ -99,7 +98,6 @@ public class InputComponent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             StartCoroutine(_movementComponent.Dash());
-            _myUIDash.CanDashUI();
         }
         //Correr izquierda
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.A))

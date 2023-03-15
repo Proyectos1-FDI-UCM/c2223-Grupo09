@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 2718357289057669826}
   - component: {fileID: 2718357289057669825}
   - component: {fileID: 2718357289057669886}
+  - component: {fileID: 8538721014852904909}
   m_Layer: 0
   m_Name: Enem Volador
   m_TagString: Enemy
@@ -220,3 +221,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsShooting: 0
   _bullet: {fileID: 1028600080532914881, guid: 7f7eb2f3012aeea4caa7bf5db9ce4580, type: 3}
+--- !u!114 &8538721014852904909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718357289057669824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4bb06c23441814294af357c9aa7117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 1
+  _animator: {fileID: 0}
