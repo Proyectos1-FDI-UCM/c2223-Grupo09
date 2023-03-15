@@ -88,7 +88,6 @@ public class WayPointsMovement : MonoBehaviour
 
             
                 Flip();
-            
 
         }
         

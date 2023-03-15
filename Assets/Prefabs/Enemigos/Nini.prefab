@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7301608661882687980}
   m_Layer: 0
   m_Name: Nini
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   velocidadinicial: 3
   velocidad: 1
   velocidadAtaque: 0
+  facingRight: 0
 --- !u!114 &6603557600453115689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 1
+  _animator: {fileID: 0}
