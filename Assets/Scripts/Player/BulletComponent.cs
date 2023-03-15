@@ -37,6 +37,7 @@ public class BulletComponent : MonoBehaviour
         if(collider.GetComponent<KillPlayer>() != null)
         {
             collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
+            ControladorDeSalas.Instance.Kill();
             if(gameObject != null)
             {
                 Destroy(gameObject);

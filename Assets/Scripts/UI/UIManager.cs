@@ -66,6 +66,11 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    void ContEnemigosScore()
+    {
+        _contEnemigos = ControladorDeSalas.Instance.ContEnemigos;
+        _contEnemigoText.text = _contEnemigos.ToString();
+    }
     void TotalEnemigosScore()
     {
         _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;  //El número de enemigos en cada sala
@@ -88,6 +93,7 @@ public class UIManager : MonoBehaviour
         _numTotalVidas = GameManager.Instance.Puntos_vida_max; //En el update porque se va actualizando si el jugador compra corazones
         VidasScore(_totalVidas);
         CorazonesScore(_hearts);
+        ContEnemigosScore();
         TotalEnemigosScore();
         GearScore();
     }

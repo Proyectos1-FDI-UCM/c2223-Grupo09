@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    #region references
-   /* [SerializeField]
-    GameObject _player;*/
-    #endregion
     #region properties
     private static GameManager _instance;
     public static GameManager Instance
@@ -56,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         puntos_vida = 0;
     }
+    
     private void Awake()
     {
         if (_instance == null)
@@ -73,6 +71,5 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        
     }
 }
