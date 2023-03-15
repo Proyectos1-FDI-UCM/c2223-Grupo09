@@ -9,18 +9,12 @@ public class ShootComponent : MonoBehaviour
     private Transform _myShootController;
     [SerializeField]
     private GameObject _bullet;
-    [HideInInspector]
-    private Vector2 _bulletDirection;
     #endregion
     #region References
     private BulletComponent _bulletComponent;
     #endregion
 
     #region Methods
-    public Vector2 getBulletDirection()
-    {
-        return _bulletDirection;
-    }
     // Start is called before the first frame update
     void Start()
     {

@@ -36,10 +36,10 @@ public class EnemyComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<BulletComponent>() != null)
+        if (other.CompareTag("Bullet"))
         {
-            IsAttacked(bulletComponent.getDamage());
-            Destroy(gameObject);
+            IsAttacked(other.GetComponent<BulletComponent>().getDamage());
+            Destroy(other.gameObject);
         }
     }
     #endregion

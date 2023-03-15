@@ -14,7 +14,7 @@ public class BulletComponent : MonoBehaviour
     #endregion
 
     #region References
-    private ShootComponent _shootComponent;
+    private EnemyComponent _enemyComponent;
     #endregion
 
     #region Methods
@@ -25,12 +25,20 @@ public class BulletComponent : MonoBehaviour
     private void Start()
     {
         _speed = 5.0f;
-        _shootComponent = GetComponent<ShootComponent>();
+        _enemyComponent = GetComponent<EnemyComponent>();
     }   
     // Update is called once per frame
     void Update()
     {
         transform.Translate(_dir * _speed * Time.deltaTime);
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.GetComponent<KillPlayer>() != null)
+        {
+            collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
+            Destroy(gameObject);
+        }
     }
     #endregion
 }

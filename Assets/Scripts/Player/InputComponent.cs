@@ -41,46 +41,48 @@ public class InputComponent : MonoBehaviour
         {
             _movementComponent.CanJump();
         }
-        //Disparar (derecha)
-        if (Input.GetKey(KeyCode.RightArrow))
+       
+        //Disparar diagonal arriba izquierda
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            _shootComponent.Shoot(Vector2.right);
+            _shootComponent.Shoot(Vector2.up + Vector2.left);
         }
-        //Disparar (izquierda)
-        if (Input.GetKey(KeyCode.LeftArrow))
+        //Disparar diagonal arriba derecha
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.RightArrow))
         {
-            _shootComponent.Shoot(Vector2.left);
+            _shootComponent.Shoot(Vector2.up + Vector2.right);
+        }
+        //Disparar diagonal abajo izquierda
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            _shootComponent.Shoot(Vector2.down + Vector2.left);
+        }
+        //Disparar diagonal abajo derecha
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            _shootComponent.Shoot(Vector2.down + Vector2.right);
         }
         //Disparar (arriba)
-        if (Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             _shootComponent.Shoot(Vector2.up);
         }
         //Disparar (abajo)
-        if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             _shootComponent.Shoot(Vector2.down);
         }
-        //Disparar diagonal arriba izquierda
-        if(Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftArrow))
+        //Disparar (derecha)
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            _shootComponent.Shoot(Vector2.up * Vector2.left);
+            _shootComponent.Shoot(Vector2.right);
         }
-        //Disparar diagonal arriba derecha
-        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow))
+        //Disparar (izquierda)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            _shootComponent.Shoot(Vector2.up * Vector2.right);
+            _shootComponent.Shoot(Vector2.left);
         }
-        //Disparar diagonal abajo izquierda
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.LeftArrow))
-        {
-            _shootComponent.Shoot(Vector2.down * Vector2.left);
-        }
-        //Disparar diagonal abajo derecha
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.RightArrow))
-        {
-            _shootComponent.Shoot(Vector2.up * Vector2.right);
-        }
+
         //Dash
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
