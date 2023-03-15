@@ -10,6 +10,7 @@ public class EnemyComponent : MonoBehaviour
     //[SerializeField]
     //private GameObject _deadEffect;
     public Animator _animator;
+    private WayPointsMovement _myWayPoints;
     #endregion
 
     #region Methods
@@ -18,12 +19,12 @@ public class EnemyComponent : MonoBehaviour
         _hp -= damage;
         if(_hp <= 0)
         {
-            Dead();
+            _animator.SetBool("Muerte", true);
+            StartCoroutine(Wait());      
         }
     }
     private void Dead()
     {
-        _animator.SetBool("Muerto", true);
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
@@ -32,8 +33,15 @@ public class EnemyComponent : MonoBehaviour
         if (other.gameObject.GetComponent<BulletComponent>() != null)
         {
             Destroy(other.gameObject);
-            Destroy(gameObject);
+            _myWayPoints.enabled = false;
+            //Destroy(gameObject);
         }
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Dead();
     }
     #endregion
 }
