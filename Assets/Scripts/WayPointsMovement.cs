@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WayPointsMovement : MonoBehaviour
@@ -27,6 +28,8 @@ public class WayPointsMovement : MonoBehaviour
     private float velocidad;
     [SerializeField]
     private float velocidadAtaque;
+    private float inputHorizontal;
+    public bool facingRight;
 
     // Start is called before the first frame update
     void Start()
@@ -80,11 +83,31 @@ public class WayPointsMovement : MonoBehaviour
             {
                 siguientePosicion = waypoints[numeroSigPosicion].position; //se establece la nueva posición
             }
-            FollowPlayer= false;
+            
+            FollowPlayer = false;
+
+            
+                Flip();
+            
+
         }
+        
         if (FollowPlayer)
         {
             siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
         }
+
+
+    }
+    private void Flip()
+    {
+        Vector3 currentscale = gameObject.transform.localScale;
+
+        currentscale.x *= -1;
+        gameObject.transform.localScale = currentscale;
+
+        facingRight = !facingRight;
     }
 }
+
+
