@@ -16,10 +16,18 @@ public class UIManager : MonoBehaviour
     private int _numHearts;
 
     [Header("Enemigos")]
-    public TextMeshProUGUI enemigoText;
-    public TextMeshProUGUI contEnemigoText;
+    [SerializeField]
+    private TextMeshProUGUI _enemigoText;
+    [SerializeField]
+    private TextMeshProUGUI _contEnemigoText;
     private int _numEnemigos;
     private int _contEnemigos;
+
+    [Header("Engranajes")]
+    [SerializeField]
+    private TextMeshProUGUI _gearText;
+    private int _gearScore;
+
     #endregion
     #region Methods
     void MuestraVidas(GameObject[] _totalVidas) //muestra todos los corazones disponibles, ya sean "sano o dañados"
@@ -58,6 +66,12 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+     void GearScore()
+     {
+        _gearScore = GameManager.Instance.Gear;  //se toma el numero de engranajes del GameManager
+        _gearText.text = _gearScore.ToString();
+
+     }
     #endregion
     void Start() 
     {
@@ -72,6 +86,7 @@ public class UIManager : MonoBehaviour
         _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;        // En el update porque cuando cambia de sala, cambia el numero de enemigos
         MuestraVidas(_totalVidas);
         MuestraCorazones(_hearts);
-        enemigoText.text = _numEnemigos.ToString();
+        GearScore();
+        _enemigoText.text = _numEnemigos.ToString();
     }
 }
