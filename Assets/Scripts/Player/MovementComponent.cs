@@ -208,9 +208,7 @@ public class MovementComponent : MonoBehaviour
 
             yield return new WaitForSeconds(_cooldown);         //tiempo de espera para volver a realizar el dash
             _canDash = true;                                    //se vuelve a activar el dash
-        }
-       
-        
+        } 
     }
     //Funcion que muestra los "pies" del personaje
     private void OnDrawGizmos() 

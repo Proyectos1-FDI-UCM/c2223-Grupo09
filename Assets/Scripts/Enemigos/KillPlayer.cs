@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour
 {
-
     #region references
     private PlayerLifeComponent _myPlayerLifeComponent; //referencia al Life Component del jugador
     private Collider2D _playerCollider;                 //Referencia al collider del player
     private Collider2D _myBoxCollider;                  //Referencia al collider del enemigo
+    #endregion
+    #region methods
+    private void OnTriggerEnter2D(Collider2D collision) //Cuando el enemigo colisiona con el enemigo
+    {
+        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null)   //se comprueba si este tiene un Script de Life Component
+        {
+            _playerCollider = collision;                                                                //se toma el collider del jugador
+            _myPlayerLifeComponent = _playerCollider.gameObject.GetComponent<PlayerLifeComponent>();    //se toma el Script PlayerLifeComponent                                                            
+            _myPlayerLifeComponent.Hit();                                                               //se llama al metodo Hit de ese script
+            StartCoroutine(Sigue_ahí());
+        }
+    }
     #endregion
     void Start()
     {
@@ -23,14 +34,5 @@ public class KillPlayer : MonoBehaviour
             StartCoroutine(Sigue_ahí());
         }            
     }
-    private void OnTriggerEnter2D(Collider2D collision) //Cuando el enemigo colisiona con el enemigo
-    {
-        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null)   //se comprueba si este tiene un Script de Life Component
-        {
-            _playerCollider = collision;                                                                //se toma el collider del jugador
-            _myPlayerLifeComponent = _playerCollider.gameObject.GetComponent<PlayerLifeComponent>();    //se toma el Script PlayerLifeComponent                                                            
-            _myPlayerLifeComponent.Hit();//se llama al metodo Hit de ese script
-            StartCoroutine(Sigue_ahí());
-        }
-    }
+    
 }

@@ -16,7 +16,8 @@ public class SpikesSaws : MonoBehaviour
         {
             _playerCollider = collision;                                                             //se toma el collider del jugador
             _myPlayerLifeComponent = _playerCollider.gameObject.GetComponent<PlayerLifeComponent>(); //se toma el Script PlayerLifeComponent gracias al collider del jugador
-            _myPlayerLifeComponent.SpikeDamage();                                                    //se llama al metodo SpikeDamage del PlayerLifeComponent
+            _myPlayerLifeComponent.SpikeSawsDamage();                                                //se llama al metodo SpikeDamage del PlayerLifeComponent
+            GameManager.Instance.SpikeSawsDamage();                                                  //se llama al metodo SpikeDamage del GameManager
         }
     }
     #endregion

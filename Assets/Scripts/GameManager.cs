@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region references
+   /* [SerializeField]
+    GameObject _player;*/
+    #endregion
     #region properties
     private static GameManager _instance;
-
     public static GameManager Instance
     {
         get
@@ -16,16 +19,43 @@ public class GameManager : MonoBehaviour
     }
 
     private int _gear; //numero de engranajes
-  
-    public int Gear //acceso publico al numero de engranajes
+    public int Gear    //acceso publico al numero de engranajes
     {
         get
         {
             return _gear;
         }
     }
+
+    private int puntos_vida; //cuenta el número de vidas del jugador
+    public int Puntos_vida   //acceso público a los puntos de vida actuales del jugador
+    {
+        get { return puntos_vida; }
+    }
+
+    private int puntos_vida_max; //controla el número máximo de vidas que puede tener el jugador. Empieza con 3, pero puede aumentar comprando más vidas con los engranajes
+    public int Puntos_vida_max   //acceso público a los de de vida maximos del jugador
+    {
+        get { return puntos_vida_max; }
+    }
     #endregion
     #region Methods
+    public void OnPickGear()
+    {
+        _gear++;
+    }
+    public void Hit()
+    {
+        puntos_vida--;
+    }
+    public void Botiquin()
+    {
+        puntos_vida = puntos_vida_max; //se curan todas las vidas del jugador
+    }
+    public void SpikeSawsDamage() //metodo llamado desde el script SpikeSaws (matan al jugador, es decir eliminan todas las vidas)
+    {
+        puntos_vida = 0;
+    }
     private void Awake()
     {
         if (_instance == null)
@@ -34,14 +64,12 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    public void OnPickGear()
-    {
-        _gear++;
-    }
     #endregion
     void Start()
     {
         _gear = 0;
+        puntos_vida = 3;     //siempre se empieza con tres vidas, se van perdiendo segun el daño recibido
+        puntos_vida_max = 3; //siempre se empieza con tres vidas como maximo, estas pueden aumentar cuando se compren con los engranajes
     }
     void Update()
     {
