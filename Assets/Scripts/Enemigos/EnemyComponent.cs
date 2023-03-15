@@ -27,7 +27,7 @@ public class EnemyComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<BulletComponent>() == null)
+        if (other.gameObject.GetComponent<BulletComponent>() != null)
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
