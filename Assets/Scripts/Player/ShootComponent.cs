@@ -22,7 +22,7 @@ public class ShootComponent : MonoBehaviour
     }
     public void Shoot(Vector2 dir)
     {
-        //Assigns the dir to the bullet instaciated
+        //Assigns the dir to the bullet instanciated
         GameObject go = Instantiate(_bullet, _myShootController.position, _myShootController.rotation);
         go.GetComponent<BulletComponent>().setDir(dir);
     }

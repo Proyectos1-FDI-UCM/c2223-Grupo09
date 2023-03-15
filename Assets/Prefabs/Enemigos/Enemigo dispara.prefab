@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4495091102848595063}
   - component: {fileID: 2436076729256890059}
   - component: {fileID: 7822204215741739040}
+  - component: {fileID: 652273857920437160}
   m_Layer: 0
   m_Name: Enemigo dispara
   m_TagString: Untagged
@@ -99,3 +100,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myEnemyController: {fileID: 4495091102848595063}
   _bullet: {fileID: 1028600080532914881, guid: e00f7e7112e81ce43af2c2b64caf5212, type: 3}
+--- !u!114 &652273857920437160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874622503891829798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4bb06c23441814294af357c9aa7117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 1
+  _animator: {fileID: 0}
