@@ -86,7 +86,7 @@ public class InputComponent : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftArrow)
             && _lastTimeShot >= _coolDownShoot)
         {
-            FlipBeforeAttack(Vector2.right);
+            FlipBeforeAttack(Vector2.left);
             _shootComponent.Shoot(Vector2.left);
             _lastTimeShot = 0;
         }
