@@ -61,10 +61,10 @@ public class BulletEnemy : MonoBehaviour
             BalaLeft();
         }
 
-        if(transform.position.x < -11.0f || transform.position.x > 10.0f)
+        /*if(transform.position.x < -11.0f || transform.position.x > 10.0f)
         {
             Destroy(gameObject);
-        }
+        }*/
         
     }
 }
