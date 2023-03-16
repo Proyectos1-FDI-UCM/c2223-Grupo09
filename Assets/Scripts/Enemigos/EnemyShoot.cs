@@ -18,7 +18,7 @@ public class EnemyShoot : MonoBehaviour
         {
            yield return new WaitForSeconds(0.2f);
            Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);
-            Debug.Log("Bala instanciada");
+
         }
     }
 

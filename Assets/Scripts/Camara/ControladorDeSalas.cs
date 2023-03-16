@@ -11,10 +11,10 @@ public class ControladorDeSalas : MonoBehaviour
     [SerializeField] private Transform Punto1;  //referencia al Transform de los puntos del borde de cada sala
     [SerializeField] private Transform Punto2;  
     [SerializeField] private Transform Player;  //referencia al Transform del jugador
-    
+
     #endregion
     #region properties
-    private int _sección;               //Cada sección del juego
+    [SerializeField] private int _sección;               //Cada sección del juego
     private int _sala;                  //Cada sala dentro de una sección
     const float ESPACIO_EXTRA = 2.0f;   //Espacio extra que tiene que avanzar el jugador para que haya un cambio de sala
     public int Sala          //acceso público a la variable de _sala
@@ -50,7 +50,7 @@ public class ControladorDeSalas : MonoBehaviour
 
             } else if (_sala == 1)
             {
-                Punto1.Translate(new Vector2(55.5f - Punto1.position.x, 0));
+                Punto1.Translate(new Vector2(55.7f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(113f - Punto2.position.x, 0));
                 _contEnemigos = 0;
                 _numtotalEnemigos = 2;
@@ -99,8 +99,7 @@ public class ControladorDeSalas : MonoBehaviour
         else
         {
             Instance = this;
-        }
-        _sección = 1;
+        }        
         _sala = 0;
         //Estos dos primeros parámetros son solo para la prueba. Deben cambiarse más tarde
         cam = Camera.main;

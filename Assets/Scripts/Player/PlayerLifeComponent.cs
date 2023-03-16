@@ -46,18 +46,6 @@ public class PlayerLifeComponent : MonoBehaviour
        // string sceneName = "GameOver";
         //SceneManager.LoadScene(sceneName);
     }
-    /* public void Die()       
-     {
-         StartCoroutine(Respawn(0.5f));          //reaparece al principio del nivel
-     }*/
-    /* IEnumerator Respawn(float duration)
-  {
-      _mySpriteRenderer.enabled = false;              //se vuelve invisible el jugador
-      yield return new WaitForSeconds(duration);      //se espera
-      puntos_vida = puntos_vida_max;                 //se recuperan todas las vidas
-      _mySpriteRenderer.enabled = true;               //se vuelve visible el jugador 
-      transform.position = _respawn;                  //el transform del jugador en el momento en el que es eliminado pasa a ser la posicion del respawn
-  }*/
     IEnumerator Invulnerable()
     {
         invulnerable = true;                                //se vuelve invulnerable al jugador

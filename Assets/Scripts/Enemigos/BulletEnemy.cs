@@ -22,13 +22,11 @@ public class BulletEnemy : MonoBehaviour
 
     public void BalaRight()
     {
-        Debug.Log("Bala se mueve dcha");
         transform.Translate(Vector3.right * _speed * Time.deltaTime);
     }
 
     public void BalaLeft()
     {
-        Debug.Log("Bala se mueve izq");
         transform.Translate(Vector3.left * _speed * Time.deltaTime);
     }
     #endregion

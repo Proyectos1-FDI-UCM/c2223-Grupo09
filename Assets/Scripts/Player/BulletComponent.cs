@@ -44,6 +44,15 @@ public class BulletComponent : MonoBehaviour
             }
            
         }
+        if (collider.GetComponent<BossComponent>() != null)
+        {
+            collider.GetComponent<BossComponent>().IsAttacked(_damage);
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
+
+        }
     }
     #endregion
 }
