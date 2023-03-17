@@ -11,6 +11,8 @@ public class EnemyComponent : MonoBehaviour
     #region Parameters
     [SerializeField]
     private float _hp;
+    [SerializeField]
+    private AudioClip _soundExplosion;
     //[SerializeField]
     //private GameObject _deadEffect;
     public Animator _animator;
@@ -25,12 +27,16 @@ public class EnemyComponent : MonoBehaviour
         {
             _myCapsuleCollider.enabled = false;
             muerte = true;
+            AudioControler.Instance.PlaySound(_soundExplosion);
             _animator.SetBool("Muerte", muerte);
-            StartCoroutine(Wait());      
+            
+            StartCoroutine(Wait());
+            
         }
     }
     private void Dead()
     {
+        
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }

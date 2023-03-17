@@ -13,6 +13,8 @@ public class PlayerLifeComponent : MonoBehaviour
     private Rigidbody2D _myRigidbody2D;
     private MovementComponent _myMovementComponent;
     private InputComponent _myInputComponent;
+    [SerializeField]
+    private AudioClip _gameOverSound;
     #endregion
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
@@ -38,6 +40,7 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
     {
+        AudioControler.Instance.PlaySound(_gameOverSound);
         _myMovementComponent.enabled = false;
         _myInputComponent.enabled = false;
         _myRigidbody2D.velocity = new Vector2(0f, 0f);

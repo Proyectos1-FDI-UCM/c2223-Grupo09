@@ -50,8 +50,10 @@ public class MovementComponent : MonoBehaviour
     private float _cooldown = 2f;
     private bool _canDash = true;
     private bool _canMove = true;
+    [SerializeField]
+    private AudioClip _dashSound;
 
-    
+
 
 
     #endregion
@@ -192,12 +194,12 @@ public class MovementComponent : MonoBehaviour
             if (_mySpriteRenderer.flipX == true)
             {
                 _myRigidBody2D.velocity = new Vector2(_dashVelocity * (-1f), 0f);
-                
+                AudioControler.Instance.PlaySound(_dashSound);
             }
             else
             {
                 _myRigidBody2D.velocity = new Vector2(_dashVelocity * (1f), 0f);
-                
+                AudioControler.Instance.PlaySound(_dashSound);
             }
             _myTrailRenderer.emitting = true;                   //se activa la estela
             yield return new WaitForSeconds(_dashDuration);     //tiempo que dura el dash
