@@ -51,11 +51,11 @@ public class BossComponent : MonoBehaviour
             }
             else if (_newBossState == Boss_State.SegundaFase)
             {
-
+                _boss = _newBossState;
             }
             else if (_newBossState == Boss_State.Muerto)
             {
-
+                _boss = _newBossState;
             }
         }
         else
@@ -63,10 +63,26 @@ public class BossComponent : MonoBehaviour
             if(_boss == Boss_State.FullHealth)
             {
                 if (_maxHp != _hp) _newBossState = Boss_State.PrimeraFase;
+                else
+                {
+
+                }
             }
             if (_boss == Boss_State.PrimeraFase)
             {
                 if (_maxHp/2 >= _hp) _newBossState = Boss_State.SegundaFase;
+                else
+                {
+
+                }
+            }
+            if (_boss == Boss_State.SegundaFase)
+            {
+                if (0 >= _hp) _newBossState = Boss_State.Muerto;
+                else
+                {
+
+                }
             }
         }
     }
@@ -83,7 +99,5 @@ public class BossComponent : MonoBehaviour
             gb += -0.0105f;
             yield return new WaitForSeconds(0.05f);
         }
-        
-
     }
 }
