@@ -53,7 +53,25 @@ public class GameManager : MonoBehaviour
     {
         puntos_vida = 0;
     }
-    
+    public void CompraEscudo()
+    {
+        Debug.Log("recibido");
+        if (_gear >= 5)
+        {
+            _gear = _gear - 5;
+        }
+        
+    }
+    public void CompraVida()
+    {
+        if (_gear >= 10)
+        {
+            puntos_vida++;
+            puntos_vida_max++;
+            _gear = _gear - 10;
+        }
+       
+    }
     private void Awake()
     {
         if (_instance == null)
