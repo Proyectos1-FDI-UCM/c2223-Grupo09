@@ -7,7 +7,11 @@ public class ShootPlayer : MonoBehaviour
     public bool IsShooting;
     [SerializeField]
     private GameObject _bullet;
+    [SerializeField]
+    private float _restingSpeed;
     private float _restingTime = 2.0f;
+    [SerializeField]
+    private Transform _shootTransform;
 
     void Start()
     {
@@ -22,8 +26,8 @@ public class ShootPlayer : MonoBehaviour
 
             if (_restingTime <= 0)
             {
-                Instantiate(_bullet, transform.position, transform.rotation); 
-                _restingTime = 2.0f;                
+                Instantiate(_bullet, _shootTransform.position, transform.rotation); 
+                _restingTime = _restingSpeed;                
             }
         }        
     }
