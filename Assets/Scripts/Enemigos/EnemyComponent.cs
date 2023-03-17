@@ -6,6 +6,7 @@ public class EnemyComponent : MonoBehaviour
 {
     #region references
     private WayPointsMovement _myWayPoints;
+    private CapsuleCollider2D _myCapsuleCollider;
     #endregion
     #region Parameters
     [SerializeField]
@@ -13,6 +14,7 @@ public class EnemyComponent : MonoBehaviour
     //[SerializeField]
     //private GameObject _deadEffect;
     public Animator _animator;
+    private bool muerte = false;
     #endregion
 
     #region Methods
@@ -21,7 +23,9 @@ public class EnemyComponent : MonoBehaviour
         _hp -= damage;
         if(_hp <= 0)
         {
-            _animator.SetBool("Muerte", true);
+            _myCapsuleCollider.enabled = false;
+            muerte = true;
+            _animator.SetBool("Muerte", muerte);
             StartCoroutine(Wait());      
         }
     }
@@ -42,13 +46,16 @@ public class EnemyComponent : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         Dead();
     }
     #endregion
     private void Start()
     {
         _myWayPoints = GetComponent<WayPointsMovement>();
+        _animator = GetComponent<Animator>();
+       _myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        
     }
 }
 

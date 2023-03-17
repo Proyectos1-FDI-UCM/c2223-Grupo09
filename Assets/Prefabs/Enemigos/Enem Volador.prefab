@@ -77,11 +77,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2718357289057669885}
   - component: {fileID: 2718357289057669884}
-  - component: {fileID: 2718357289057669827}
   - component: {fileID: 2718357289057669826}
   - component: {fileID: 2718357289057669825}
   - component: {fileID: 2718357289057669886}
   - component: {fileID: 8538721014852904909}
+  - component: {fileID: 2891866439858008958}
   m_Layer: 0
   m_Name: Enem Volador
   m_TagString: Enemy
@@ -157,22 +157,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2718357289057669827
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2718357289057669824}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &2718357289057669826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,3 +219,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 1
   _animator: {fileID: 0}
+--- !u!70 &2891866439858008958
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718357289057669824}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0

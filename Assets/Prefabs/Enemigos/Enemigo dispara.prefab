@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2436076729256890059}
   - component: {fileID: 7822204215741739040}
   - component: {fileID: 652273857920437160}
+  - component: {fileID: 9161718413864534778}
   m_Layer: 0
   m_Name: Enemigo dispara
   m_TagString: Enemy
@@ -114,3 +115,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 1
   _animator: {fileID: 0}
+--- !u!70 &9161718413864534778
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874622503891829798}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.7728218, y: -0.80165666}
+  m_Size: {x: 5.2532134, y: 11.541497}
+  m_Direction: 0

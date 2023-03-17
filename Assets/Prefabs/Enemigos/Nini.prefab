@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6603557600453115689}
   - component: {fileID: 7473212662545585309}
   - component: {fileID: 7301608661882687980}
+  - component: {fileID: -1474625093486318061}
   m_Layer: 0
   m_Name: Nini
   m_TagString: Enemy
@@ -135,8 +136,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -1.6718082, y: -0.6377008}
+  m_Size: {x: 4.343616, y: 10.169453}
   m_Direction: 0
 --- !u!114 &7301608661882687980
 MonoBehaviour:
@@ -151,4 +152,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 1
-  _animator: {fileID: 0}
+  _animator: {fileID: -1474625093486318061}
+--- !u!95 &-1474625093486318061
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827821993572975669}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c2eaf1006e974b340a4f71bc3d9d802a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
