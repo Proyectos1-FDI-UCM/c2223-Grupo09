@@ -24,9 +24,9 @@ public class OpenDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (contEnemigos == controladorDeSalas.NumEnemigos)
+       /* if (contEnemigos == controladorDeSalas.NumEnemigos)
         {
             transform.Translate(Vector3.up * speed * Time.deltaTime);
-        }
+        }*/
     }
 }
