@@ -94,17 +94,17 @@ public class InputComponent : MonoBehaviour
         }
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(_movementComponent.Dash());
         }
         //Correr izquierda
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.A))
         {
             _movementComponent.Run(-1);
         }
         //Correr derecha
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.D))
         {
             _movementComponent.Run(1);
         }
