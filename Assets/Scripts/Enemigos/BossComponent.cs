@@ -46,9 +46,8 @@ public class BossComponent : MonoBehaviour
         {
             if (_newBossState == Boss_State.PrimeraFase)
             {
-                Spikes.Translate(new Vector2(0, 1));
-                Background.color = new Color(0.45f, 0.07f, 0.07f, 1f);
                 _boss = _newBossState;
+                StartCoroutine(StartBattle());                
             }
             else if (_newBossState == Boss_State.SegundaFase)
             {
@@ -65,6 +64,26 @@ public class BossComponent : MonoBehaviour
             {
                 if (_maxHp != _hp) _newBossState = Boss_State.PrimeraFase;
             }
+            if (_boss == Boss_State.PrimeraFase)
+            {
+                if (_maxHp/2 >= _hp) _newBossState = Boss_State.SegundaFase;
+            }
         }
+    }
+    IEnumerator StartBattle()
+    {
+        float r=0.282f;
+        float gb=0.282f;
+        for (int i = 0; i < 20; i++)
+        {
+
+            Spikes.Translate(new Vector2(0, 0.05f));
+            Background.color = new Color(r, gb, gb, 1f);
+            r += 0.0085f;
+            gb += -0.0105f;
+            yield return new WaitForSeconds(0.05f);
+        }
+        
+
     }
 }
