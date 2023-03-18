@@ -345,6 +345,7 @@ MonoBehaviour:
   _dashVelocity: 20
   _dashDuration: 0.3
   _cooldown: 0.5
+  _dashSound: {fileID: 8300000, guid: 99abb8bbfbff0484489849a746936df6, type: 3}
   _myTrailRenderer: {fileID: 7883262607666615661}
 --- !u!114 &7883262608657425675
 MonoBehaviour:
@@ -420,6 +421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawn: {x: 0, y: 0}
+  _gameOverSound: {fileID: 0}
+  invulnerable: 0
 --- !u!114 &7197746776326166509
 MonoBehaviour:
   m_ObjectHideFlags: 0
