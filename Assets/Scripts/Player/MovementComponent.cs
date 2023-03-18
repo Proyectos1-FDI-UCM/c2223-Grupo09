@@ -52,6 +52,9 @@ public class MovementComponent : MonoBehaviour
     private bool _canMove = true;
     [SerializeField]
     private AudioClip _dashSound;
+    [SerializeField]
+    private AudioClip _jumpSound;
+    
 
 
 
@@ -125,6 +128,7 @@ public class MovementComponent : MonoBehaviour
         {
             _isDashing = false;
         }
+        
         _myAnimator.SetBool("isRunning", _isRunning);
         _myAnimator.SetBool("isWalking", _isWalking);
         _myAnimator.SetBool("onGround", _onGround);
@@ -136,12 +140,14 @@ public class MovementComponent : MonoBehaviour
         movementX = direction* _myForce;
         if (direction == 1)
         {
+            
             lookingRight = true;
             _isWalking = true;  //se aciva caminar
             _isRunning = false; //no está corriendo
         }
         else if (direction == -1)
         {
+            
             lookingRight = false;
             _isWalking = true;  //se activa caminar
             _isRunning = false; //no está corriendo
@@ -154,6 +160,7 @@ public class MovementComponent : MonoBehaviour
         movementX = direction * _myRunForce; //el jugador corre en el eje X con la fuerza establecida y en la direccion correspondiente
         if (direction == 1)
         {
+
             lookingRight = true;
             _isRunning = true;  //está corriendo
             _isWalking = false; //no anda
@@ -174,6 +181,7 @@ public class MovementComponent : MonoBehaviour
     {
         if (_canJump && _onGround)
         {
+            AudioControler.Instance.PlaySound(_jumpSound);
             _myRigidBody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _onGround = false;
             _coyoteTime = false;

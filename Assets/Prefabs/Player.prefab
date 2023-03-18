@@ -346,6 +346,7 @@ MonoBehaviour:
   _dashDuration: 0.3
   _cooldown: 0.5
   _dashSound: {fileID: 8300000, guid: 99abb8bbfbff0484489849a746936df6, type: 3}
+  _jumpSound: {fileID: 8300000, guid: dff7b46630eca4b449debce082a235dd, type: 3}
   _myTrailRenderer: {fileID: 7883262607666615661}
 --- !u!114 &7883262608657425675
 MonoBehaviour:
@@ -361,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myShootController: {fileID: 7883262608377130626}
   _bullet: {fileID: 8218202537837499360, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
+  _bulletSound: {fileID: 8300000, guid: 4cc5fe85bd5c001409cac400147f9738, type: 3}
 --- !u!50 &7883262608657425668
 Rigidbody2D:
   serializedVersion: 4

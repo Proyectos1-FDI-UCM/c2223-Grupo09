@@ -9,6 +9,8 @@ public class ShootComponent : MonoBehaviour
     private Transform _myShootController;
     [SerializeField]
     private GameObject _bullet;
+    [SerializeField]
+    private AudioClip _bulletSound;
     #endregion
     #region References
     private BulletComponent _bulletComponent;
@@ -22,6 +24,7 @@ public class ShootComponent : MonoBehaviour
     }
     public void Shoot(Vector2 dir)
     {
+        AudioControler.Instance.PlaySound(_bulletSound);
         //Assigns the dir to the bullet instanciated
         GameObject go = Instantiate(_bullet, _myShootController.position, _myShootController.rotation);
         go.GetComponent<BulletComponent>().setDir(dir);
