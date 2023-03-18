@@ -10,6 +10,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField]
     private GameObject _bullet;
     private float _restingTime = 2.0f;
+    public Animator _animator;
     #endregion
 
     IEnumerator BulletTime()
@@ -18,7 +19,7 @@ public class EnemyShoot : MonoBehaviour
         {
            yield return new WaitForSeconds(0.2f);
            Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);
-
+           _animator.SetBool("Dispara", true);
         }
     }
 

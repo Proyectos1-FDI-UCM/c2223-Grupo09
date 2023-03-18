@@ -86,8 +86,10 @@ public class WayPointsMovement : MonoBehaviour
             
             FollowPlayer = false;
 
-            
+            if(gameObject.tag == "Enemy")
+            {
                 Flip();
+            }
 
         }
         
