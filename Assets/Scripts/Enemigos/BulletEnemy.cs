@@ -13,6 +13,7 @@ public class BulletEnemy : MonoBehaviour
     private float _damage;
     private GameObject _player;
     private bool _dir = false;
+    private bool facingRight = false;
     #endregion
 
     #region Methods
@@ -51,6 +52,7 @@ public class BulletEnemy : MonoBehaviour
     {
         if(_dir)
         {
+            Flip();
             BalaRight();
         }
 
@@ -64,6 +66,15 @@ public class BulletEnemy : MonoBehaviour
             Destroy(gameObject);
         }*/
         
+    }
+    private void Flip()
+    {
+        Vector3 currentscale = gameObject.transform.localScale;
+
+        currentscale.x *= -1;
+        gameObject.transform.localScale = currentscale;
+
+        facingRight = !facingRight;
     }
 }
 
