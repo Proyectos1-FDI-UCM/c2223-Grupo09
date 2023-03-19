@@ -5,22 +5,23 @@ using UnityEngine;
 
 public class ButtonComponent : MonoBehaviour
 {
-    [SerializeField]
-    private Transform _player;
+    /*[SerializeField]
+    private Transform _player;*/
+    public GameObject platform;
     private WayPointsMovement _myWayPoints;
     
     // Start is called before the first frame update
-    void OnCollisionEnter2D(Collision2D collider)
-    {
-        if(collider.transform.position.y > transform.position.y)
+    void OnCollisionEnter2D(Collision2D collision)
+    {  
+        if(collision.gameObject.tag == "Player" && collision.transform.position.y > transform.position.y)
         {
-            _myWayPoints.enabled = true;
+            platform.GetComponent<WayPointsMovement>().enabled = true;
         }
     }
 
     // Update is called once per frame
     void Start()
     {
-        _myWayPoints.enabled = false;
+        platform.GetComponent<WayPointsMovement>().enabled = false;
     }
 }
