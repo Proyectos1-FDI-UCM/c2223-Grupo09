@@ -6,6 +6,10 @@ using UnityEngine.UIElements;
 
 public class BulletEnemy : MonoBehaviour
 {
+    #region references
+    private PlayerLifeComponent _myPlayerLifeComponent; //referencia al Life Component del jugador
+    private Collider2D _playerCollider;                 //Referencia al collider del player
+    #endregion
     #region Parameters
     [SerializeField]
     private float _speed;
@@ -17,6 +21,15 @@ public class BulletEnemy : MonoBehaviour
     #endregion
 
     #region Methods
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null)
+        {
+            _playerCollider = collision;                                                                //se toma el collider del jugador
+            _myPlayerLifeComponent = _playerCollider.gameObject.GetComponent<PlayerLifeComponent>();    //se toma el Script PlayerLifeComponent                                                            
+            _myPlayerLifeComponent.Hit();                                                               //se llama al metodo Hit de ese script
+        }
+    }
     public float Damage()
     { return _damage; }
 

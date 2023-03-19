@@ -10,7 +10,7 @@ public class KillPlayer : MonoBehaviour
     private Collider2D _myBoxCollider;                  //Referencia al collider del enemigo
     #endregion
     #region methods
-    private void OnTriggerEnter2D(Collider2D collision) //Cuando el enemigo colisiona con el enemigo
+    private void OnTriggerEnter2D(Collider2D collision) //Cuando el enemigo colisiona con el jugador
     {
         if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null)   //se comprueba si este tiene un Script de Life Component
         {
