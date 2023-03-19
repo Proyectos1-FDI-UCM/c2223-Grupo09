@@ -31,7 +31,7 @@ public class EnemyShoot : MonoBehaviour
         if (_restingTime <= 0)
         {
             StartCoroutine(BulletTime());
-            _restingTime = 2.0f;
+            _restingTime = 1.3f;
         }
     }
 }

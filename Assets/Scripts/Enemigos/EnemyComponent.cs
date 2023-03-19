@@ -29,7 +29,6 @@ public class EnemyComponent : MonoBehaviour
             muerte = true;
             AudioControler.Instance.PlaySound(_soundExplosion);
             _animator.SetBool("Muerte", muerte);
-            
             StartCoroutine(Wait());
             
         }
@@ -46,7 +45,6 @@ public class EnemyComponent : MonoBehaviour
         {
             Destroy(other.gameObject);
             _myWayPoints.enabled = false;
-            //Destroy(gameObject);
         }
     }
 
