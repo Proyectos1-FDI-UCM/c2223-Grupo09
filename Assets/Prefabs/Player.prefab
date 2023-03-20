@@ -426,6 +426,7 @@ MonoBehaviour:
   _respawn: {x: 0, y: 0}
   _gameOverSound: {fileID: 8300000, guid: f13e0ba83cba1414eac3756c5f9c3bc1, type: 3}
   _hitSound: {fileID: 8300000, guid: 79d7997d5fcf2ed42b84f4664a6f4d12, type: 3}
+  _escudo: {fileID: 294243373974243898}
   invulnerable: 0
 --- !u!114 &7197746776326166509
 MonoBehaviour:
@@ -481,17 +482,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4464499711710857737, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7012124495395929915, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7012124495395929915, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.019
       objectReference: {fileID: 0}
     - target: {fileID: 7012124495395929915, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.049
+      value: 0.057
       objectReference: {fileID: 0}
     - target: {fileID: 7012124495395929915, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}
       propertyPath: m_LocalPosition.z
@@ -539,6 +544,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}
+--- !u!1 &294243373974243898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 126794436907127923, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}
+  m_PrefabInstance: {fileID: 420851357657275977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &5232704463423371861
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294243373974243898}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.029639423}
+  serializedVersion: 2
+  m_Radius: 0.61036056
 --- !u!4 &7243820131997229426 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7012124495395929915, guid: 0d2b2c61184d50343af491bd3f709473, type: 3}

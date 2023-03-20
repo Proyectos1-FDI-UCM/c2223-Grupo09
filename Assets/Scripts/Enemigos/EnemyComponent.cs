@@ -18,7 +18,6 @@ public class EnemyComponent : MonoBehaviour
     public Animator _animator;
     private bool muerte = false;
     #endregion
-
     #region Methods
     public void IsAttacked(float damage)
     {
@@ -30,12 +29,10 @@ public class EnemyComponent : MonoBehaviour
             AudioControler.Instance.PlaySound(_soundExplosion);
             _animator.SetBool("Muerte", muerte);
             StartCoroutine(Wait());
-            
         }
     }
     private void Dead()
     {
-        
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
@@ -47,7 +44,6 @@ public class EnemyComponent : MonoBehaviour
             _myWayPoints.enabled = false;
         }
     }
-
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(1f);
