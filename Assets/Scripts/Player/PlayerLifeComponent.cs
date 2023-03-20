@@ -15,6 +15,8 @@ public class PlayerLifeComponent : MonoBehaviour
     private InputComponent _myInputComponent;
     [SerializeField]
     private AudioClip _gameOverSound;
+    [SerializeField]
+    private AudioClip _hitSound;
     #endregion
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
@@ -28,6 +30,7 @@ public class PlayerLifeComponent : MonoBehaviour
     {
         if (!invulnerable)                      //si no es invulnerable (por escudo o porque ya ha sido golpeado)
         {
+            AudioControler.Instance.PlaySound(_hitSound);
             GameManager.Instance.Hit();         //se resta una vida
             if (GameManager.Instance.Puntos_vida <= 0) GameOver();//Die();  //si llega a cero vidas, se activa el void de muerte
             else StartCoroutine(Invulnerable());       //si no ha llegado a cero vidas, se vuelve invulnerable  
