@@ -6,7 +6,7 @@ public class InputComponent : MonoBehaviour
 {
     #region Atributes
     [SerializeField]
-    private float _coolDownShoot;
+    private float _coolDownShoot = 0.2f;
     [SerializeField]
     private float _lastTimeShot;
     #endregion
@@ -21,7 +21,7 @@ public class InputComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _coolDownShoot = 1.5f;
+        _coolDownShoot = 0.15f;
         _movementComponent = GetComponent<MovementComponent>();
         _shootComponent = GetComponent<ShootComponent>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();

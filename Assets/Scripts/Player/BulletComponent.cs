@@ -41,8 +41,7 @@ public class BulletComponent : MonoBehaviour
             if(gameObject != null)
             {
                 Destroy(gameObject);
-            }
-           
+            }           
         }
         if (collider.GetComponent<BossComponent>() != null)
         {
@@ -51,7 +50,6 @@ public class BulletComponent : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
         }
     }
     #endregion

@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class BossComponent : MonoBehaviour
 {
+    public enum Boss_State { FullHealth, PrimeraFase, SegundaFase, Muerto }   //Los estados en los que puede estar el jefe
     #region References
+    [Header("Referencias")]
     [SerializeField] private Transform Spikes;              //Referencia a las sierras que suben cuando comienza la batalla
     [SerializeField] private SpriteRenderer Background;     //Referencia al fondo de pantalla
+    [SerializeField] private GameObject TurretPrefab;
+    [SerializeField] private GameObject EnemyGenerator;
+    [SerializeField] private Transform[] Spawnpoints = new Transform[4];
+    static private bool[] ActivatedSpawnpoints = { false, false, false, false };
     #endregion
+
     #region Parameters
-    public enum Boss_State {FullHealth, PrimeraFase, SegundaFase, Muerto}   //Los estados en los que puede estar el jefe
+    [Header("Atributos del Boss")]    
     [SerializeField]
     private float _hp;                  //Vida en todo momento del boss (se puede ajustar delde el editor de unity)
     private float _maxHp;               //Vida máxima del boss
     public Animator _animator;          //El animator del boss
+    private bool Attack;
     private Boss_State _boss;           //Variable que indica el estado en el que está el boss en todo momento
     private Boss_State _newBossState;   //Variable usada para cambiar el estado del boss
     public Boss_State BossState         //Variable pública que permite ver el estado del boss
@@ -25,6 +33,7 @@ public class BossComponent : MonoBehaviour
         get { return _hp; }
     }
     #endregion
+
     #region Methods
     public void IsAttacked(float damage) //Cuando el boss es atacado
     {
@@ -37,6 +46,7 @@ public class BossComponent : MonoBehaviour
         _maxHp = _hp;                               //El Hp máximo del boss será el hp que tenga al principio del todo
         _boss = Boss_State.FullHealth;              //El boss empieza en el estado de FullHealth
         _newBossState = Boss_State.FullHealth;      //Para evitar errores, se le da este estado también al _newBossState
+        Attack = false;
     }
 
     // Update is called once per frame
@@ -46,9 +56,14 @@ public class BossComponent : MonoBehaviour
         {
             if (_newBossState == Boss_State.PrimeraFase)        //Esto es que el boss ha sido disparado por primera vez, empezando así la batalla final
             {
-                _boss = _newBossState;          //Se cambia el estado del boss
-                StartCoroutine(StartBattle());  //Se empieza la corrutina "StartBattle", que cambia el fondo de color y hace subir las sierras
-                
+                _boss = _newBossState;                          //Se cambia el estado del boss
+                StartCoroutine(StartBattle());                  //Se empieza la corrutina "StartBattle", que cambia el fondo de color y hace subir las sierras
+                SumonTurret(Spawnpoints, TurretPrefab);         //Invoca 2 torretas
+                SumonTurret(Spawnpoints, TurretPrefab);
+                SumonGenerator(Spawnpoints, EnemyGenerator);    //Invoca 2 spawners de enemigos
+                SumonGenerator(Spawnpoints, EnemyGenerator);    
+                Attack = true;                                  //Le permite al boss atacar
+
                 //Aquí debería comenzar la música de boss final, y tal vez alguna animación
             }
             else if (_newBossState == Boss_State.SegundaFase)   //Esto es que la vida del boss ha llegado hasta la mitad, comenzando así su segunda fase
@@ -70,7 +85,7 @@ public class BossComponent : MonoBehaviour
             {
                 if (_maxHp != _hp) _newBossState = Boss_State.PrimeraFase;      //Aquí se comprueba que el boss realmente tenga la vida al completo
                 else
-                {
+                {                    
                     //aquí tal vez tenga que haber una animación, o las variables para que ataque estén seteadas a false, o algo
                 }
             }
@@ -79,7 +94,7 @@ public class BossComponent : MonoBehaviour
                 if (_maxHp/2 >= _hp) _newBossState = Boss_State.SegundaFase;    //Aquí se comprueba que el boss no tenga su vida a menos de la mitad
                 else
                 {
-                    //Bucle de ataques de la fase 1
+                    if (Attack) StartCoroutine(Attack1(10f));
                 }
             }
             if (_boss == Boss_State.SegundaFase)
@@ -87,7 +102,7 @@ public class BossComponent : MonoBehaviour
                 if (0 >= _hp) _newBossState = Boss_State.Muerto;                //Aquí se comprueba que el boss aún tenga puntos de vida
                 else
                 {
-                    //Bucle de ataques de la fase 2
+                    if (Attack) StartCoroutine(Attack2(7f));
                 }
             }
         }
@@ -104,6 +119,80 @@ public class BossComponent : MonoBehaviour
             r += 0.0085f;
             gb += -0.0105f;
             yield return new WaitForSeconds(0.05f);
+        }
+    }
+    IEnumerator Attack1(float time)
+    {
+        Attack = false;
+        yield return new WaitForSeconds(time);
+        int i = Random.Range(0, 2);
+        if (i == 0)
+        {
+            SumonTurret(Spawnpoints, TurretPrefab);
+        }
+        else if (i == 1)
+        {
+            SumonGenerator(Spawnpoints, EnemyGenerator);
+        }
+        Attack = true;
+    }
+    IEnumerator Attack2(float time)
+    {
+        Attack = false;
+        yield return new WaitForSeconds(time);
+        int i = Random.Range(0, 3);
+        if (i == 0)
+        {
+            SumonTurret(Spawnpoints, TurretPrefab);
+        }
+        else if (i == 1)
+        {
+            SumonGenerator(Spawnpoints, EnemyGenerator);
+        }
+        else if (i == 2)
+        {
+
+        }
+        Attack = true;
+    }
+    static void SumonTurret(Transform[] Spawnpoints, GameObject TurretPrefab)
+    {
+        int x = 0;
+        int i = Random.Range(0, 4);
+        while (x<4)
+        {
+            if (!ActivatedSpawnpoints[i])
+            {
+                ActivatedSpawnpoints[i] = true;
+                Instantiate(TurretPrefab, Spawnpoints[i].position, Spawnpoints[i].rotation);
+                x = 4;
+            }
+            else
+            {
+                x++;
+                i++;
+                if (i == 4) i = 0;
+            }
+        }
+    }
+    static void SumonGenerator(Transform[] Spawnpoints, GameObject GeneratorPrefab)
+    {
+        int x = 0;
+        int i = Random.Range(0, 4);
+        while (x < 4)
+        {
+            if (!ActivatedSpawnpoints[i])
+            {
+                ActivatedSpawnpoints[i] = true;
+                Instantiate(GeneratorPrefab, Spawnpoints[i].position, Spawnpoints[i].rotation);
+                x = 4;
+            }
+            else
+            {
+                x++;
+                i++;
+                if (i == 4) i = 0;
+            }
         }
     }
 }
