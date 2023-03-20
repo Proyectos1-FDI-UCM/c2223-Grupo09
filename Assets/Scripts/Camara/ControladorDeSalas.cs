@@ -11,7 +11,6 @@ public class ControladorDeSalas : MonoBehaviour
     [SerializeField] private Transform Punto1;  //referencia al Transform de los puntos del borde de cada sala
     [SerializeField] private Transform Punto2;  
     [SerializeField] private Transform Player;  //referencia al Transform del jugador
-    private OpenDoor openDoor;
 
     #endregion
     #region properties

@@ -5,19 +5,24 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     #region references
-
-    private ControladorDeSalas controladorDeSalas;
-    private int contEnemigos;
-    private int numEnemigos;
+    ControladorDeSalas controladorDeSalas;
+    public int contEnemigos;
+    public int numEnemigos;
     private int alturaTope = 7;
     public float speed;
     #endregion
 
     // Start is called before the first frame update
-    /*void Start()
+    void Start()
     {
+        controladorDeSalas = GetComponent<ControladorDeSalas>();
         numEnemigos = ControladorDeSalas.Instance.NumEnemigos;
-        contEnemigos = ControladorDeSalas.Instance.ContEnemigos;      
+        contEnemigos = ControladorDeSalas.Instance.ContEnemigos; 
+    }
+
+    public void Kill()
+    {
+        contEnemigos++;
     }
 
     // Update is called once per frame
@@ -25,12 +30,12 @@ public class OpenDoor : MonoBehaviour
     {
         if (contEnemigos == numEnemigos)
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            AbrePuerta();
         }
-    }*/
+    }
 
-    /*public void AbrePuerta()
+    public void AbrePuerta()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
-    }*/
+    }
 }
