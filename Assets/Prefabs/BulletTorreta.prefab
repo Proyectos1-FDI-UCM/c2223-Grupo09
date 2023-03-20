@@ -8,20 +8,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -717227453181445053, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
+      propertyPath: m_Radius
+      value: 0.01995449
+      objectReference: {fileID: 0}
+    - target: {fileID: -717227453181445053, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.025454434
+      objectReference: {fileID: 0}
+    - target: {fileID: -717227453181445053, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0058608307
+      objectReference: {fileID: 0}
+    - target: {fileID: -717227453181445053, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb4d87ba13010a84d80fe10ab67c4eb1, type: 3}
+    - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Color.b
-      value: 0.8972701
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Color.g
-      value: 0.33236915
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Color.r
-      value: 0.9150943
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_SortingOrder
@@ -89,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8218202537837499360, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Name
-      value: BulletEnemigoVolador
+      value: BulletTorreta
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8139171310643570060, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
