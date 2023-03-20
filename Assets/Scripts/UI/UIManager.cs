@@ -28,6 +28,18 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI _gearText;
     private int _gearScore;
 
+    [Header("Vidas")]
+    [SerializeField]
+    private GameObject _vidaAct;
+    [SerializeField]
+    private GameObject _vidaDesact;
+
+    [Header("Escudo")]
+    [SerializeField]
+    private GameObject _escudoAct;
+    [SerializeField]
+    private GameObject _escudoDesact;
+
     #endregion
     #region Methods
     void VidasScore(GameObject[] _totalVidas) //muestra todos los corazones disponibles, ya sean "sano o dañados"
@@ -81,11 +93,38 @@ public class UIManager : MonoBehaviour
         _gearScore = GameManager.Instance.Gear;  //se toma el numero de engranajes del GameManager
         _gearText.text = _gearScore.ToString();
     }
+    void VidaExtraScore()
+    {
+        if (_gearScore >= 10)
+        {
+            _vidaDesact.SetActive(false);
+            _vidaAct.SetActive(true);
+        }
+        else
+        {
+            _vidaDesact.SetActive(true);
+            _vidaAct.SetActive(false);
+        }
+    }
+    void EscudoScore()
+    {
+        if (_gearScore >= 5)
+        {
+            _escudoDesact.SetActive(false);
+            _escudoAct.SetActive(true);
+        }
+        else
+        {
+            _escudoDesact.SetActive(true);
+            _escudoAct.SetActive(false);
+        }
+    }
     #endregion
     void Start() 
     {
         _numHearts = GameManager.Instance.Puntos_vida;         //El número de corazones sanos se obtiene del GameManager
         _numTotalVidas = GameManager.Instance.Puntos_vida_max; //El número maximo de corazones se obtiene del GameManager
+        
     }
     void Update()
     {
@@ -96,5 +135,7 @@ public class UIManager : MonoBehaviour
         ContEnemigosScore();
         TotalEnemigosScore();
         GearScore();
+        VidaExtraScore();
+        EscudoScore();
     }
 }
