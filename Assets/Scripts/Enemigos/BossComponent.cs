@@ -9,6 +9,8 @@ public class BossComponent : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private Transform Spikes;              //Referencia a las sierras que suben cuando comienza la batalla
     [SerializeField] private SpriteRenderer Background;     //Referencia al fondo de pantalla
+    [SerializeField] private SpriteRenderer Warning;
+    [SerializeField] private Transform Lightning;
     [SerializeField] private GameObject TurretPrefab;
     [SerializeField] private GameObject EnemyGenerator;
     [SerializeField] private Transform[] Spawnpoints = new Transform[4];
@@ -22,6 +24,7 @@ public class BossComponent : MonoBehaviour
     private float _maxHp;               //Vida máxima del boss
     public Animator _animator;          //El animator del boss
     private bool Attack;
+    private bool Rayo;
     private Boss_State _boss;           //Variable que indica el estado en el que está el boss en todo momento
     private Boss_State _newBossState;   //Variable usada para cambiar el estado del boss
     public Boss_State BossState         //Variable pública que permite ver el estado del boss
@@ -47,6 +50,7 @@ public class BossComponent : MonoBehaviour
         _boss = Boss_State.FullHealth;              //El boss empieza en el estado de FullHealth
         _newBossState = Boss_State.FullHealth;      //Para evitar errores, se le da este estado también al _newBossState
         Attack = false;
+        Rayo = false;
     }
 
     // Update is called once per frame
@@ -69,6 +73,7 @@ public class BossComponent : MonoBehaviour
             else if (_newBossState == Boss_State.SegundaFase)   //Esto es que la vida del boss ha llegado hasta la mitad, comenzando así su segunda fase
             {
                 _boss = _newBossState;          //Se cambia el estado del boss
+                Rayo = true;
                 
                 //Aquí debería haber alguna animación y algún sonido que indique que ha habido un cambio en el patrón
             }
@@ -94,7 +99,7 @@ public class BossComponent : MonoBehaviour
                 if (_maxHp/2 >= _hp) _newBossState = Boss_State.SegundaFase;    //Aquí se comprueba que el boss no tenga su vida a menos de la mitad
                 else
                 {
-                    if (Attack) StartCoroutine(Attack1(10f));
+                    if (Attack) StartCoroutine(Generate(Random.Range(7f, 11f)));
                 }
             }
             if (_boss == Boss_State.SegundaFase)
@@ -102,7 +107,8 @@ public class BossComponent : MonoBehaviour
                 if (0 >= _hp) _newBossState = Boss_State.Muerto;                //Aquí se comprueba que el boss aún tenga puntos de vida
                 else
                 {
-                    if (Attack) StartCoroutine(Attack2(7f));
+                    if (Attack) StartCoroutine(Generate(Random.Range(6f, 9f)));
+                    if (Rayo) StartCoroutine(AttRayo(Random.Range(4f, 7f)));
                 }
             }
         }
@@ -121,7 +127,7 @@ public class BossComponent : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
     }
-    IEnumerator Attack1(float time)
+    IEnumerator Generate(float time)
     {
         Attack = false;
         yield return new WaitForSeconds(time);
@@ -136,24 +142,22 @@ public class BossComponent : MonoBehaviour
         }
         Attack = true;
     }
-    IEnumerator Attack2(float time)
+    IEnumerator AttRayo(float time)
     {
-        Attack = false;
+        Rayo = false;
         yield return new WaitForSeconds(time);
-        int i = Random.Range(0, 3);
-        if (i == 0)
+        float f = 20;
+        for (int i = 0; i < 20; i++)
         {
-            SumonTurret(Spawnpoints, TurretPrefab);
+            Warning.color = new Color(1, 1, 1, (f / 20));
+            yield return new WaitForSeconds(0.07f);
+            f--;
         }
-        else if (i == 1)
-        {
-            SumonGenerator(Spawnpoints, EnemyGenerator);
-        }
-        else if (i == 2)
-        {
-
-        }
-        Attack = true;
+        Warning.color = new Color(1, 1, 1, 0);
+        Lightning.Translate(new Vector2(0, -14.5f));
+        yield return new WaitForSeconds(0.2f);
+        Lightning.Translate(new Vector2(0, 14.5f));
+        Rayo = true;
     }
     static void SumonTurret(Transform[] Spawnpoints, GameObject TurretPrefab)
     {
@@ -194,5 +198,9 @@ public class BossComponent : MonoBehaviour
                 if (i == 4) i = 0;
             }
         }
+    }
+    public void TurretDestroyed(int pos)
+    {
+        ActivatedSpawnpoints[pos] = false;
     }
 }

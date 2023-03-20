@@ -7,6 +7,8 @@ public class TurretLifeComponent : MonoBehaviour
     #region references
     private WayPointsMovement _myWayPoints;
     private CapsuleCollider2D _myCapsuleCollider;
+    private BossComponent _bossComponent;
+    private int pos;
     #endregion
     #region Parameters
     [SerializeField]
@@ -32,6 +34,7 @@ public class TurretLifeComponent : MonoBehaviour
     }
     private void Dead()
     {
+        _bossComponent.TurretDestroyed(pos);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,7 +55,12 @@ public class TurretLifeComponent : MonoBehaviour
     private void Start()
     {
         //_animator = GetComponent<Animator>();
-        _myCapsuleCollider = GetComponent<CapsuleCollider2D>();        
+        _myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        _bossComponent = GameObject.Find("Final Boss").GetComponent<BossComponent>();
+        if (gameObject.transform.position.x > 16f && gameObject.transform.position.x < 17f) pos = 0;
+        else if (gameObject.transform.position.x > 17f) pos = 1;
+        else if (gameObject.transform.position.x > -6f && gameObject.transform.position.x < -4f) pos = 2;
+        else if (gameObject.transform.position.x > -2f && gameObject.transform.position.x < 1f) pos = 3;
     }
 }
 

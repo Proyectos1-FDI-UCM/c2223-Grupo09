@@ -37,8 +37,8 @@ public class WayPointsMovement : MonoBehaviour
     {
         if (BossFinal)
         {
-            waypoints[0] = GameObject.FindWithTag("Waypoint1").transform;
-            waypoints[1] = GameObject.FindWithTag("Waypoint2").transform;
+            waypoints[0] = GameObject.Find("Waypoint1").transform;
+            waypoints[1] = GameObject.Find("Waypoint2").transform;
         }
         if (LockX)
         {
