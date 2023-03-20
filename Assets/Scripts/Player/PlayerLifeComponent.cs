@@ -17,13 +17,14 @@ public class PlayerLifeComponent : MonoBehaviour
     private AudioClip _gameOverSound;
     [SerializeField]
     private AudioClip _hitSound;
+    [SerializeField]
+    private GameObject _escudo;
     #endregion
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
-    private int puntos_vida_max;   //controla el número máximo de vidas que puede tener el jugador
-    private int puntos_vida;       //cuenta el número de vidas del jugador
     private bool _isDeath = false;
     private bool _isHit = false;
+    private float _escudoCooldown = 10.0f;
     #endregion
     #region Methods
     public void Hit()                           //metodo llamado desde el script KillPlayer de los enemigos
@@ -32,14 +33,17 @@ public class PlayerLifeComponent : MonoBehaviour
         {
             AudioControler.Instance.PlaySound(_hitSound);
             GameManager.Instance.Hit();         //se resta una vida
-            if (GameManager.Instance.Puntos_vida <= 0) GameOver();//Die();  //si llega a cero vidas, se activa el void de muerte
+            if (GameManager.Instance.Puntos_vida <= 0) GameOver(); //si llega a cero vidas, se activa el void de muerte
             else StartCoroutine(Invulnerable());       //si no ha llegado a cero vidas, se vuelve invulnerable  
         }
     }
     public void SpikeSawsDamage() //metodo llamado desde el script SpikeSaws (matan al jugador, es decir eliminan todas las vidas)
     {
-        //Die();
         GameOver();
+    }
+    public void ActivaEscudo()
+    {
+        StartCoroutine(InvulnerableEscudo());
     }
     public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
     {
@@ -48,9 +52,14 @@ public class PlayerLifeComponent : MonoBehaviour
         _myInputComponent.enabled = false;
         _myRigidbody2D.velocity = new Vector2(0f, 0f);
         _isDeath = true;
-
-       // string sceneName = "GameOver";
-        //SceneManager.LoadScene(sceneName);
+        StartCoroutine(Wait());
+    }
+    private void Respawn()
+    {
+        //if(seccion=0)
+        //string sceneName = "GameOver";
+        SceneManager.LoadScene("Tutorial");
+        GameManager.Instance.Respawn();
     }
     IEnumerator Invulnerable()
     {
@@ -64,6 +73,19 @@ public class PlayerLifeComponent : MonoBehaviour
         }
         invulnerable = false;                               //después del tiempo de espera, se le quita la invulnerabilidad al jugador [ATENCIÓN: Cuando se haga el script del escudo protector                                                   //hay que vijilar que este IEnumerator no pueda desactivar la invencibilidad antes de que se acabe el tiempo del propio escudo]
     }
+    IEnumerator InvulnerableEscudo()
+    {
+        invulnerable = true;
+        _escudo.SetActive(true);
+        yield return new WaitForSeconds(_escudoCooldown);
+        invulnerable = false;
+        _escudo.SetActive(false);
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3f);
+        Respawn();
+    }
     #endregion
     void Awake()
     {
@@ -73,12 +95,11 @@ public class PlayerLifeComponent : MonoBehaviour
         _myInputComponent = GetComponent<InputComponent>();
         _myRigidbody2D = GetComponent<Rigidbody2D>();
         invulnerable = false;
+        _escudo.SetActive(false);
     }
 
     private void Start()
     {
-        puntos_vida = GameManager.Instance.Puntos_vida;
-        puntos_vida_max = GameManager.Instance.Puntos_vida_max;
     }
     private void Update()
     {

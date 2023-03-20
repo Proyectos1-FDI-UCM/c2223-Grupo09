@@ -151,9 +151,7 @@ public class MovementComponent : MonoBehaviour
             lookingRight = false;
             _isWalking = true;  //se activa caminar
             _isRunning = false; //no está corriendo
-        }
-        
-        
+        }  
     }
     public void Run(float direction)
     {

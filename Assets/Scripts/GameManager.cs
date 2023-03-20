@@ -55,12 +55,10 @@ public class GameManager : MonoBehaviour
     }
     public void CompraEscudo()
     {
-        Debug.Log("recibido");
         if (_gear >= 5)
         {
             _gear = _gear - 5;
         }
-        
     }
     public void CompraVida()
     {
@@ -70,7 +68,12 @@ public class GameManager : MonoBehaviour
             puntos_vida_max++;
             _gear = _gear - 10;
         }
-       
+    }
+    public void Respawn()
+    {
+        puntos_vida = 3;
+        puntos_vida_max = 3;
+        _gear = 0;
     }
     private void Awake()
     {
