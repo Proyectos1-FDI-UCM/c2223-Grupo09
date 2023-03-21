@@ -17,18 +17,18 @@ public class OpenDoor : MonoBehaviour
     {
         controladorDeSalas = GetComponent<ControladorDeSalas>();
         numEnemigos = ControladorDeSalas.Instance.NumEnemigos;
-        contEnemigos = ControladorDeSalas.Instance.ContEnemigos; 
+        numEnemigos = ControladorDeSalas.Instance.NumEnemigos; 
     }
 
-    public void Kill()
+    /*public void Kill()
     {
         contEnemigos++;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-        if (contEnemigos == numEnemigos)
+        if (numEnemigos==0)
         {
             AbrePuerta();
         }

@@ -30,11 +30,11 @@ public class ControladorDeSalas : MonoBehaviour
     {
         get { return _numtotalEnemigos; }
     }
-    private int _contEnemigos;
+    /*private int _contEnemigos;
     public int ContEnemigos
     {
         get { return _contEnemigos; }
-    }
+    }*/
     #endregion
     #region Methods
     private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara
@@ -45,48 +45,42 @@ public class ControladorDeSalas : MonoBehaviour
             {
                 Punto1.Translate(new Vector2(-9f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(55.5f - Punto2.position.x, 0));
-                _contEnemigos=0;
                 _numtotalEnemigos = 1;
 
             } else if (_sala == 1)
             {
                 Punto1.Translate(new Vector2(55.7f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(113f - Punto2.position.x, 0));
-                _contEnemigos = 0;
                 _numtotalEnemigos = 2;
             } else if (_sala == 2)
             {
                 Punto1.Translate(new Vector2(113f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(158.8f - Punto2.position.x, 0));
-                _contEnemigos = 0;
                 _numtotalEnemigos = 2;
             }
             else if (_sala == 3)
             {
                 Punto1.Translate(new Vector2(158.8f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(215.6f - Punto2.position.x, 0));
-                _contEnemigos = 0;
                 _numtotalEnemigos = 2;
             }
             else if (_sala == 4)
             {
                 Punto1.Translate(new Vector2(215.6f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(264.8f - Punto2.position.x, 0));
-                _contEnemigos = 0;
                 _numtotalEnemigos = 2;
             }
             else if (_sala == 5)
             {
                 Punto1.Translate(new Vector2(264.8f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(400f - Punto2.position.x, 0));
-                _contEnemigos = 0;
                 _numtotalEnemigos = 3;
             }
         }
     }
     public void Kill()
     {
-        _contEnemigos++;
+        _numtotalEnemigos--;
     }
     #endregion
     // Start is called before the first frame update

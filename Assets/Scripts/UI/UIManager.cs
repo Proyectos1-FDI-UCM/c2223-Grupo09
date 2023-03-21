@@ -18,10 +18,10 @@ public class UIManager : MonoBehaviour
     [Header("Enemigos")]
     [SerializeField]
     private TextMeshProUGUI _enemigoText;
-    [SerializeField]
-    private TextMeshProUGUI _contEnemigoText;
+    //[SerializeField]
+    //private TextMeshProUGUI _contEnemigoText;
     private int _numEnemigos;
-    private int _contEnemigos;
+    //private int _contEnemigos;
 
     [Header("Engranajes")]
     [SerializeField]
@@ -71,11 +71,11 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    void ContEnemigosScore()
+    /*void ContEnemigosScore()
     {
         _contEnemigos = ControladorDeSalas.Instance.ContEnemigos;
         _contEnemigoText.text = _contEnemigos.ToString();
-    }
+    }*/
     void TotalEnemigosScore()
     {
         _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;  //El número de enemigos en cada sala
@@ -112,7 +112,7 @@ public class UIManager : MonoBehaviour
         _numTotalVidas = GameManager.Instance.Puntos_vida_max; //En el update porque se va actualizando si el jugador compra corazones
         VidasScore(_totalVidas);
         CorazonesScore(_hearts);
-        ContEnemigosScore();
+        //ContEnemigosScore();
         TotalEnemigosScore();
         GearScore();
         VidaExtraScore();
