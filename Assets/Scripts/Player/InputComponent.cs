@@ -26,7 +26,6 @@ public class InputComponent : MonoBehaviour
         _movementComponent = GetComponent<MovementComponent>();
         _shootComponent = GetComponent<ShootComponent>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
-        _playerLifeComponent = GetComponent<PlayerLifeComponent>();
     }
 
     // Update is called once per frame
@@ -119,7 +118,6 @@ public class InputComponent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             GameManager.Instance.CompraEscudo();
-            _playerLifeComponent.ActivaEscudo();
         }
     }
 

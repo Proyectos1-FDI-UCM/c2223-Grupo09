@@ -6,7 +6,7 @@ using UnityEngine;
 public class MovementComponent : MonoBehaviour
 {
     #region references
-    private UIDash _myUIDash;
+    private UIPlayer _myUIPlayer;
     #endregion
     #region Parameters
 
@@ -85,7 +85,7 @@ public class MovementComponent : MonoBehaviour
         _initialGravity = _myRigidBody2D.gravityScale;      //gravedad del jugador al inicio
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
         _myAnimator = GetComponent<Animator>();
-        _myUIDash = GetComponent<UIDash>();
+        _myUIPlayer = GetComponent<UIPlayer>();
     }
 
     private void FixedUpdate()
@@ -191,7 +191,7 @@ public class MovementComponent : MonoBehaviour
     {
         if (_canDash)
         {
-            _myUIDash.CanDashUI();
+            _myUIPlayer.CanDashUI();
             _canJump = false;
             _canMove = false;   //se desabilita el movimiento
             _canDash = false;   //no se puede volver a hacer dash

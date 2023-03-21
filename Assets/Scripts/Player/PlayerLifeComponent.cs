@@ -19,6 +19,7 @@ public class PlayerLifeComponent : MonoBehaviour
     private AudioClip _hitSound;
     [SerializeField]
     private GameObject _escudo;
+    private UIPlayer _myUIplayer;
     #endregion
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
@@ -75,6 +76,7 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     IEnumerator InvulnerableEscudo()
     {
+        _myUIplayer.EscudoUI();
         invulnerable = true;
         _escudo.SetActive(true);
         yield return new WaitForSeconds(_escudoCooldown);
@@ -96,6 +98,7 @@ public class PlayerLifeComponent : MonoBehaviour
         _myRigidbody2D = GetComponent<Rigidbody2D>();
         invulnerable = false;
         _escudo.SetActive(false);
+        _myUIplayer = GetComponent<UIPlayer>();
     }
 
     private void Start()

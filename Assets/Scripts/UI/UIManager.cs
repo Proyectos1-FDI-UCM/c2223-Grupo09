@@ -33,13 +33,6 @@ public class UIManager : MonoBehaviour
     private GameObject _vidaAct;
     [SerializeField]
     private GameObject _vidaDesact;
-
-    [Header("Escudo")]
-    [SerializeField]
-    private GameObject _escudoAct;
-    [SerializeField]
-    private GameObject _escudoDesact;
-
     #endregion
     #region Methods
     void VidasScore(GameObject[] _totalVidas) //muestra todos los corazones disponibles, ya sean "sano o dañados"
@@ -106,19 +99,6 @@ public class UIManager : MonoBehaviour
             _vidaAct.SetActive(false);
         }
     }
-    void EscudoScore()
-    {
-        if (_gearScore >= 5)
-        {
-            _escudoDesact.SetActive(false);
-            _escudoAct.SetActive(true);
-        }
-        else
-        {
-            _escudoDesact.SetActive(true);
-            _escudoAct.SetActive(false);
-        }
-    }
     #endregion
     void Start() 
     {
@@ -136,6 +116,5 @@ public class UIManager : MonoBehaviour
         TotalEnemigosScore();
         GearScore();
         VidaExtraScore();
-        EscudoScore();
     }
 }
