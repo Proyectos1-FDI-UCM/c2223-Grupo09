@@ -14,7 +14,7 @@ public class BulletComponent : MonoBehaviour
     #endregion
 
     #region References
-    private EnemyComponent _enemyComponent;
+    // private EnemyComponent _enemyComponent;
     #endregion
 
     #region Methods
@@ -25,7 +25,7 @@ public class BulletComponent : MonoBehaviour
     private void Start()
     {
         _speed = 30.0f;
-        _enemyComponent = GetComponent<EnemyComponent>();
+        // _enemyComponent = GetComponent<EnemyComponent>();
     }   
     // Update is called once per frame
     void Update()
@@ -41,7 +41,14 @@ public class BulletComponent : MonoBehaviour
             if(gameObject != null)
             {
                 Destroy(gameObject);
-            }           
+            }      
+        }
+        if (collider.GetComponent<Escenario>() != null)
+        {
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
         }
         if (collider.GetComponent<BossComponent>() != null)
         {

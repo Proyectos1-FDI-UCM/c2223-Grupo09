@@ -54,11 +54,6 @@ public class MovementComponent : MonoBehaviour
     private AudioClip _dashSound;
     [SerializeField]
     private AudioClip _jumpSound;
-    
-
-
-
-
     #endregion
 
     public float getDirection()

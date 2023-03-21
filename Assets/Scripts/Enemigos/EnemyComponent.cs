@@ -24,6 +24,7 @@ public class EnemyComponent : MonoBehaviour
         _hp -= damage;
         if(_hp <= 0)
         {
+            _myWayPoints.enabled = false;
             _myCapsuleCollider.enabled = false;
             muerte = true;
             AudioControler.Instance.PlaySound(_soundExplosion);
@@ -31,24 +32,24 @@ public class EnemyComponent : MonoBehaviour
             StartCoroutine(Wait());
         }
     }
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+        Dead();
+    }
     private void Dead()
     {
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+   /* private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<BulletComponent>() != null)
         {
             Destroy(other.gameObject);
             _myWayPoints.enabled = false;
         }
-    }
-    private IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(1f);
-        Dead();
-    }
+    }*/
     #endregion
     private void Start()
     {
