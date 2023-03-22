@@ -28,7 +28,7 @@ public class EnemyComponent : MonoBehaviour
             _myCapsuleCollider.enabled = false;
             muerte = true;
             AudioControler.Instance.PlaySound(_soundExplosion);
-            _animator.SetBool("Muerte", muerte);
+            if (_animator != null) _animator.SetBool("Muerte", muerte);
             StartCoroutine(Wait());
         }
     }
@@ -54,8 +54,8 @@ public class EnemyComponent : MonoBehaviour
     private void Start()
     {
         _myWayPoints = GetComponent<WayPointsMovement>();
+        _myCapsuleCollider = GetComponent<CapsuleCollider2D>();
         _animator = GetComponent<Animator>();
-       _myCapsuleCollider = GetComponent<CapsuleCollider2D>();
         
     }
 }

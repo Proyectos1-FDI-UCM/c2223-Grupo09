@@ -12,6 +12,8 @@ public class TurretLifeComponent : MonoBehaviour
     #endregion
     #region Parameters
     [SerializeField]
+    private bool _bossTurret;
+    [SerializeField]
     private float _hp;
     [SerializeField]
     private AudioClip _soundExplosion;
@@ -34,7 +36,7 @@ public class TurretLifeComponent : MonoBehaviour
     }
     private void Dead()
     {
-        _bossComponent.TurretDestroyed(pos);
+        if (_bossTurret) _bossComponent.TurretDestroyed(pos);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -56,7 +58,7 @@ public class TurretLifeComponent : MonoBehaviour
     {
         //_animator = GetComponent<Animator>();
         _myCapsuleCollider = GetComponent<CapsuleCollider2D>();
-        _bossComponent = GameObject.Find("Final Boss").GetComponent<BossComponent>();
+        if(_bossTurret)_bossComponent = GameObject.Find("Final Boss").GetComponent<BossComponent>();
         if (gameObject.transform.position.x > 16f && gameObject.transform.position.x < 17f) pos = 0;
         else if (gameObject.transform.position.x > 17f) pos = 1;
         else if (gameObject.transform.position.x > -6f && gameObject.transform.position.x < -4f) pos = 2;
