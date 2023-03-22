@@ -67,13 +67,19 @@ public class ControladorDeSalas : MonoBehaviour
             else if (_sala == 4)
             {
                 Punto1.Translate(new Vector2(215.6f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(264.8f - Punto2.position.x, 0));
+                Punto2.Translate(new Vector2(265.6f - Punto2.position.x, 0));
                 _numtotalEnemigos = 2;
             }
             else if (_sala == 5)
             {
-                Punto1.Translate(new Vector2(264.8f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(400f - Punto2.position.x, 0));
+                Punto1.Translate(new Vector2(266.5f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(318.3f - Punto2.position.x, 0));
+                _numtotalEnemigos = 3;
+            }
+            else if (_sala == 6)
+            {
+                Punto1.Translate(new Vector2(318.3f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(500f - Punto2.position.x, 0));
                 _numtotalEnemigos = 3;
             }
         }
