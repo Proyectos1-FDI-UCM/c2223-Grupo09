@@ -12,6 +12,10 @@ public class ShootPlayer : MonoBehaviour
     private float _restingTime = 2.0f;
     [SerializeField]
     private Transform _shootTransform;
+    [SerializeField]
+    private Animator _myAnimator;
+    [SerializeField]
+    private AudioClip _shootSound;
 
     void Start()
     {
@@ -26,7 +30,9 @@ public class ShootPlayer : MonoBehaviour
 
             if (_restingTime <= 0)
             {
-                Instantiate(_bullet, _shootTransform.position, transform.rotation); 
+                Instantiate(_bullet, _shootTransform.position, transform.rotation);
+                _myAnimator.SetBool("_Shoot", true);
+               // AudioControler.Instance.PlaySound(_shootSound);
                 _restingTime = _restingSpeed;                
             }
         }        

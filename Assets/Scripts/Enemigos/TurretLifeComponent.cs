@@ -17,8 +17,8 @@ public class TurretLifeComponent : MonoBehaviour
     private float _hp;
     [SerializeField]
     private AudioClip _soundExplosion;
-    //public Animator _animator;
-    private bool muerte = false;
+    [SerializeField]
+    private Animator _animator;
     #endregion
 
     #region Methods
@@ -27,9 +27,8 @@ public class TurretLifeComponent : MonoBehaviour
         if (_hp <= 0)
         {
             _myCapsuleCollider.enabled = false;
-            muerte = true;
-            //AudioControler.Instance.PlaySound(_soundExplosion);
-            //_animator.SetBool("Muerte", muerte);
+            AudioControler.Instance.PlaySound(_soundExplosion);
+            _animator.SetBool("_Death", true);
             StartCoroutine(Wait());
             Dead(); //Esta línea se quitará cuando se tengan que meter animaciones y eso. Tan solo la he puesto para que la muerte sea instantánea
         }
@@ -56,7 +55,6 @@ public class TurretLifeComponent : MonoBehaviour
     #endregion
     private void Start()
     {
-        //_animator = GetComponent<Animator>();
         _myCapsuleCollider = GetComponent<CapsuleCollider2D>();
         if(_bossTurret)_bossComponent = GameObject.Find("Final Boss").GetComponent<BossComponent>();
         if (gameObject.transform.position.x > 16f && gameObject.transform.position.x < 17f) pos = 0;
