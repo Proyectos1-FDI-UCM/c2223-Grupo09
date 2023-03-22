@@ -68,18 +68,21 @@ public class GameManager : MonoBehaviour
     }
     public void CompraVida()
     {
-        if (_gear >= 10)
+        if (puntos_vida_max < 6)
         {
-            puntos_vida++;
-            puntos_vida_max++;
-            _gear = _gear - 10;
+            if (_gear >= 10)
+            {
+                puntos_vida++;
+                puntos_vida_max++;
+                _gear = _gear - 10;
+            }
         }
     }
     public void Respawn()
     {
-        puntos_vida = 3;
-        puntos_vida_max = 3;
-        _gear = 0;
+        puntos_vida = puntos_vida_max;
+        puntos_vida_max = puntos_vida_max;
+        _gear = Gear;
     }
     private void Awake()
     {
