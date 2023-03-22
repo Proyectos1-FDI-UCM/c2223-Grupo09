@@ -5,30 +5,27 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     #region references
-    ControladorDeSalas controladorDeSalas;
-    public int contEnemigos;
+    //ControladorDeSalas controladorDeSalas;
     public int numEnemigos;
-    private int alturaTope = 7;
-    public float speed;
+    private float alturaTope = 7.0f;
+    [SerializeField]
+    private float speed = 3.0f;
+    private Vector2 newPosition;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        controladorDeSalas = GetComponent<ControladorDeSalas>();
         numEnemigos = ControladorDeSalas.Instance.NumEnemigos;
-        numEnemigos = ControladorDeSalas.Instance.NumEnemigos; 
+        newPosition = new Vector2(transform.position.x, alturaTope);
     }
-
-    /*public void Kill()
-    {
-        contEnemigos++;
-    }*/
 
     // Update is called once per frame
     void Update()
     {
-        if (numEnemigos==0)
+        numEnemigos = ControladorDeSalas.Instance.NumEnemigos;
+
+        if (numEnemigos == 0)
         {
             AbrePuerta();
         }
@@ -36,6 +33,6 @@ public class OpenDoor : MonoBehaviour
 
     public void AbrePuerta()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
     }
 }
