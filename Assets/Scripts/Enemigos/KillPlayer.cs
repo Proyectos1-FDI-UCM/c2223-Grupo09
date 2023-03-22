@@ -8,6 +8,7 @@ public class KillPlayer : MonoBehaviour
     private PlayerLifeComponent _myPlayerLifeComponent; //referencia al Life Component del jugador
     private Collider2D _playerCollider;                 //Referencia al collider del player
     private Collider2D _myBoxCollider;                  //Referencia al collider del enemigo
+    private WayPointsMovement _myWayPointsMovement;
     #endregion
     #region methods
     private void OnTriggerEnter2D(Collider2D collision) //Cuando el enemigo colisiona con el jugador
@@ -19,11 +20,17 @@ public class KillPlayer : MonoBehaviour
             _myPlayerLifeComponent.Hit();                                                               //se llama al metodo Hit de ese script
             StartCoroutine(Sigue_ahí());
         }
+       /* if(collision.gameObject.GetComponent<Escenario>() != null)
+        {
+            Debug.Log("entro");
+            this._myWayPointsMovement.DontGoToPlayer();
+        }*/
     }
     #endregion
     void Start()
     {
         _myBoxCollider = GetComponent<Collider2D>();
+        _myWayPointsMovement = GetComponent<WayPointsMovement>();
     }
     IEnumerator Sigue_ahí()     //este IEnumerator sirve para que, si el jugador no sale del trigger del enemigo, este aun así le haga daño cuando acabe su inmortalidad
     {        

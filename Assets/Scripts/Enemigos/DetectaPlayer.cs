@@ -23,12 +23,12 @@ public class DetectaPlayer : MonoBehaviour
         por ello necesitamos el componente WayPointsMovement*/
         if (Shoot)
         {
-            myShootPlayer = Enemy.GetComponent<ShootPlayer>();            
+            myShootPlayer = Enemy.GetComponent<ShootPlayer>();
         }
         else
         {
             myWayPoints = Enemy.GetComponent<WayPointsMovement>();   //el gameobject que queremos que actue
-        }        
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,14 +40,14 @@ public class DetectaPlayer : MonoBehaviour
             if (Shoot)
             {
                 myShootPlayer.IsShooting = true;
-            }                
+            }
             else
             {
                 myWayPoints.goToPlayer(); //Se invoca al método que cambiará la dirección del enemigo a la del jugador
             }
         }
     }
-
+   
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -58,3 +58,4 @@ public class DetectaPlayer : MonoBehaviour
         }
     }
 }
+

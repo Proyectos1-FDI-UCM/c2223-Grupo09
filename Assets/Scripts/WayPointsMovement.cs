@@ -32,6 +32,19 @@ public class WayPointsMovement : MonoBehaviour
     private float inputHorizontal;
     public bool facingRight;
 
+    #region methods
+    public void goToPlayer()  //Este m?todo se usar? para cambiar la direcci?n hacia la posici?n del jugador
+    {
+
+        siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
+        FollowPlayer = true;
+        velocidad = velocidadAtaque;   //se aumenta la velocidad
+    }
+    public void DontGoToPlayer()  //Este metodo se usar para cambiar la direccion hacia la posicion del jugador
+    {
+        FollowPlayer = false;
+    }
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -51,19 +64,6 @@ public class WayPointsMovement : MonoBehaviour
 
         velocidad = velocidadinicial;
     }
-
-    public void goToPlayer()  //Este m?todo se usar? para cambiar la direcci?n hacia la posici?n del jugador
-    {
-
-        siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
-        FollowPlayer= true;
-        velocidad = velocidadAtaque;   //se aumenta la velocidad
-    }
-    public void DontGoToPlayer()  //Este m?todo se usar? para cambiar la direcci?n hacia la posici?n del jugador
-    {        
-        FollowPlayer = false;
-    }
-
     // Update is called once per frame
     void Update()
     {

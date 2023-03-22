@@ -42,12 +42,20 @@ public class EnemyComponent : MonoBehaviour
         //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
-   /* private void OnTriggerEnter2D(Collider2D other)
+    /* private void OnTriggerEnter2D(Collider2D other)
+     {
+         if (other.gameObject.GetComponent<BulletComponent>() != null)
+         {
+             Destroy(other.gameObject);
+             _myWayPoints.enabled = false;
+         }
+     }*/
+   /* private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (other.gameObject.GetComponent<BulletComponent>() != null)
+        if (collider.GetComponent<Escenario>() != null)
         {
-            Destroy(other.gameObject);
-            _myWayPoints.enabled = false;
+            Debug.Log("entro");
+            _myWayPoints.DontGoToPlayer();
         }
     }*/
     #endregion
