@@ -7,6 +7,7 @@ public class OpenDoor : MonoBehaviour
     #region references
     //ControladorDeSalas controladorDeSalas;
     public int numEnemigos;
+    [SerializeField]
     private float alturaTope = 7.0f;
     [SerializeField]
     private float speed = 3.0f;
