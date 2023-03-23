@@ -16,6 +16,8 @@ public class ShootPlayer : MonoBehaviour
     private Animator _myAnimator;
     [SerializeField]
     private AudioClip _shootSound;
+    private bool _isPlaying = false;
+    
 
     void Start()
     {
@@ -32,9 +34,24 @@ public class ShootPlayer : MonoBehaviour
             {
                 Instantiate(_bullet, _shootTransform.position, transform.rotation);
                 if (_myAnimator != null) _myAnimator.SetBool("_Shoot", true);
-               // AudioControler.Instance.PlaySound(_shootSound);
+                if (_isPlaying == false)
+                {
+                    AudioControler.Instance.PlaySound(_shootSound);
+                    _isPlaying = true;
+                    StartCoroutine(Wait());
+                    _isPlaying = false;
+
+
+                }
+               
                 _restingTime = _restingSpeed;                
             }
         }        
     }
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+   
+    
 }

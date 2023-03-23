@@ -9,6 +9,7 @@ public class TurretLifeComponent : MonoBehaviour
     private CapsuleCollider2D _myCapsuleCollider;
     private BossComponent _bossComponent;
     private int pos;
+    private ShootPlayer _myShootPlayer;
     #endregion
     #region Parameters
     [SerializeField]
@@ -26,11 +27,13 @@ public class TurretLifeComponent : MonoBehaviour
     {
         if (_hp <= 0)
         {
-            _myCapsuleCollider.enabled = false;
             AudioControler.Instance.PlaySound(_soundExplosion);
             if (_animator != null) _animator.SetBool("_Death", true);
+            if (_myShootPlayer != null)_myShootPlayer.enabled = false;
             StartCoroutine(Wait());
-            Dead(); //Esta línea se quitará cuando se tengan que meter animaciones y eso. Tan solo la he puesto para que la muerte sea instantánea
+            _myCapsuleCollider.enabled = false;
+
+            // Dead(); //Esta línea se quitará cuando se tengan que meter animaciones y eso. Tan solo la he puesto para que la muerte sea instantánea
         }
     }
     private void Dead()
@@ -49,7 +52,7 @@ public class TurretLifeComponent : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Dead();
     }
     #endregion
@@ -61,6 +64,7 @@ public class TurretLifeComponent : MonoBehaviour
         else if (gameObject.transform.position.x > 17f) pos = 1;
         else if (gameObject.transform.position.x > -6f && gameObject.transform.position.x < -4f) pos = 2;
         else if (gameObject.transform.position.x > -2f && gameObject.transform.position.x < 1f) pos = 3;
+        _myShootPlayer = GetComponent<ShootPlayer>();
     }
 }
 
