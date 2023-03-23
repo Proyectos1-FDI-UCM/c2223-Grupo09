@@ -58,7 +58,6 @@ public class BossComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Attack);
         if(_boss != _newBossState)  //Si hay discrepancia, entonces eso significa que hay que cambiar de estado
         {
             if (_newBossState == Boss_State.PrimeraFase)        //Esto es que el boss ha sido disparado por primera vez, empezando así la batalla final
@@ -122,7 +121,6 @@ public class BossComponent : MonoBehaviour
         float gb=0.282f;
         for (int i = 0; i < 20; i++)
         {
-
             Spikes.Translate(new Vector2(0, 0.05f));
             Background.color = new Color(r, gb, gb, 1f);
             r += 0.0085f;
