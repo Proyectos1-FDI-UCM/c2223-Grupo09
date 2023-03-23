@@ -174,7 +174,7 @@ MonoBehaviour:
   _restingSpeed: 1.2
   _shootTransform: {fileID: 2838933879792699538}
   _myAnimator: {fileID: -5821675816941550890}
-  _shootSound: {fileID: 0}
+  _shootSound: {fileID: 8300000, guid: 03f887cd8b7083c4ca92aebcb0a32762, type: 3}
 --- !u!70 &8607647458136074304
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossTurret: 1
   _hp: 6
-  _soundExplosion: {fileID: 8300000, guid: 651e61cb250444749ba03916f1dfa945, type: 3}
+  _soundExplosion: {fileID: 8300000, guid: 6c62d44193f053b4e80c384d0e83be64, type: 3}
   _animator: {fileID: -5821675816941550890}
 --- !u!114 &7977815784890058483
 MonoBehaviour:

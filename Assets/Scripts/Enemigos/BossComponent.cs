@@ -15,6 +15,8 @@ public class BossComponent : MonoBehaviour
     [SerializeField] private GameObject EnemyGenerator;
     [SerializeField] private Transform[] Spawnpoints = new Transform[4];
     static private bool[] ActivatedSpawnpoints = { false, false, false, false };
+
+    [SerializeField] AudioClip _rayoSound;
     #endregion
 
     #region Parameters
@@ -154,6 +156,7 @@ public class BossComponent : MonoBehaviour
         }
         Warning.color = new Color(1, 1, 1, 0);
         Lightning.Translate(new Vector2(0, -14.5f));
+        AudioControler.Instance.PlaySound(_rayoSound);
         yield return new WaitForSeconds(0.2f);
         Lightning.Translate(new Vector2(0, 14.5f));
         Rayo = true;
