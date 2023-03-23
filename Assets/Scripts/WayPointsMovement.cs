@@ -52,6 +52,7 @@ public class WayPointsMovement : MonoBehaviour
         {
             waypoints[0] = GameObject.Find("Waypoint1").transform;
             waypoints[1] = GameObject.Find("Waypoint2").transform;
+            player = GameObject.Find("Player").transform;
         }
         if (LockX)
         {

@@ -56,6 +56,7 @@ public class BossComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Attack);
         if(_boss != _newBossState)  //Si hay discrepancia, entonces eso significa que hay que cambiar de estado
         {
             if (_newBossState == Boss_State.PrimeraFase)        //Esto es que el boss ha sido disparado por primera vez, empezando así la batalla final
@@ -99,7 +100,7 @@ public class BossComponent : MonoBehaviour
                 if (_maxHp/2 >= _hp) _newBossState = Boss_State.SegundaFase;    //Aquí se comprueba que el boss no tenga su vida a menos de la mitad
                 else
                 {
-                    if (Attack) StartCoroutine(Generate(Random.Range(7f, 11f)));
+                    if (Attack) StartCoroutine(Generate(Random.Range(4f, 8f)));
                 }
             }
             if (_boss == Boss_State.SegundaFase)
@@ -107,8 +108,8 @@ public class BossComponent : MonoBehaviour
                 if (0 >= _hp) _newBossState = Boss_State.Muerto;                //Aquí se comprueba que el boss aún tenga puntos de vida
                 else
                 {
-                    if (Attack) StartCoroutine(Generate(Random.Range(6f, 9f)));
-                    if (Rayo) StartCoroutine(AttRayo(Random.Range(4f, 7f)));
+                    if (Attack) StartCoroutine(Generate(Random.Range(2f, 7f)));
+                    if (Rayo) StartCoroutine(AttRayo(Random.Range(3f, 6f)));
                 }
             }
         }

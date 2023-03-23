@@ -31,7 +31,7 @@ public class ShootPlayer : MonoBehaviour
             if (_restingTime <= 0)
             {
                 Instantiate(_bullet, _shootTransform.position, transform.rotation);
-                _myAnimator.SetBool("_Shoot", true);
+                if (_myAnimator != null) _myAnimator.SetBool("_Shoot", true);
                // AudioControler.Instance.PlaySound(_shootSound);
                 _restingTime = _restingSpeed;                
             }

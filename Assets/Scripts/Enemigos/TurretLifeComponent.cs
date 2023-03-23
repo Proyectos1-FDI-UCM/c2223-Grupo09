@@ -28,7 +28,7 @@ public class TurretLifeComponent : MonoBehaviour
         {
             _myCapsuleCollider.enabled = false;
             AudioControler.Instance.PlaySound(_soundExplosion);
-            _animator.SetBool("_Death", true);
+            if (_animator != null) _animator.SetBool("_Death", true);
             StartCoroutine(Wait());
             Dead(); //Esta línea se quitará cuando se tengan que meter animaciones y eso. Tan solo la he puesto para que la muerte sea instantánea
         }
