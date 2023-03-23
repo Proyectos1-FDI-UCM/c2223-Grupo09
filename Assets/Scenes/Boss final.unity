@@ -5309,6 +5309,7 @@ GameObject:
   - component: {fileID: 1815434061}
   - component: {fileID: 1815434060}
   - component: {fileID: 1815434059}
+  - component: {fileID: 1815434063}
   m_Layer: 0
   m_Name: Lightning
   m_TagString: Untagged
@@ -5329,18 +5330,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01643622, y: -0.014319256}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.355, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.19335824, y: 0.9713615}
   m_EdgeRadius: 0
 --- !u!114 &1815434060
 MonoBehaviour:
@@ -5395,7 +5396,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1946732963, guid: 30265b22249f9c249a465535671a7afc, type: 3}
   m_Color: {r: 0.14097545, g: 0.8510933, b: 0.9056604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5414,13 +5415,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815434058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.3158, y: 17, z: 0}
-  m_LocalScale: {x: 12.75179, y: 14.4662, z: 1}
+  m_LocalPosition: {x: 8.25, y: 16.94, z: 0}
+  m_LocalScale: {x: 23.40532, y: 14.4662, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1815434063
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815434058}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ec631d67059cd2468e3b766ac8db024, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1816792924
 GameObject:
   m_ObjectHideFlags: 0
