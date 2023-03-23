@@ -2638,6 +2638,7 @@ GameObject:
   - component: {fileID: 976449709}
   - component: {fileID: 976449712}
   - component: {fileID: 976449713}
+  - component: {fileID: 976449714}
   m_Layer: 0
   m_Name: Final Boss
   m_TagString: Untagged
@@ -2729,7 +2730,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2763,7 +2764,27 @@ MonoBehaviour:
   - {fileID: 900587508}
   _rayoSound: {fileID: 8300000, guid: f9d87d1763f4caf4c9d5827bfe4a43de, type: 3}
   _hp: 50
-  _animator: {fileID: 0}
+  _animator: {fileID: 976449714}
+--- !u!95 &976449714
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976449708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51d58c29f3d915a448c9288a555a382a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1007083096
 GameObject:
   m_ObjectHideFlags: 0
