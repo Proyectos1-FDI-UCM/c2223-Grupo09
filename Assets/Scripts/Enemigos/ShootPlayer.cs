@@ -17,11 +17,13 @@ public class ShootPlayer : MonoBehaviour
     [SerializeField]
     private AudioClip _shootSound;
     private bool _isPlaying = false;
+    private EnemyComponent _enemyComponent;
     
 
     void Start()
     {
         IsShooting = false;
+        _enemyComponent= GetComponent<EnemyComponent>();
     }
 
     void Update()
@@ -32,7 +34,8 @@ public class ShootPlayer : MonoBehaviour
 
             if (_restingTime <= 0)
             {
-                if(gameObject.GetComponent<EnemyComponent>().Died != true) Instantiate(_bullet, _shootTransform.position, transform.rotation);
+                if(_enemyComponent == null) Instantiate(_bullet, _shootTransform.position, transform.rotation);
+                else if (_enemyComponent.Died != true) Instantiate(_bullet, _shootTransform.position, transform.rotation);
                 if (_myAnimator != null) _myAnimator.SetBool("_Shoot", true);
                 if (_isPlaying == false)
                 {
