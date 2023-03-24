@@ -75,5 +75,9 @@ public class TurretLifeComponent : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
     }
+    public void BossDeath()
+    {
+        _hp = 0;
+    }
 }
 

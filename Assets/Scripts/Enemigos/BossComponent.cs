@@ -82,6 +82,8 @@ public class BossComponent : MonoBehaviour
             else if (_newBossState == Boss_State.Muerto)        //Esto es que la vida del boss ha llegado a 0, haciendo así que muera
             {
                 _boss = _newBossState;          //Se cambia el estado del boss
+                _animator.SetBool("_Death", true);
+                StartCoroutine(Muero());
 
                 //Aquí debería detenerse la música, poner un sonido de explosión, meter una animación, y poner una corutina que, tras un tiempo, pasa a la pantalla de victoria
             }
@@ -132,16 +134,19 @@ public class BossComponent : MonoBehaviour
     {
         Attack = false;
         yield return new WaitForSeconds(time);
-        int i = Random.Range(0, 2);
-        if (i == 0)
+        if (_boss != Boss_State.Muerto)
         {
-            SumonTurret(Spawnpoints, TurretPrefab);
-        }
-        else if (i == 1)
-        {
-            SumonGenerator(Spawnpoints, EnemyGenerator);
-        }
-        Attack = true;
+            int i = Random.Range(0, 2);
+            if (i == 0)
+            {
+                SumonTurret(Spawnpoints, TurretPrefab);
+            }
+            else if (i == 1)
+            {
+                SumonGenerator(Spawnpoints, EnemyGenerator);
+            }
+            Attack = true;
+        }        
     }
     IEnumerator AttRayo(float time)
     {
@@ -156,10 +161,13 @@ public class BossComponent : MonoBehaviour
         }
         Warning.color = new Color(1, 1, 1, 0);
         Lightning.Translate(new Vector2(0, -14.5f));
-        AudioControler.Instance.PlaySound(_rayoSound);
-        yield return new WaitForSeconds(0.2f);
-        Lightning.Translate(new Vector2(0, 14.5f));
-        Rayo = true;
+        if (_boss != Boss_State.Muerto)
+        {
+            AudioControler.Instance.PlaySound(_rayoSound);
+            yield return new WaitForSeconds(0.2f);
+            Lightning.Translate(new Vector2(0, 14.5f));
+            Rayo = true;
+        }
     }
     static void SumonTurret(Transform[] Spawnpoints, GameObject TurretPrefab)
     {
@@ -204,5 +212,10 @@ public class BossComponent : MonoBehaviour
     public void TurretDestroyed(int pos)
     {
         ActivatedSpawnpoints[pos] = false;
+    }
+    IEnumerator Muero()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

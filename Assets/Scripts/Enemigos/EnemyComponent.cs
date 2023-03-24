@@ -66,5 +66,9 @@ public class EnemyComponent : MonoBehaviour
         _animator = GetComponent<Animator>();
         
     }
+    public void BossDeath()
+    {
+        _hp = 0;
+    }
 }
 
