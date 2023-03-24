@@ -32,7 +32,7 @@ public class ShootPlayer : MonoBehaviour
 
             if (_restingTime <= 0)
             {
-                Instantiate(_bullet, _shootTransform.position, transform.rotation);
+                if(gameObject.GetComponent<EnemyComponent>().Died != true) Instantiate(_bullet, _shootTransform.position, transform.rotation);
                 if (_myAnimator != null) _myAnimator.SetBool("_Shoot", true);
                 if (_isPlaying == false)
                 {

@@ -13,6 +13,7 @@ public class EnemyComponent : MonoBehaviour
     private float _hp;
     [SerializeField]
     private AudioClip _soundExplosion;
+    public bool Died;
     //[SerializeField]
     //private GameObject _deadEffect;
     public Animator _animator;
@@ -24,6 +25,7 @@ public class EnemyComponent : MonoBehaviour
         _hp -= damage;
         if(_hp <= 0)
         {
+            Died = true;
             _myWayPoints.enabled = false;
             _myCapsuleCollider.enabled = false;
             muerte = true;
@@ -68,7 +70,13 @@ public class EnemyComponent : MonoBehaviour
     }
     public void BossDeath()
     {
-        _hp = 0;
+        Died = true;
+        _myWayPoints.enabled = false;
+        _myCapsuleCollider.enabled = false;
+        muerte = true;
+        AudioControler.Instance.PlaySound(_soundExplosion);
+        if (_animator != null) _animator.SetBool("Muerte", muerte);
+        StartCoroutine(Wait());
     }
 }
 
