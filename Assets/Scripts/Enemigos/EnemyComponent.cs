@@ -26,11 +26,18 @@ public class EnemyComponent : MonoBehaviour
         if(_hp <= 0)
         {
             Died = true;
-            _myWayPoints.enabled = false;
+           if(_myWayPoints != null)
+           {
+              _myWayPoints.enabled = false;
+           }
             _myCapsuleCollider.enabled = false;
             muerte = true;
             AudioControler.Instance.PlaySound(_soundExplosion);
-            if (_animator != null) _animator.SetBool("Muerte", muerte);
+            if (_animator != null)
+            {
+                _animator.SetBool("Muerte", muerte);
+            }
+
             StartCoroutine(Wait());
         }
     }
