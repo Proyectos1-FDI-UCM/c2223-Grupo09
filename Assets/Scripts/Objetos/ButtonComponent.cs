@@ -9,6 +9,7 @@ public class ButtonComponent : MonoBehaviour
     private Transform _player;*/
     public GameObject platform;
     private WayPointsMovement _myWayPoints;
+    public Sprite flatButton;
     
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
@@ -16,6 +17,8 @@ public class ButtonComponent : MonoBehaviour
         if(collision.gameObject.tag == "Player" && collision.transform.position.y > transform.position.y)
         {
             platform.GetComponent<WayPointsMovement>().enabled = true;
+            GetComponent<Animator>().enabled = true;
+            Flatten();  
         }
     }
 
@@ -23,5 +26,12 @@ public class ButtonComponent : MonoBehaviour
     void Start()
     {
         platform.GetComponent<WayPointsMovement>().enabled = false;
+        GetComponent<Animator>().enabled = false;
+    }
+
+    private void Flatten()
+    {
+        GetComponent<SpriteRenderer>().sprite = flatButton;
+        GetComponent<Animator>().enabled = false;
     }
 }
