@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 2718357289057669886}
   - component: {fileID: 8538721014852904909}
   - component: {fileID: 2891866439858008958}
+  - component: {fileID: -6249489519192541927}
   m_Layer: 0
   m_Name: Enem Volador
   m_TagString: Enemy
@@ -208,8 +209,8 @@ MonoBehaviour:
   _bullet: {fileID: 1028600080532914881, guid: 7f7eb2f3012aeea4caa7bf5db9ce4580, type: 3}
   _restingSpeed: 2
   _shootTransform: {fileID: 2718357289057669885}
-  _myAnimator: {fileID: 0}
-  _shootSound: {fileID: 0}
+  _myAnimator: {fileID: -6249489519192541927}
+  _shootSound: {fileID: 8300000, guid: 7bf06a972b89acd468b4b21b6051a862, type: 3}
 --- !u!114 &8538721014852904909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,8 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 1
-  _soundExplosion: {fileID: 0}
-  _animator: {fileID: 0}
+  _soundExplosion: {fileID: 8300000, guid: 651e61cb250444749ba03916f1dfa945, type: 3}
+  _animator: {fileID: -6249489519192541927}
 --- !u!70 &2891866439858008958
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -241,3 +242,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.4, y: 0.4}
   m_Direction: 0
+--- !u!95 &-6249489519192541927
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718357289057669824}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3f9f95304d531a541a0ea989108100e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
