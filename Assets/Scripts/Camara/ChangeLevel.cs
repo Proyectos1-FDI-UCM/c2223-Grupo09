@@ -26,27 +26,24 @@ public class ChangeLevel : MonoBehaviour
         _myInputComponent.enabled = true;
         if (ControladorDeSalas.Instance.Sección == 1)
         {
+            GameManager.Instance.GuardaDatos();
             SceneManager.LoadScene("NIVELES");
         }
         else if (ControladorDeSalas.Instance.Sección == 2)
         {
+            GameManager.Instance.GuardaDatos();
             SceneManager.LoadScene("INTERMEDIOS");
         }
         else if (ControladorDeSalas.Instance.Sección == 3)
         {
+            GameManager.Instance.GuardaDatos();
             SceneManager.LoadScene("DIFICILES");
         }
         else if (ControladorDeSalas.Instance.Sección == 4)
         {
+            GameManager.Instance.GuardaDatos();
             SceneManager.LoadScene("Boss final");
         }
     }
     #endregion
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log(ControladorDeSalas.Instance.Sección);
-    }
-
 }
