@@ -30,7 +30,7 @@ public class ControladorDeSalas : MonoBehaviour
     {
         get { return _numtotalEnemigos; }
     }
-    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3 };
+    private int[] _enemigos = new int[] { 1, 2, 2, 2, 3, 1, 3, 3 };
     #endregion
     #region Methods
     private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara

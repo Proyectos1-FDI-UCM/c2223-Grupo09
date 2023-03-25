@@ -72,15 +72,20 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    /*void ContEnemigosScore()
+    {
+        _contEnemigos = ControladorDeSalas.Instance.ContEnemigos;
+        _contEnemigoText.text = _contEnemigos.ToString();
+    }*/
     void TotalEnemigosScore()
     {
-         _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;  //El número de enemigos en cada sala
-         if (_numEnemigos > -1) _enemigoText.text = _numEnemigos.ToString();
+        _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;  //El número de enemigos en cada sala
+        _enemigoText.text = _numEnemigos.ToString();
     }
     void GearScore()
     {
         _gearScore = GameManager.Instance.Gear;  //se toma el numero de engranajes del GameManager
-        if(_gearScore > -1) _gearText.text = _gearScore.ToString();
+        _gearText.text = _gearScore.ToString();
     }
     void VidaExtraScore()
     {
