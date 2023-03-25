@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     #region References
+    public bool ShowingControles;
     [Header("Corazones")]
     [SerializeField]
     private GameObject[] _totalVidas;   //son todos los corazones a rellenar. Inicialmente son 3, cuando se puedan obtener más con los engranajes aumentará este número
