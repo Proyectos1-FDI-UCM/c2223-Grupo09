@@ -57,9 +57,11 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     private void Respawn()
     {
-        //if(seccion=0)
-        //string sceneName = "GameOver";
-        SceneManager.LoadScene("Tutorial");
+        if(ControladorDeSalas.Instance.Sección == 1) SceneManager.LoadScene("Tutorial");
+        else if (ControladorDeSalas.Instance.Sección == 2) SceneManager.LoadScene("NIVELES");
+        else if(ControladorDeSalas.Instance.Sección == 3) SceneManager.LoadScene("INTERMEDIOS");
+        else if(ControladorDeSalas.Instance.Sección == 4) SceneManager.LoadScene("DIFICILES");
+        else if (ControladorDeSalas.Instance.Sección == 5) SceneManager.LoadScene("Boss final");
         GameManager.Instance.Respawn();
     }
     IEnumerator Invulnerable()
