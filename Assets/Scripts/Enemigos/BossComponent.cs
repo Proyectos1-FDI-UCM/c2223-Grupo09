@@ -10,6 +10,7 @@ public class BossComponent : MonoBehaviour
     [SerializeField] private Transform Spikes;              //Referencia a las sierras que suben cuando comienza la batalla
     [SerializeField] private SpriteRenderer Background;     //Referencia al fondo de pantalla
     [SerializeField] private SpriteRenderer Warning;
+    private SpriteRenderer _mySpriteRenderer;
     [SerializeField] private Transform Lightning;
     [SerializeField] private GameObject TurretPrefab;
     [SerializeField] private GameObject EnemyGenerator;
@@ -53,6 +54,7 @@ public class BossComponent : MonoBehaviour
         _newBossState = Boss_State.FullHealth;      //Para evitar errores, se le da este estado también al _newBossState
         Attack = false;
         Rayo = false;
+        _mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -216,6 +218,10 @@ public class BossComponent : MonoBehaviour
     IEnumerator Muero()
     {
         yield return new WaitForSeconds(1f);
+        _mySpriteRenderer.enabled = false;
+        yield return new WaitForSeconds(1f);
+        //Aquí tiene que haber un cambio de escena a la escena "Fin del juego"
+        //SceneManager.LoadScene("Fin del juego"); 
         Destroy(gameObject);
     }
 }
