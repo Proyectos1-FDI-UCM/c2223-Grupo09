@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsShooting: 0
   _bullet: {fileID: 1028600080532914881, guid: 7f7eb2f3012aeea4caa7bf5db9ce4580, type: 3}
-  _restingSpeed: 2
+  _restingSpeed: 1
   _shootTransform: {fileID: 2718357289057669885}
   _myAnimator: {fileID: -5423539768939477977}
   _shootSound: {fileID: 8300000, guid: 7bf06a972b89acd468b4b21b6051a862, type: 3}
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 1
   _soundExplosion: {fileID: 8300000, guid: 651e61cb250444749ba03916f1dfa945, type: 3}
+  Died: 0
   _animator: {fileID: -5423539768939477977}
 --- !u!70 &2891866439858008958
 CapsuleCollider2D:

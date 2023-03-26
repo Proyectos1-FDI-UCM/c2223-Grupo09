@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     {
         get { return puntos_vida_max; }
     }
+    private int lastGear;
+    private int lastPuntos_vida;
+    private int lastPuntos_vida_max;
     #endregion
     #region Methods
     public void OnPickGear()
@@ -78,11 +81,26 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void GuardaDatos()
+    {
+        lastGear = _gear;
+        lastPuntos_vida = puntos_vida;
+        lastPuntos_vida_max = puntos_vida_max;
+    }
     public void Respawn()
     {
-        puntos_vida = puntos_vida_max;
-        puntos_vida_max = puntos_vida_max;
-        _gear = Gear;
+        if (ControladorDeSalas.Instance.Sección == 1)
+        {
+            _gear = 0;
+            puntos_vida = 3;
+            puntos_vida_max = 3;
+        }
+        else
+        {
+            puntos_vida = lastPuntos_vida;
+            puntos_vida_max = lastPuntos_vida_max;
+            _gear = lastGear;
+        }
     }
     private void Awake()
     {
