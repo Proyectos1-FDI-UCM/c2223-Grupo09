@@ -12,6 +12,7 @@ public class PlayerLifeComponent : MonoBehaviour
     private Animator _myAnimator;
     private Rigidbody2D _myRigidbody2D;
     private MovementComponent _myMovementComponent;
+    private BossComponent _boss;
     private InputComponent _myInputComponent;
     [SerializeField]
     private AudioClip _gameOverSound;
@@ -61,7 +62,11 @@ public class PlayerLifeComponent : MonoBehaviour
         else if (ControladorDeSalas.Instance.Sección == 2) SceneManager.LoadScene("NIVELES");
         else if (ControladorDeSalas.Instance.Sección == 3) SceneManager.LoadScene("INTERMEDIOS");
         else if (ControladorDeSalas.Instance.Sección == 4) SceneManager.LoadScene("DIFICILES");
-        else if (ControladorDeSalas.Instance.Sección == 5) SceneManager.LoadScene("Boss final");
+        else if (ControladorDeSalas.Instance.Sección == 5)
+        {
+            _boss.Respawn();
+            SceneManager.LoadScene("Boss final");
+        }            
         GameManager.Instance.Respawn();
     }
     IEnumerator Invulnerable()
@@ -110,6 +115,10 @@ public class PlayerLifeComponent : MonoBehaviour
 
     private void Start()
     {
+        if (ControladorDeSalas.Instance.Sección == 5)
+        {
+            _boss = GameObject.Find("Final Boss").GetComponent<BossComponent>();
+        }
     }
     private void Update()
     {

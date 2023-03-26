@@ -215,6 +215,13 @@ public class BossComponent : MonoBehaviour
     {
         ActivatedSpawnpoints[pos] = false;
     }
+    public void Respawn()
+    {
+        ActivatedSpawnpoints[0] = false;
+        ActivatedSpawnpoints[1] = false;
+        ActivatedSpawnpoints[2] = false;
+        ActivatedSpawnpoints[3] = false;
+    }
     IEnumerator Muero()
     {
         yield return new WaitForSeconds(1f);
