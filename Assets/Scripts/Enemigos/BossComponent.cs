@@ -1,9 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossComponent : MonoBehaviour
 {
+    #region properties
+    private static BossComponent _instance;
+    public static BossComponent Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    #endregion
     public enum Boss_State { FullHealth, PrimeraFase, SegundaFase, Muerto }   //Los estados en los que puede estar el jefe
     #region References
     [Header("Referencias")]
@@ -38,6 +49,10 @@ public class BossComponent : MonoBehaviour
     {
         get { return _hp; }
     }
+    public float HPMax         //Variable pública que permite ver la vida del boss
+    {
+        get { return _maxHp; }
+    }
     #endregion
 
     #region Methods
@@ -45,7 +60,34 @@ public class BossComponent : MonoBehaviour
     {
         _hp -= damage;  //Se resta puntos de vida
     }
+    private void Muerte()
+    {
+        if(0 >= _hp)
+        {
+            StartCoroutine(Wait());
+        }
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2f);
+        FinalScene();
+    }
+    private void FinalScene()
+    {
+        SceneManager.LoadScene("Fin del juego");
+    }
     #endregion
+    private void Awake()
+    {
+        if (_instance != null && _instance != this) //Instanciar, hacer Singlenton este script
+        {
+            Destroy(this);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +102,7 @@ public class BossComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Muerte();
         if(_boss != _newBossState)  //Si hay discrepancia, entonces eso significa que hay que cambiar de estado
         {
             if (_newBossState == Boss_State.PrimeraFase)        //Esto es que el boss ha sido disparado por primera vez, empezando así la batalla final

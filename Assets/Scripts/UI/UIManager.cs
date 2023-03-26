@@ -34,6 +34,13 @@ public class UIManager : MonoBehaviour
     private GameObject _vidaAct;
     [SerializeField]
     private GameObject _vidaDesact;
+
+    [Header("Boss")]
+    [SerializeField]
+    private Image _vidaBoss;
+    private float _vidaActual;
+    private float _vidaMax;
+
     #endregion
     #region Methods
     void VidasScore(GameObject[] _totalVidas) //muestra todos los corazones disponibles, ya sean "sano o dañados"
@@ -72,20 +79,15 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    /*void ContEnemigosScore()
-    {
-        _contEnemigos = ControladorDeSalas.Instance.ContEnemigos;
-        _contEnemigoText.text = _contEnemigos.ToString();
-    }*/
     void TotalEnemigosScore()
     {
         _numEnemigos = ControladorDeSalas.Instance.NumEnemigos;  //El número de enemigos en cada sala
-        _enemigoText.text = _numEnemigos.ToString();
+        if (_numEnemigos > -1) _enemigoText.text = _numEnemigos.ToString();
     }
     void GearScore()
     {
         _gearScore = GameManager.Instance.Gear;  //se toma el numero de engranajes del GameManager
-        _gearText.text = _gearScore.ToString();
+        if (_gearScore > -1) _gearText.text = _gearScore.ToString();
     }
     void VidaExtraScore()
     {
@@ -100,6 +102,12 @@ public class UIManager : MonoBehaviour
             _vidaAct.SetActive(false);
         }
     }
+    void VidaBoss()
+    {
+        _vidaActual = BossComponent.Instance.HpBoss;
+        _vidaMax = BossComponent.Instance.HPMax;
+        _vidaBoss.fillAmount = _vidaActual / _vidaMax;
+    }
     #endregion
     void Start() 
     {
@@ -113,9 +121,13 @@ public class UIManager : MonoBehaviour
         _numTotalVidas = GameManager.Instance.Puntos_vida_max; //En el update porque se va actualizando si el jugador compra corazones
         VidasScore(_totalVidas);
         CorazonesScore(_hearts);
-        //ContEnemigosScore();
         TotalEnemigosScore();
         GearScore();
         VidaExtraScore();
+        if (ControladorDeSalas.Instance.Sección == 5)
+        {
+            VidaBoss();
+        }
+        
     }
 }
