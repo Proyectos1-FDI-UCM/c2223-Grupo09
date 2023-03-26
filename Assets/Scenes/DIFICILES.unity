@@ -1371,7 +1371,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obs 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6085874978029840546, guid: d4aeb22ea74950a4f951a4e8e558180d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d4aeb22ea74950a4f951a4e8e558180d, type: 3}
 --- !u!1 &537697624
 GameObject:
@@ -2862,11 +2863,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1527638940799662135, guid: c44c24996abebe344bab71c29a6bf2e7, type: 3}
       propertyPath: m_Size.y
-      value: 3.926884
+      value: 2.4469252
       objectReference: {fileID: 0}
     - target: {fileID: 1527638940799662135, guid: c44c24996abebe344bab71c29a6bf2e7, type: 3}
       propertyPath: m_Offset.y
-      value: 0.47785842
+      value: -0.26212096
       objectReference: {fileID: 0}
     - target: {fileID: 1527638940799662135, guid: c44c24996abebe344bab71c29a6bf2e7, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -4003,6 +4004,10 @@ PrefabInstance:
     - target: {fileID: 5970885139504511463, guid: 48b872a3c9b479d47a163cfa998b8290, type: 3}
       propertyPath: m_Name
       value: Obs 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970885139504511463, guid: 48b872a3c9b479d47a163cfa998b8290, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8431064666709398808, guid: 48b872a3c9b479d47a163cfa998b8290, type: 3}
       propertyPath: m_Size.x
@@ -5169,7 +5174,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1527638940799662135, guid: c44c24996abebe344bab71c29a6bf2e7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c44c24996abebe344bab71c29a6bf2e7, type: 3}
 --- !u!1001 &1799264807
 PrefabInstance:
@@ -5608,7 +5614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892754519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 56.12, y: -3.12, z: -10.035911}
+  m_LocalPosition: {x: 27.2, y: -4.2, z: -10.035911}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
