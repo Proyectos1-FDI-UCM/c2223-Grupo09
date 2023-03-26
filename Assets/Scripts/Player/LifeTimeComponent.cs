@@ -13,7 +13,6 @@ public class LifeTimeComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lifeTime = 3f;
         Destroy(gameObject, lifeTime); 
     }
     #endregion

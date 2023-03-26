@@ -18,7 +18,7 @@ public class ChangeLevel : MonoBehaviour
     }
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         Change();
     }
     private void Change()
@@ -27,7 +27,8 @@ public class ChangeLevel : MonoBehaviour
         if (ControladorDeSalas.Instance.Sección == 1)
         {
             GameManager.Instance.GuardaDatos();
-            SceneManager.LoadScene("NIVELES");
+            SceneManager.LoadScene("Boss final"); //Apaño temporal para el prototipo del Lunes (Cambiar luego)
+            //SceneManager.LoadScene("NIVELES");
         }
         else if (ControladorDeSalas.Instance.Sección == 2)
         {
