@@ -29,6 +29,13 @@ public class BulletEnemy : MonoBehaviour
             _myPlayerLifeComponent = _playerCollider.gameObject.GetComponent<PlayerLifeComponent>();    //se toma el Script PlayerLifeComponent                                                            
             _myPlayerLifeComponent.Hit();                                                               //se llama al metodo Hit de ese script
         }
+        if (collision.GetComponent<Escenario>() != null)
+        {
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
     public float Damage()
     { return _damage; }
