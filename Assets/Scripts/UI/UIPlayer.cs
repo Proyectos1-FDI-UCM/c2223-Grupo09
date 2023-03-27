@@ -26,6 +26,7 @@ public class UIPlayer : MonoBehaviour
     private float _escudoCooldown = 10.0f;
     private bool _isActive = false;
     private bool _escudoUI = false;
+    private bool _isMoving = false;
     #endregion
     #region Methods
     public void CanDashUI()
@@ -60,7 +61,8 @@ public class UIPlayer : MonoBehaviour
     }
     void EscudoScore()
     {
-        if (GameManager.Instance.Gear >= 5)
+
+        if (_isMoving == false && GameManager.Instance.Gear >= 5)
         {
             _escudoDesact.SetActive(false);
             _escudoAct.SetActive(true);
@@ -70,6 +72,8 @@ public class UIPlayer : MonoBehaviour
             _escudoDesact.SetActive(true);
             _escudoAct.SetActive(false);
         }
+
+      
     }
     private void EscudoAbility()
     {
@@ -77,6 +81,7 @@ public class UIPlayer : MonoBehaviour
         {
             _isActive = true;
             _escudoImage.fillAmount = 1;
+            _isMoving = true;
         }
 
         if (_isActive)
@@ -90,6 +95,7 @@ public class UIPlayer : MonoBehaviour
                 _isActive = false;
                 _escudoDesact.SetActive(true);
                 _escudoUI = false;
+                _isMoving=false;
             }
         }
     }
@@ -98,8 +104,6 @@ public class UIPlayer : MonoBehaviour
     {
         _dashImage.fillAmount = 0;
         _escudoImage.fillAmount = 0;
-       // _escudoAct.SetActive(false);
-       // _escudoDesact.SetActive(true);
     }
     void Update()
     {

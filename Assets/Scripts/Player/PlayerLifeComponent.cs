@@ -2,9 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerLifeComponent : MonoBehaviour
 {
+    #region properties
+    private static PlayerLifeComponent _instance;
+    public static PlayerLifeComponent Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
+    #endregion
     #region references
     [SerializeField]
     private Vector2 _respawn;                   //posicion donde hace respawn el jugador (Debería ajustarse según el nivel)
@@ -21,12 +33,14 @@ public class PlayerLifeComponent : MonoBehaviour
     [SerializeField]
     private GameObject _escudo;
     private UIPlayer _myUIplayer;
+    private int _gear;
     #endregion
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
     private bool _isDeath = false;
     private bool _isHit = false;
     private float _escudoCooldown = 10.0f;
+    private bool _escudoAct = false;
     #endregion
     #region Methods
     public void Hit()                           //metodo llamado desde el script KillPlayer de los enemigos
@@ -43,14 +57,31 @@ public class PlayerLifeComponent : MonoBehaviour
     {
         GameOver();
     }
+    public void Comprar()
+    {
+        if(_escudoAct == false)
+        {
+            GameManager.Instance.CompraEscudo();
+        }
+    }
     public void ActivaEscudo()
     {
-        StartCoroutine(InvulnerableEscudo());
+        _escudoAct = true;
+        _myUIplayer.EscudoUI();
+        invulnerable = true;
+        _escudo.SetActive(true);
+        StartCoroutine(Escudo());
+    }
+    private void DesactivaEscudo()
+    {
+        invulnerable = false;
+        _escudo.SetActive(false);
+        _escudoAct = false;
     }
     public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
     {
         AudioControler.Instance.PlaySound(_gameOverSound);
-        _myMovementComponent.enabled = false;
+      //  _myMovementComponent.enabled = false;
         _myInputComponent.enabled = false;
         _myRigidbody2D.velocity = new Vector2(0f, 0f);
         _isDeath = true;
@@ -85,14 +116,10 @@ public class PlayerLifeComponent : MonoBehaviour
         }
         invulnerable = false;                               //después del tiempo de espera, se le quita la invulnerabilidad al jugador [ATENCIÓN: Cuando se haga el script del escudo protector                                                   //hay que vijilar que este IEnumerator no pueda desactivar la invencibilidad antes de que se acabe el tiempo del propio escudo]
     }
-    IEnumerator InvulnerableEscudo()
+    IEnumerator Escudo()
     {
-        _myUIplayer.EscudoUI();
-        invulnerable = true;
-        _escudo.SetActive(true);
         yield return new WaitForSeconds(_escudoCooldown);
-        invulnerable = false;
-        _escudo.SetActive(false);
+        DesactivaEscudo();
     }
     IEnumerator Wait()
     {
@@ -102,22 +129,29 @@ public class PlayerLifeComponent : MonoBehaviour
     #endregion
     void Awake()
     {
+        if (_instance == null)
+        {
+            _instance = this;
+           // DontDestroyOnLoad(gameObject);
+        }
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
         _myAnimator = GetComponent<Animator>();
         _myMovementComponent = GetComponent<MovementComponent>();
         _myInputComponent = GetComponent<InputComponent>();
         _myRigidbody2D = GetComponent<Rigidbody2D>();
         invulnerable = false;
-        _escudo.SetActive(false);
         _myUIplayer = GetComponent<UIPlayer>();
         _mySpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+
     }
 
-    private void Start()
+    private void Start()       
     {
+        _escudo.SetActive(false);
         if (ControladorDeSalas.Instance.Sección == 5)
         {
             _boss = GameObject.Find("Final Boss").GetComponent<BossComponent>();
+            //_escudo.SetActive(false);
         }
     }
     private void Update()
