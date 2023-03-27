@@ -10,9 +10,11 @@ public class DetectaPlayer : MonoBehaviour
     public bool PlayerInArea { get; private set; } //booleano que indica si el jugador está en el área
     [SerializeField] GameObject Enemy;
     [SerializeField] bool Shoot;
+    [SerializeField] bool Boss;
 
     public WayPointsMovement myWayPoints;  //referencia al componente de movimiento de los enemigos
-    public ShootPlayer myShootPlayer;  //referencia al componente de movimiento de los enemigos
+    private ShootPlayer myShootPlayer;  //referencia al componente de movimiento de los enemigos
+    private TutBossComponent _myBossComponent;
 
     [SerializeField]
     private string detectionTag = "Player";  //tag del player
@@ -24,6 +26,10 @@ public class DetectaPlayer : MonoBehaviour
         if (Shoot)
         {
             myShootPlayer = Enemy.GetComponent<ShootPlayer>();
+        }
+        else if (Boss)
+        {
+            _myBossComponent = Enemy.GetComponent<TutBossComponent>();
         }
         else
         {
@@ -41,6 +47,10 @@ public class DetectaPlayer : MonoBehaviour
             {
                 myShootPlayer.IsShooting = true;
             }
+            else if (Boss)
+            {
+                _myBossComponent.Empiezo();
+            }
             else
             {
                 myWayPoints.goToPlayer(); //Se invoca al método que cambiará la dirección del enemigo a la del jugador
@@ -54,7 +64,7 @@ public class DetectaPlayer : MonoBehaviour
         {
             PlayerInArea = false;
             if (Shoot) myShootPlayer.IsShooting = false;
-            else myWayPoints.DontGoToPlayer();
+            else if (!Boss) myWayPoints.DontGoToPlayer();
         }
     }
 }

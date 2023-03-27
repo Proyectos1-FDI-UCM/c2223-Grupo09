@@ -58,6 +58,14 @@ public class BulletComponent : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if (collider.GetComponent<TutBossComponent>() != null)
+        {
+            collider.GetComponent<TutBossComponent>().IsAttacked(_damage);
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
     #endregion
 }

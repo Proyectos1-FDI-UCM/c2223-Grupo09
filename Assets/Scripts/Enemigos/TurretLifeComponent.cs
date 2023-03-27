@@ -65,7 +65,7 @@ public class TurretLifeComponent : MonoBehaviour
         else if (gameObject.transform.position.x > -6f && gameObject.transform.position.x < -4f) pos = 2;
         else if (gameObject.transform.position.x > -2f && gameObject.transform.position.x < 1f) pos = 3;
         _myShootPlayer = GetComponent<ShootPlayer>();
-        StartCoroutine(Entrada());
+        if (_bossTurret) StartCoroutine(Entrada());
     }
     IEnumerator Entrada()
     {

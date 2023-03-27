@@ -19,11 +19,14 @@ public class BossDeath : MonoBehaviour
     }
     void Update()
     {
-        if(BossComponent.BossState == BossComponent.Boss_State.Muerto)
+        if (BossComponent != null)
         {
-            if (_myEnemyComponent != null) _myEnemyComponent.BossDeath();
-            else if (_myTurretLife != null) _myTurretLife.BossDeath();
-            else Destroy(gameObject); 
-        }
+            if (BossComponent.BossState == BossComponent.Boss_State.Muerto)
+            {
+                if (_myEnemyComponent != null) _myEnemyComponent.BossDeath();
+                else if (_myTurretLife != null) _myTurretLife.BossDeath();
+                else Destroy(gameObject);
+            }
+        }        
     }
 }

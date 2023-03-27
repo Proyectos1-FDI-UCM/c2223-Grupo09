@@ -116,6 +116,12 @@ public class WayPointsMovement : MonoBehaviour
 
         facingRight = !facingRight;
     }
+    public void UnlockX()
+    {
+        LockX = false;
+        if(numeroSigPosicion!=0) siguientePosicion = waypoints[numeroSigPosicion].position;
+        else siguientePosicion = waypoints[waypoints.Length-1].position;
+    }
 }
 
 
