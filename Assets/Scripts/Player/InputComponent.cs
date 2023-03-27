@@ -110,7 +110,7 @@ public class InputComponent : MonoBehaviour
             _movementComponent.Run(1);
         }
         //Comprar vidas con engranajes
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             GameManager.Instance.CompraVida();
         }

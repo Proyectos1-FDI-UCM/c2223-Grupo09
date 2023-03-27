@@ -81,7 +81,7 @@ public class PlayerLifeComponent : MonoBehaviour
     public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
     {
         AudioControler.Instance.PlaySound(_gameOverSound);
-      //  _myMovementComponent.enabled = false;
+        _myMovementComponent.enabled = false;
         _myInputComponent.enabled = false;
         _myRigidbody2D.velocity = new Vector2(0f, 0f);
         _isDeath = true;
@@ -132,7 +132,6 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-           // DontDestroyOnLoad(gameObject);
         }
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
         _myAnimator = GetComponent<Animator>();
@@ -151,7 +150,6 @@ public class PlayerLifeComponent : MonoBehaviour
         if (ControladorDeSalas.Instance.Sección == 5)
         {
             _boss = GameObject.Find("Final Boss").GetComponent<BossComponent>();
-            //_escudo.SetActive(false);
         }
     }
     private void Update()

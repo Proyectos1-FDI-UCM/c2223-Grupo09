@@ -72,8 +72,6 @@ public class UIPlayer : MonoBehaviour
             _escudoDesact.SetActive(true);
             _escudoAct.SetActive(false);
         }
-
-      
     }
     private void EscudoAbility()
     {
