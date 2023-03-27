@@ -48,8 +48,8 @@ MonoBehaviour:
   <PlayerInArea>k__BackingField: 0
   Enemy: {fileID: 7413394698436130401}
   Shoot: 0
+  Boss: 0
   myWayPoints: {fileID: 0}
-  myShootPlayer: {fileID: 0}
   detectionTag: Player
 --- !u!58 &6940308183455761642
 CircleCollider2D:
@@ -169,7 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba84b0361ead9b14c8a7555b42648594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   LockX: 0
   BossFinal: 0
   distanciaCambio: 0.5
@@ -204,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 1
   _soundExplosion: {fileID: 8300000, guid: 651e61cb250444749ba03916f1dfa945, type: 3}
+  Died: 0
   _animator: {fileID: -8338499191443994768}
 --- !u!95 &-8338499191443994768
 Animator:

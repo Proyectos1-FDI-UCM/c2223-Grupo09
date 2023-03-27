@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class ControladorDeSalas : MonoBehaviour
 {
-    public static ControladorDeSalas Instance;
+    private static ControladorDeSalas _instance;
+    public static ControladorDeSalas Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     #region references
     private Camera cam;                         //referencia a la cámara
     private Camera_movement _cam;               //referencia a su Script "Movement Component"
@@ -30,7 +38,7 @@ public class ControladorDeSalas : MonoBehaviour
     {
         get { return _numtotalEnemigos; }
     }
-    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3 };
+    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3,5};
     #endregion
     #region Methods
     private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara
@@ -87,18 +95,18 @@ public class ControladorDeSalas : MonoBehaviour
             else if (_sala == 7)
             {
                 Punto1.Translate(new Vector2(15f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(58f - Punto2.position.x, 0));
+                Punto2.Translate(new Vector2(58.25f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[7];
             }
             else if (_sala == 8)
             {
-                Punto1.Translate(new Vector2(58f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(158.8f - Punto2.position.x, 0));
+                Punto1.Translate(new Vector2(58.25f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(83f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[2];
             }
             else if (_sala == 9)
             {
-                Punto1.Translate(new Vector2(158.8f - Punto1.position.x, 0));
+                Punto1.Translate(new Vector2(83f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(215.6f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[3];
             }
@@ -133,13 +141,13 @@ public class ControladorDeSalas : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (Instance != null && Instance != this) //Instanciar, hacer Singlenton este script
+        if (_instance != null && _instance != this) //Instanciar, hacer Singlenton este script
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            _instance = this;
         }  
         
         if(_sección == 1)
