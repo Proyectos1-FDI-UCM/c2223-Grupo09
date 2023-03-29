@@ -6,10 +6,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region references
-   /*[SerializeField]
-    private GameObject _player;
-    
-    private PlayerLifeComponent _myLifeComponent;*/
+    /*[SerializeField]
+     private GameObject _player;
+
+     private PlayerLifeComponent _myLifeComponent;*/
+    [SerializeField] private AudioClip _compraVida;
     #endregion
     #region properties
     private static GameManager _instance;
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
         {
             if (_gear >= 10)
             {
+                AudioControler.Instance.PlaySound(_compraVida);
                 puntos_vida++;
                 puntos_vida_max++;
                 _gear = _gear - 10;
