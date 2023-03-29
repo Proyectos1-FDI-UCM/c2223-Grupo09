@@ -24,11 +24,15 @@ public class ChangeLevel : MonoBehaviour
     private void Change()
     {
         _myInputComponent.enabled = true;
-        if (ControladorDeSalas.Instance.Sección == 1)
+        if (ControladorDeSalas.Instance.Sección == 0)
         {
             GameManager.Instance.GuardaDatos();
-            SceneManager.LoadScene("Boss final"); //Apaño temporal para el prototipo del Lunes (Cambiar luego)
-            //SceneManager.LoadScene("NIVELES");
+            SceneManager.LoadScene("Boss tutorial");
+        }
+        else if (ControladorDeSalas.Instance.Sección == 1)
+        {
+            GameManager.Instance.GuardaDatos();
+            SceneManager.LoadScene("NIVELES");
         }
         else if (ControladorDeSalas.Instance.Sección == 2)
         {

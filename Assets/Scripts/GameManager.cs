@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     }
     public void Respawn()
     {
-        if (ControladorDeSalas.Instance.Sección == 1)
+        if (ControladorDeSalas.Instance.Sección == 1 && ControladorDeSalas.Instance.Sala < 3)
         {
             _gear = 0;
             puntos_vida = 3;

@@ -30,7 +30,11 @@ public class ControladorPuertas : MonoBehaviour
     }
     private void Conversion()
     {
-        if (_seccion == 2)
+        if (_seccion == 1)
+        {
+            _sala = _sala - 5;
+        }
+        else if (_seccion == 2)
         {
             _sala = _sala - 6;
         }

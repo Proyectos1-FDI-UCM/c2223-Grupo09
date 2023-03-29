@@ -41,7 +41,7 @@ public class ControladorDeSalas : MonoBehaviour
     #region Methods
     private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara
     {
-        if (_sección == 1)
+        if (_sección == 0)
         {
             if (_sala == 0)
             {
@@ -57,12 +57,12 @@ public class ControladorDeSalas : MonoBehaviour
             } else if (_sala == 2)
             {
                 Punto1.Translate(new Vector2(100.54f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(158.95f - Punto2.position.x, 0));
+                Punto2.Translate(new Vector2(158.75f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[2];
             }
             else if (_sala == 3)
             {
-                Punto1.Translate(new Vector2(158.95f - Punto1.position.x, 0));
+                Punto1.Translate(new Vector2(158.75f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(215.6f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[3];
             }
@@ -72,13 +72,16 @@ public class ControladorDeSalas : MonoBehaviour
                 Punto2.Translate(new Vector2(264.82f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[4];
             }
-            else if (_sala == 5)//revisar
+           
+        }
+        else if (_sección == 1)
+        {
+            if (_sala == 5)
             {
-                Punto1.Translate(new Vector2(266.5f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(318.3f - Punto2.position.x, 0));
+                Punto1.Translate(new Vector2(-8.46f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(43.28f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[5];
             }
-
         }
 
         else if (_sección == 2)
@@ -93,19 +96,19 @@ public class ControladorDeSalas : MonoBehaviour
             else if (_sala == 7)
             {
                 Punto1.Translate(new Vector2(15.5f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(58.25f - Punto2.position.x, 0));
+                Punto2.Translate(new Vector2(58.1f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[7];
             }
             else if (_sala == 8)
             {
-                Punto1.Translate(new Vector2(58.25f - Punto1.position.x, 0));
+                Punto1.Translate(new Vector2(58.1f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(83.5f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[8];
             }
             else if (_sala == 9)
             {
                 Punto1.Translate(new Vector2(83.5f - Punto1.position.x, 0));
-                Punto2.Translate(new Vector2(115.2f - Punto2.position.x, 0));
+                Punto2.Translate(new Vector2(115f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[9];
             }
         }

@@ -41,6 +41,7 @@ public class PlayerLifeComponent : MonoBehaviour
     private bool _isHit = false;
     private float _escudoCooldown = 10.0f;
     private bool _escudoAct = false;
+    private bool _checkPoint;
     #endregion
     #region Methods
     public void Hit()                           //metodo llamado desde el script KillPlayer de los enemigos
@@ -66,17 +67,8 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     public void ActivaEscudo()
     {
-        _escudoAct = true;
-        _myUIplayer.EscudoUI();
-        invulnerable = true;
-        _escudo.SetActive(true);
+        
         StartCoroutine(Escudo());
-    }
-    private void DesactivaEscudo()
-    {
-        invulnerable = false;
-        _escudo.SetActive(false);
-        _escudoAct = false;
     }
     public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
     {
@@ -89,7 +81,23 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     private void Respawn()
     {
-        if (ControladorDeSalas.Instance.Sección == 1) SceneManager.LoadScene("Tutorial");
+        if (ControladorDeSalas.Instance.Sección == 1)
+        {
+            if (_checkPoint == false)
+            {
+                SceneManager.LoadScene("Tutorial");
+                
+            }
+            else
+            {
+                transform.position = _respawn;
+                _myMovementComponent.enabled = true;
+                _myInputComponent.enabled = true;
+                _isDeath = false;
+                    
+            }
+        }
+
         else if (ControladorDeSalas.Instance.Sección == 2) SceneManager.LoadScene("NIVELES");
         else if (ControladorDeSalas.Instance.Sección == 3) SceneManager.LoadScene("INTERMEDIOS");
         else if (ControladorDeSalas.Instance.Sección == 4) SceneManager.LoadScene("DIFICILES");
@@ -99,6 +107,7 @@ public class PlayerLifeComponent : MonoBehaviour
             SceneManager.LoadScene("Boss final");
         }            
         GameManager.Instance.Respawn();
+
     }
     IEnumerator Invulnerable()
     {
@@ -118,15 +127,29 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     IEnumerator Escudo()
     {
+        _escudoAct = true;
+        _myUIplayer.EscudoUI();
+        invulnerable = true;
+        _escudo.SetActive(true);
         yield return new WaitForSeconds(_escudoCooldown);
-        DesactivaEscudo();
+        invulnerable = false;
+        _escudo.SetActive(false);
+        _escudoAct = false;
     }
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3f);
         Respawn();
     }
-    #endregion
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.GetComponent<Checkpoint>() != null)
+        {
+            _checkPoint = true;
+            GameManager.Instance.GuardaDatos();
+        }
+    }
+        #endregion
     void Awake()
     {
         if (_instance == null)
@@ -141,7 +164,7 @@ public class PlayerLifeComponent : MonoBehaviour
         invulnerable = false;
         _myUIplayer = GetComponent<UIPlayer>();
         _mySpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-
+        _checkPoint = false;
     }
 
     private void Start()       
