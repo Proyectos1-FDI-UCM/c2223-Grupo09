@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
      private PlayerLifeComponent _myLifeComponent;*/
     [SerializeField] private AudioClip _compraVida;
+    [SerializeField] private AudioClip _compraEscudo;
     #endregion
     #region properties
     private static GameManager _instance;
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         if (_gear >= 5)
         {
+            AudioControler.Instance.PlaySound(_compraEscudo);
             PlayerLifeComponent.Instance.ActivaEscudo();
             _gear = _gear - 5;
         }
