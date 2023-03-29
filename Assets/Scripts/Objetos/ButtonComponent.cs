@@ -7,7 +7,8 @@ public class ButtonComponent : MonoBehaviour
 {
     /*[SerializeField]
     private Transform _player;*/
-    public GameObject platform;
+    [SerializeField]
+    private GameObject[] platforms;
     private WayPointsMovement _myWayPoints;
     public Sprite flatButton;
     private BoxCollider2D _myBoxCollider;
@@ -17,7 +18,11 @@ public class ButtonComponent : MonoBehaviour
     {  
         if(collision.gameObject.tag == "Player" && collision.transform.position.y > transform.position.y)
         {
-            platform.GetComponent<WayPointsMovement>().enabled = true;
+            for(int i=0; i < platforms.Length; i++)
+            {
+                platforms[i].GetComponent<WayPointsMovement>().enabled = true;
+            }
+            
             GetComponent<Animator>().enabled = true;
             Flatten();  
         }
@@ -26,7 +31,11 @@ public class ButtonComponent : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        platform.GetComponent<WayPointsMovement>().enabled = false;
+        for (int i = 0; i < platforms.Length; i++)
+        {
+            platforms[i].GetComponent<WayPointsMovement>().enabled = false;
+        }
+        //platform.GetComponent<WayPointsMovement>().enabled = false;
         GetComponent<Animator>().enabled = false;
         _myBoxCollider = GetComponent<BoxCollider2D>();
     }
