@@ -13,16 +13,24 @@ public class EnemyShoot : MonoBehaviour
     public Animator _animator;
     [SerializeField]
     private AudioClip _shootsSound;
+    private EnemyComponent _myEnemyComponent;
     #endregion
 
+    private void Start()
+    {
+        _myEnemyComponent= GetComponent<EnemyComponent>(); 
+    }
     IEnumerator BulletTime()
     {
         for(int i = 0; i < 3; i++)
         {
            yield return new WaitForSeconds(0.2f);
-            AudioControler.Instance.PlaySound(_shootsSound);
-           Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);
-           _animator.SetBool("Dispara", true);
+            if (!_myEnemyComponent.Died)
+            {
+                AudioControler.Instance.PlaySound(_shootsSound);
+                Instantiate(_bullet, _myEnemyController.position, _myEnemyController.rotation);
+                _animator.SetBool("Dispara", true);
+            }           
         }
     }
 

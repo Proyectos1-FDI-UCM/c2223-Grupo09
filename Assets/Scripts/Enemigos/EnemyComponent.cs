@@ -7,6 +7,7 @@ public class EnemyComponent : MonoBehaviour
     #region references
     private WayPointsMovement _myWayPoints;
     private CapsuleCollider2D _myCapsuleCollider;
+    private ShootComponent _myShootComponent;
     #endregion
     #region Parameters
     [SerializeField]
