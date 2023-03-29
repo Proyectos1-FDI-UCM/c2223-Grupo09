@@ -12,14 +12,12 @@ public class ControladorDeSalas : MonoBehaviour
             return _instance;
         }
     }
-
     #region references
     private Camera cam;                         //referencia a la cámara
     private Camera_movement _cam;               //referencia a su Script "Movement Component"
     [SerializeField] private Transform Punto1;  //referencia al Transform de los puntos del borde de cada sala
     [SerializeField] private Transform Punto2;  
     [SerializeField] private Transform Player;  //referencia al Transform del jugador
-
     #endregion
     #region properties
     [SerializeField] private int _sección;               //Cada sección del juego

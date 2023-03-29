@@ -1,39 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
     #region references
-    //ControladorDeSalas controladorDeSalas;
-    public int numEnemigos;
+    //private int _numEnemigos;
+    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3, 5, 10 };
+    [SerializeField]
+    private int _puerta;
     [SerializeField]
     private float alturaTope = 7.0f;
     [SerializeField]
     private float speed = 3.0f;
     private Vector2 newPosition;
     #endregion
+    #region methods
 
-    // Start is called before the first frame update
+    public void ContPuerta()
+    {
+        _enemigos[_puerta]--;
+    }
+    private void AbrePuerta()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
+    }
+    #endregion
     void Start()
     {
-        numEnemigos = ControladorDeSalas.Instance.NumEnemigos;
         newPosition = new Vector2(transform.position.x, alturaTope);
+        _puerta = ControladorDeSalas.Instance.Sala;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        numEnemigos = ControladorDeSalas.Instance.NumEnemigos;
-
-        if (numEnemigos == 0)
+        _puerta = ControladorDeSalas.Instance.Sala;
+        if (_enemigos[_puerta] == 0)
         {
             AbrePuerta();
         }
     }
-
-    public void AbrePuerta()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
-    }
+  
 }

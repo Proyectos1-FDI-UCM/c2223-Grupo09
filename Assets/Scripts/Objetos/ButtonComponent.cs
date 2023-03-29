@@ -35,7 +35,6 @@ public class ButtonComponent : MonoBehaviour
         {
             platforms[i].GetComponent<WayPointsMovement>().enabled = false;
         }
-        //platform.GetComponent<WayPointsMovement>().enabled = false;
         GetComponent<Animator>().enabled = false;
         _myBoxCollider = GetComponent<BoxCollider2D>();
     }

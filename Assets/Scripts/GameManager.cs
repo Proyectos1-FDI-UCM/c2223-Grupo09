@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         _gear = 0;
         puntos_vida = 3;     //siempre se empieza con tres vidas, se van perdiendo segun el daño recibido
         puntos_vida_max = 3; //siempre se empieza con tres vidas como maximo, estas pueden aumentar cuando se compren con los engranajes
-      //  _myLifeComponent = _player.GetComponent<PlayerLifeComponent>();
+                             //  _myLifeComponent = _player.GetComponent<PlayerLifeComponent>();
     }
     void Update()
     {

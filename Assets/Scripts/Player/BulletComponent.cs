@@ -15,6 +15,7 @@ public class BulletComponent : MonoBehaviour
 
     #region References
     // private EnemyComponent _enemyComponent;
+    //private OpenDoor _openDoor;
     #endregion
 
     #region Methods
@@ -38,6 +39,7 @@ public class BulletComponent : MonoBehaviour
         {
             if (collider.GetComponent<EnemyComponent>() != null) collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
             ControladorDeSalas.Instance.Kill();
+            ControladorPuertas.Instance.GetDoor();
             if(gameObject != null)
             {
                 Destroy(gameObject);
