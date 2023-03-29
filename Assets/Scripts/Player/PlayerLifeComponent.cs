@@ -81,12 +81,12 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     private void Respawn()
     {
-        if (ControladorDeSalas.Instance.Sección == 1)
+        if (ControladorDeSalas.Instance.Sección == 0)
         {
             if (_checkPoint == false)
             {
                 SceneManager.LoadScene("Tutorial");
-                
+
             }
             else
             {
@@ -94,10 +94,10 @@ public class PlayerLifeComponent : MonoBehaviour
                 _myMovementComponent.enabled = true;
                 _myInputComponent.enabled = true;
                 _isDeath = false;
-                    
+
             }
         }
-
+        else if (ControladorDeSalas.Instance.Sección == 1) SceneManager.LoadScene("Boss tutorial");
         else if (ControladorDeSalas.Instance.Sección == 2) SceneManager.LoadScene("NIVELES");
         else if (ControladorDeSalas.Instance.Sección == 3) SceneManager.LoadScene("INTERMEDIOS");
         else if (ControladorDeSalas.Instance.Sección == 4) SceneManager.LoadScene("DIFICILES");
