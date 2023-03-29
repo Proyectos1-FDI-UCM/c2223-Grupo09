@@ -4170,6 +4170,7 @@ GameObject:
   - component: {fileID: 1126111710}
   - component: {fileID: 1126111712}
   - component: {fileID: 1126111713}
+  - component: {fileID: 1126111714}
   m_Layer: 0
   m_Name: Final Boss
   m_TagString: Untagged
@@ -4322,7 +4323,8 @@ MonoBehaviour:
   - {fileID: 5681281238073234351, guid: 59902af4f9992a54faf2a8600d751024, type: 3}
   - {fileID: 5681281238073234351, guid: 9baf67cdcc046924fb908e11bddd0965, type: 3}
   - {fileID: 5681281238073234351, guid: 5d75700bde689cf4a9fc9622b68bdb0b, type: 3}
-  _hp: 100
+  _myAnimator: {fileID: 1126111714}
+  _hp: 10
 --- !u!114 &1126111713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4346,6 +4348,26 @@ MonoBehaviour:
   velocidad: 0
   velocidadAtaque: 0
   facingRight: 0
+--- !u!95 &1126111714
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126111707}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 165f494c42e87c348b4e80ae8bd1d491, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1140236599
 GameObject:
   m_ObjectHideFlags: 0
