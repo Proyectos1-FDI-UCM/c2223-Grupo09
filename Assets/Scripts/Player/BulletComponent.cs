@@ -35,18 +35,9 @@ public class BulletComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.GetComponent<KillPlayer>() != null)
+        if (collider.GetComponent<TutBossComponent>() != null)
         {
-            if (collider.GetComponent<EnemyComponent>() != null) collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
-            ControladorDeSalas.Instance.Kill();
-            ControladorPuertas.Instance.GetDoor();
-            if(gameObject != null)
-            {
-                Destroy(gameObject);
-            }      
-        }
-        if (collider.GetComponent<Escenario>() != null)
-        {
+            collider.GetComponent<TutBossComponent>().IsAttacked(_damage);
             if (gameObject != null)
             {
                 Destroy(gameObject);
@@ -60,9 +51,18 @@ public class BulletComponent : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collider.GetComponent<TutBossComponent>() != null)
+        if (collider.GetComponent<KillPlayer>() != null)
         {
-            collider.GetComponent<TutBossComponent>().IsAttacked(_damage);
+            if (collider.GetComponent<EnemyComponent>() != null) collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
+            ControladorDeSalas.Instance.Kill();
+            ControladorPuertas.Instance.GetDoor();
+            if(gameObject != null)
+            {
+                Destroy(gameObject);
+            }      
+        }
+        if (collider.GetComponent<Escenario>() != null)
+        {
             if (gameObject != null)
             {
                 Destroy(gameObject);
