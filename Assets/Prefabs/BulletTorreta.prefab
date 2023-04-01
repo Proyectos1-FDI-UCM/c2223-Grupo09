@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -717227453181445053, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Offset.x
-      value: 0.025454434
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -717227453181445053, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Offset.y
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1010344280871038838, guid: 80b2fddbe2089954aa077c1caaa63c9c, type: 3}
       propertyPath: m_Sprite
@@ -141,6 +141,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &987444153909651496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028600080532914881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d101366a367c5349b19e253bb726cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1061924147950999049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,15 +177,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76d9dc187a92a04c8e9561d19e59e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &987444153909651496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028600080532914881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d101366a367c5349b19e253bb726cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _turretBullet: 1

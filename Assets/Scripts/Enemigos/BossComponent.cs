@@ -20,6 +20,7 @@ public class BossComponent : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private Transform Spikes;              //Referencia a las sierras que suben cuando comienza la batalla
     [SerializeField] private SpriteRenderer Background;     //Referencia al fondo de pantalla
+    [SerializeField] private Transform HealthBar;
     [SerializeField] private SpriteRenderer Warning;
     private SpriteRenderer _mySpriteRenderer;
     [SerializeField] private Transform Lightning;
@@ -169,6 +170,7 @@ public class BossComponent : MonoBehaviour
         for (int i = 0; i < 20; i++)
         {
             Spikes.Translate(new Vector2(0, 0.05f));
+            HealthBar.Translate(new Vector2(0, -5f));
             Background.color = new Color(r, gb, gb, 1f);
             r += 0.0085f;
             gb += -0.0105f;

@@ -2276,7 +2276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 956}
+  m_AnchoredPosition: {x: 0, y: 1056}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &719680809
@@ -2962,6 +2962,7 @@ GameObject:
   - component: {fileID: 871901533}
   - component: {fileID: 871901535}
   - component: {fileID: 871901534}
+  - component: {fileID: 871901536}
   m_Layer: 5
   m_Name: vidaBoss
   m_TagString: Untagged
@@ -3027,6 +3028,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871901532}
   m_CullTransparentMesh: 1
+--- !u!95 &871901536
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871901532}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3a0fe83006e12b48aae838320d488e3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &887190817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3056,7 +3077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6c8acbf4787154fab837a09c1559c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1533254983}
+  _compraVida: {fileID: 0}
+  _compraEscudo: {fileID: 0}
 --- !u!4 &887190819
 Transform:
   m_ObjectHideFlags: 0
@@ -3516,6 +3538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spikes: {fileID: 1149652403}
   Background: {fileID: 1403163155}
+  HealthBar: {fileID: 692274942}
   Warning: {fileID: 1994052586}
   Lightning: {fileID: 1815434062}
   TurretPrefab: {fileID: 2838933880599659542, guid: 76ad337362f417c4a9cfbccac2b4e5fd, type: 3}
@@ -5378,11 +5401,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1533254983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7883262608657425669, guid: 98013b893958845419da8d6e950f70f9, type: 3}
-  m_PrefabInstance: {fileID: 1787318768}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1572765282
 GameObject:
   m_ObjectHideFlags: 0
