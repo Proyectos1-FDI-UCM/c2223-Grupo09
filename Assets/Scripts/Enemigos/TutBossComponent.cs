@@ -22,6 +22,7 @@ public class TutBossComponent : MonoBehaviour
     private GameObject[] Torretas;
     [SerializeField] private GameObject[] Proyectiles;
     [SerializeField] private Animator _myAnimator;
+    [SerializeField] private Transform _puerta;
     #endregion
 
     #region Parameters
@@ -147,6 +148,7 @@ public class TutBossComponent : MonoBehaviour
     {
         _myAnimator.SetBool("_Death", true);
         yield return new WaitForSeconds(1f);
+        _puerta.Translate(new Vector2(0, 5f));
         Destroy(gameObject);
     }
     IEnumerator GetDown()
