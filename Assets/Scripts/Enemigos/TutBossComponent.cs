@@ -23,6 +23,7 @@ public class TutBossComponent : MonoBehaviour
     [SerializeField] private GameObject[] Proyectiles;
     [SerializeField] private Animator _myAnimator;
     [SerializeField] private Transform _puerta;
+    [SerializeField] private Transform _healthbar;
     #endregion
 
     #region Parameters
@@ -100,6 +101,7 @@ public class TutBossComponent : MonoBehaviour
                 Torretas[0].GetComponent<TutBossEnabler>().Enable();
                 Torretas[1].GetComponent<TutBossEnabler>().Enable();    
                 gameObject.GetComponent<WayPointsMovement>().enabled = true;
+                StartCoroutine(HealthbarAnimation());
                 //Aquí debería comenzar la música de boss final, y tal vez alguna animación
             }
             else if (_newBossState == Tut_Boss_State.SegundaFase)   //Esto es que la vida del boss ha llegado hasta la mitad, comenzando así su segunda fase
@@ -143,6 +145,14 @@ public class TutBossComponent : MonoBehaviour
             _newBossState = Tut_Boss_State.PrimeraFase;
             Started = true;
         }            
+    }
+    IEnumerator HealthbarAnimation()
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            _healthbar.Translate(new Vector2(0, 3f));
+            yield return new WaitForSeconds(0.025f);
+        }
     }
     IEnumerator Muero()
     {
