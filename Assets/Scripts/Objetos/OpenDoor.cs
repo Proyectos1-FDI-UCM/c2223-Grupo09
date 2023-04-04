@@ -7,7 +7,7 @@ public class OpenDoor : MonoBehaviour
 {
     #region references
     //private int _numEnemigos;
-    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3, 5, 10 };
+    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3, 5, 10, 0, 0, 0, 0, 4, 0, 0 };
     [SerializeField]
     private int _puerta;
     [SerializeField]

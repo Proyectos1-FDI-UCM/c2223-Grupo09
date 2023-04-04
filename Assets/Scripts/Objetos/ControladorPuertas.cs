@@ -38,6 +38,10 @@ public class ControladorPuertas : MonoBehaviour
         {
             _sala = _sala - 6;
         }
+        else if (_seccion == 4)
+        {
+            _sala = _sala - 14;
+        }
     }
     void Awake()
     {
