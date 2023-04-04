@@ -26,7 +26,9 @@ public class PlayerLifeComponent : MonoBehaviour
     #endregion
     #region references
     [SerializeField]
-    private Vector2 _respawn;                   //posicion donde hace respawn el jugador (Debería ajustarse según el nivel)
+    private Vector2 _respawnSala3;                   //posicion donde hace respawn el jugador (Debería ajustarse según el nivel)
+    [SerializeField]
+    private Vector2 _respawnSala4;
     private SpriteRenderer _mySpriteRenderer;   //referencia al sprite Reneder
     private Animator _myAnimator;
     private Rigidbody2D _myRigidbody2D;
@@ -96,10 +98,22 @@ public class PlayerLifeComponent : MonoBehaviour
             }
             else
             {
-                transform.position = _respawn;
-                _myMovementComponent.enabled = true;
-                _myInputComponent.enabled = true;
-                _isDeath = false;
+                if (ControladorDeSalas.Instance.Sala == 3)
+                {
+                    GameManager.Instance.GuardaDatos();
+                    transform.position = _respawnSala3;
+                    _myMovementComponent.enabled = true;
+                    _myInputComponent.enabled = true;
+                    _isDeath = false;
+                }
+                if (ControladorDeSalas.Instance.Sala == 4)
+                {
+                    GameManager.Instance.GuardaDatos();
+                    transform.position = _respawnSala4;
+                    _myMovementComponent.enabled = true;
+                    _myInputComponent.enabled = true;
+                    _isDeath = false;
+                }
 
             }
         }
