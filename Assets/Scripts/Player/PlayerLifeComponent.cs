@@ -15,7 +15,14 @@ public class PlayerLifeComponent : MonoBehaviour
             return _instance;
         }
     }
-
+    private bool _checkPoint;
+    public bool CheckPoint
+    {
+        get
+        {
+            return _checkPoint;
+        }
+    }
     #endregion
     #region references
     [SerializeField]
@@ -41,7 +48,7 @@ public class PlayerLifeComponent : MonoBehaviour
     private bool _isHit = false;
     private float _escudoCooldown = 10.0f;
     private bool _escudoAct = false;
-    private bool _checkPoint;
+    
     #endregion
     #region Methods
     public void Hit()                           //metodo llamado desde el script KillPlayer de los enemigos
@@ -86,7 +93,6 @@ public class PlayerLifeComponent : MonoBehaviour
             if (_checkPoint == false)
             {
                 SceneManager.LoadScene("Tutorial");
-
             }
             else
             {
