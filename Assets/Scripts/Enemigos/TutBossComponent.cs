@@ -38,11 +38,11 @@ public class TutBossComponent : MonoBehaviour
     {
         get { return _boss; }
     }
-    public float HpBoss         //Variable pública que permite ver la vida del boss
+    public float HpBossTut         //Variable pública que permite ver la vida del boss
     {
         get { return _hp; }
     }
-    public float HPMax         //Variable pública que permite ver la vida del boss
+    public float HPMaxTut         //Variable pública que permite ver la vida del boss
     {
         get { return _maxHp; }
     }
@@ -148,8 +148,9 @@ public class TutBossComponent : MonoBehaviour
     {
         _myAnimator.SetBool("_Death", true);
         yield return new WaitForSeconds(1f);
-        _puerta.Translate(new Vector2(0, 5f));
         Destroy(gameObject);
+        ControladorDeSalas.Instance.Kill();
+        ControladorPuertas.Instance.GetDoor();
     }
     IEnumerator GetDown()
     {

@@ -25,11 +25,8 @@ public class ControladorPuertas : MonoBehaviour
     public void GetDoor()
     {
         Conversion();
-        if (_seccion != 30)
-        {
-            _openDoor = _puertas[_sala].GetComponent<OpenDoor>();
-            _openDoor.ContPuerta();
-        }            
+        _openDoor = _puertas[_sala].GetComponent<OpenDoor>();
+        _openDoor.ContPuerta();       
     }
     private void Conversion()
     {

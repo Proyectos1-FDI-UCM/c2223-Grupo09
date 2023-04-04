@@ -133,15 +133,18 @@ public class ControladorDeSalas : MonoBehaviour
             _instance = this;
         }  
         
-        if(_sección == 1)
+        if(_sección ==0)
         {
              _sala = 0;
+        }
+        else if (_sección == 1)
+        {
+            _sala = 5;
         }
         else if (_sección == 2)
         {
             _sala = 6;
         }
-
         //Estos dos primeros parámetros son solo para la prueba. Deben cambiarse más tarde
         cam = Camera.main;
         _cam = cam.gameObject.GetComponent<Camera_movement>();

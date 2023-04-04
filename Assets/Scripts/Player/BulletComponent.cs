@@ -28,7 +28,6 @@ public class BulletComponent : MonoBehaviour
         _speed = 30.0f;
         // _enemyComponent = GetComponent<EnemyComponent>();
     }   
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(_dir * _speed * Time.deltaTime);
@@ -51,11 +50,17 @@ public class BulletComponent : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collider.GetComponent<KillPlayer>() != null)
+        //lo he cambiado para diferenciar enemigos con boss tutorial (ambos tienen killplayer pero solo los primeros tienen enemycomponent)
+        if (collider.GetComponent<EnemyComponent>() != null) 
+        // if (collider.GetComponent<KillPlayer>() != null)
         {
-            if (collider.GetComponent<EnemyComponent>() != null) collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
-            ControladorDeSalas.Instance.Kill();
-            ControladorPuertas.Instance.GetDoor();
+            collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
+            // if (collider.GetComponent<EnemyComponent>() != null) collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
+            if(ControladorDeSalas.Instance.Sección != 5)
+            {
+                ControladorDeSalas.Instance.Kill();
+                ControladorPuertas.Instance.GetDoor();
+            }
             if(gameObject != null)
             {
                 Destroy(gameObject);

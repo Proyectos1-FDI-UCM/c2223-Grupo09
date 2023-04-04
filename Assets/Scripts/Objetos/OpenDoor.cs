@@ -17,7 +17,6 @@ public class OpenDoor : MonoBehaviour
     private Vector2 newPosition;
     #endregion
     #region methods
-
     public void ContPuerta()
     {
         _enemigos[_puerta]--;

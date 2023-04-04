@@ -108,6 +108,12 @@ public class UIManager : MonoBehaviour
         _vidaMax = BossComponent.Instance.HPMax;
         _vidaBoss.fillAmount = _vidaActual / _vidaMax;
     }
+    void VidaBossTutorial()
+    {
+        _vidaActual = TutBossComponent.Instance.HpBossTut;
+        _vidaMax = TutBossComponent.Instance.HPMaxTut;
+        _vidaBoss.fillAmount = _vidaActual / _vidaMax;
+    }
     #endregion
     void Start() 
     {
@@ -124,10 +130,13 @@ public class UIManager : MonoBehaviour
         TotalEnemigosScore();
         GearScore();
         VidaExtraScore();
+        if (ControladorDeSalas.Instance.Sección == 1)
+        {
+            VidaBossTutorial();
+        }
         if (ControladorDeSalas.Instance.Sección == 5)
         {
             VidaBoss();
         }
-        
     }
 }
