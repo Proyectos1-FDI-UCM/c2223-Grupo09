@@ -3984,6 +3984,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 7299897006311759995, guid: 4fdb549f178f69e479b2f128ba13b584, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 8270862334619033737, guid: 4fdb549f178f69e479b2f128ba13b584, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6236,7 +6240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _puerta: 0
   alturaTope: 7
-  speed: 3
+  speed: 5
 --- !u!1 &392814584
 GameObject:
   m_ObjectHideFlags: 0
@@ -9493,11 +9497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dff73388edaac46806b0a61354c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &560213346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2534791261848252319, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
-  m_PrefabInstance: {fileID: 448272000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &560945714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17378,7 +17377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5807918243180075693, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 11
+      value: 6.114482
       objectReference: {fileID: 0}
     - target: {fileID: 744635566993210008, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
       propertyPath: m_Size.y
@@ -17386,7 +17385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 744635566993210008, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1753364371862056413, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
       propertyPath: m_RootOrder
@@ -28633,11 +28632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7883262608657425679, guid: 98013b893958845419da8d6e950f70f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 209.53
+      value: 44.6
       objectReference: {fileID: 0}
     - target: {fileID: 7883262608657425679, guid: 98013b893958845419da8d6e950f70f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.67
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7883262608657425679, guid: 98013b893958845419da8d6e950f70f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29751,7 +29750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _puerta: 1
   alturaTope: 7
-  speed: 3
+  speed: 5
 --- !u!1 &1875561595
 GameObject:
   m_ObjectHideFlags: 0
@@ -32333,21 +32332,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1753364371862056413, guid: f137503775dd20f438c9a4f3dad5c368, type: 3}
   m_PrefabInstance: {fileID: 448272000}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2037806070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560213346}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8afedc887b02a04ca2d54ee80dbf07c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _puerta: 0
-  alturaTope: 8
-  speed: 3
 --- !u!1001 &2045304705
 PrefabInstance:
   m_ObjectHideFlags: 0
