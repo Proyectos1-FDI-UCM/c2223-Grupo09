@@ -100,7 +100,7 @@ public class PlayerLifeComponent : MonoBehaviour
             {
                 if (ControladorDeSalas.Instance.Sala == 3)
                 {
-                    GameManager.Instance.GuardaDatos();
+                    GameManager.Instance.GuardaEngranajes();
                     transform.position = _respawnSala3;
                     _myMovementComponent.enabled = true;
                     _myInputComponent.enabled = true;
@@ -108,7 +108,7 @@ public class PlayerLifeComponent : MonoBehaviour
                 }
                 if (ControladorDeSalas.Instance.Sala == 4)
                 {
-                    GameManager.Instance.GuardaDatos();
+                    GameManager.Instance.GuardaEngranajes();
                     transform.position = _respawnSala4;
                     _myMovementComponent.enabled = true;
                     _myInputComponent.enabled = true;

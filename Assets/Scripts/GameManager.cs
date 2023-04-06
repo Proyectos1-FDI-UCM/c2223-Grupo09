@@ -92,9 +92,13 @@ public class GameManager : MonoBehaviour
         lastPuntos_vida = puntos_vida;
         lastPuntos_vida_max = puntos_vida_max;
     }
+    public void GuardaEngranajes()
+    {
+        lastGear = _gear;
+    }
     public void Respawn()
     {
-        if (PlayerLifeComponent.Instance.CheckPoint == false)
+        if (PlayerLifeComponent.Instance.CheckPoint == false && ControladorDeSalas.Instance.Sección ==0)
         {
             _gear = 0;
             puntos_vida = 3;
@@ -102,6 +106,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("entro");
             puntos_vida = lastPuntos_vida;
             puntos_vida_max = lastPuntos_vida_max;
             _gear = lastGear;
