@@ -31,4 +31,15 @@ public class AudioControler : MonoBehaviour
         _myAudio.PlayOneShot(sound);
     }
 
+    public void StopSound(AudioClip sound)
+    {
+        _myAudio.Stop();
+    }
+
+    public void PlaySoundLoop(AudioClip sound)
+    {
+        _myAudio.loop = true;
+        _myAudio.Play();
+    }
+
 }

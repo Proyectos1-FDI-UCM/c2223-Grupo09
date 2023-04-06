@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ButtonComponent : MonoBehaviour
 {
-    /*[SerializeField]
-    private Transform _player;*/
+    [SerializeField]
+    private AudioClip _buttonSound;
     [SerializeField]
     private GameObject[] platforms;
     private WayPointsMovement _myWayPoints;
@@ -24,7 +24,8 @@ public class ButtonComponent : MonoBehaviour
             }
             
             GetComponent<Animator>().enabled = true;
-            Flatten();  
+            Flatten();
+            AudioControler.Instance.PlaySound(_buttonSound);
         }
     }
 

@@ -4597,6 +4597,8 @@ MonoBehaviour:
   _myAnimator: {fileID: 1126111714}
   _puerta: {fileID: 1342489517}
   _healthbar: {fileID: 1000518864}
+  _explosionBoss: {fileID: 8300000, guid: 651e61cb250444749ba03916f1dfa945, type: 3}
+  _music: {fileID: 8300000, guid: 78cc559584372f04682d51b0f9d563e0, type: 3}
   _hp: 120
 --- !u!114 &1126111713
 MonoBehaviour:
@@ -5920,7 +5922,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 78cc559584372f04682d51b0f9d563e0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.686
   m_Pitch: 1

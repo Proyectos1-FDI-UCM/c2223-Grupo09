@@ -24,6 +24,10 @@ public class TutBossComponent : MonoBehaviour
     [SerializeField] private Animator _myAnimator;
     [SerializeField] private Transform _puerta;
     [SerializeField] private Transform _healthbar;
+    [SerializeField]
+    private AudioClip _explosionBoss;
+    [SerializeField]
+    private AudioClip _music;
     #endregion
 
     #region Parameters
@@ -110,14 +114,15 @@ public class TutBossComponent : MonoBehaviour
                 Rayo = true;
                 Attack = true;                                  //Le permite al boss atacar
                 StartCoroutine(GetDown());
-
+                AudioControler.Instance.PlaySoundLoop(_music);
                 //Aquí debería haber alguna animación y algún sonido que indique que ha habido un cambio en el patrón
             }
             else if (_newBossState == Tut_Boss_State.Muerto)        //Esto es que la vida del boss ha llegado a 0, haciendo así que muera
             {
                 _boss = _newBossState;          //Se cambia el estado del boss
                 StartCoroutine(Muero());
-
+                AudioControler.Instance.StopSound(_music);
+                AudioControler.Instance.PlaySound(_explosionBoss);
                 //Aquí debería detenerse la música, poner un sonido de explosión, meter una animación, y poner una corutina que, tras un tiempo, pasa a la pantalla de victoria
             }
         }
