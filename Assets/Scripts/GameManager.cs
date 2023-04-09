@@ -106,7 +106,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("entro");
             puntos_vida = lastPuntos_vida;
             puntos_vida_max = lastPuntos_vida_max;
             _gear = lastGear;

@@ -12,7 +12,7 @@ public class BulletEnemy2 : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
-        if (_turretBullet && _player.transform.position.x > gameObject.transform.position.x)
+        if (_turretBullet && _player.transform.position.x > transform.position.x)
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }        

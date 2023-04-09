@@ -18,6 +18,7 @@ public class ControladorPuertas : MonoBehaviour
     [SerializeField]
     private GameObject[] _puertas;
     private int _sala;
+    private int _door =0;
     private OpenDoor _openDoor;
     private int _seccion;
     #endregion
@@ -25,22 +26,22 @@ public class ControladorPuertas : MonoBehaviour
     public void GetDoor()
     {
         Conversion();
-        _openDoor = _puertas[_sala].GetComponent<OpenDoor>();
-        _openDoor.ContPuerta();       
+        _openDoor = _puertas[_door].GetComponent<OpenDoor>();
+        _openDoor.ContPuerta();
     }
     private void Conversion()
     {
         if (_seccion == 1)
         {
-            _sala = _sala - 5;
+            _door = _sala - 5;
         }
         else if (_seccion == 2)
         {
-            _sala = _sala - 6;
+            _door = _sala - 6;
         }
         else if (_seccion == 4)
         {
-            _sala = _sala - 14;
+            _door = _sala - 14;
         }
     }
     void Awake()
@@ -61,7 +62,7 @@ public class ControladorPuertas : MonoBehaviour
         _seccion = ControladorDeSalas.Instance.Sección;
     }
 
-    void Update()
+    void LateUpdate()
     {
         //Conversion();
         _sala = ControladorDeSalas.Instance.Sala;

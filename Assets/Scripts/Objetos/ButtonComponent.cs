@@ -12,6 +12,7 @@ public class ButtonComponent : MonoBehaviour
     private WayPointsMovement _myWayPoints;
     public Sprite flatButton;
     private BoxCollider2D _myBoxCollider;
+    private bool _pressed;
     
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
@@ -25,7 +26,11 @@ public class ButtonComponent : MonoBehaviour
             
             GetComponent<Animator>().enabled = true;
             Flatten();
-            AudioControler.Instance.PlaySound(_buttonSound);
+            if (!_pressed)
+            {
+                AudioControler.Instance.PlaySound(_buttonSound);
+                _pressed = true;
+            }               
         }
     }
 
@@ -38,12 +43,13 @@ public class ButtonComponent : MonoBehaviour
         }
         GetComponent<Animator>().enabled = false;
         _myBoxCollider = GetComponent<BoxCollider2D>();
+        _pressed = false;
     }
 
     private void Flatten()
-    {
+    {        
         GetComponent<SpriteRenderer>().sprite = flatButton;
         GetComponent<Animator>().enabled = false;
-        _myBoxCollider.size = new Vector2(_myBoxCollider.size.x, 0.12f);
+        _myBoxCollider.size = new Vector2(_myBoxCollider.size.x, 0.12f);        
     }
 }
