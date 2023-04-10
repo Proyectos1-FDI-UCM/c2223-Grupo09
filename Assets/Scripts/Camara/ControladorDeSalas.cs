@@ -114,6 +114,13 @@ public class ControladorDeSalas : MonoBehaviour
         }
         else if (_sección == 4)
         {
+            if (_sala == 13)
+            {
+                Punto1.Translate(new Vector2(-50f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(-8.7f - Punto2.position.x, 0));
+                _numtotalEnemigos = _enemigos[14];
+
+            }
             if (_sala == 14)
             {
                 Punto1.Translate(new Vector2(-8.7f - Punto1.position.x, 0));

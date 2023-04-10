@@ -18,7 +18,7 @@ public class ControladorPuertas : MonoBehaviour
     [SerializeField]
     private GameObject[] _puertas;
     private int _sala;
-    private int _door =0;
+    private int _door;
     private OpenDoor _openDoor;
     private int _seccion;
     #endregion
@@ -43,6 +43,10 @@ public class ControladorPuertas : MonoBehaviour
         {
             _door = _sala - 14;
         }
+        else
+        {
+            _door = _sala;
+        }
     }
     void Awake()
     {
@@ -59,7 +63,7 @@ public class ControladorPuertas : MonoBehaviour
     void Start()
     {
         _sala = ControladorDeSalas.Instance.Sala;
-        _seccion = ControladorDeSalas.Instance.Sección;
+        _seccion = ControladorDeSalas.Instance.Sección;        
     }
 
     void LateUpdate()
