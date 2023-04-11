@@ -27,9 +27,11 @@ public class TurretLifeComponent : MonoBehaviour
     {
         if (_hp <= 0)
         {
-            AudioControler.Instance.PlaySound(_soundExplosion);
+            
+           
             if (_animator != null) _animator.SetBool("_Death", true);
             if (_myShootPlayer != null)_myShootPlayer.enabled = false;
+            AudioControler.Instance.PlaySound(_soundExplosion);
             StartCoroutine(Wait());
             _myCapsuleCollider.enabled = false;
 

@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   LockX: 1
+  BossFinal: 0
   distanciaCambio: 0.5
   player: {fileID: 0}
   velocidadinicial: 3
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 1
   _soundExplosion: {fileID: 8300000, guid: b60c2d1df099196408a1ab554f6a5fdc, type: 3}
+  Died: 0
   _animator: {fileID: -1474625093486318061}
 --- !u!95 &-1474625093486318061
 Animator:
