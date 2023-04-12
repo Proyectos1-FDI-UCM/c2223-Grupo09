@@ -196,6 +196,10 @@ public class ControladorDeSalas : MonoBehaviour
         {
             _sala = 6;
         }
+        else if (_sección == 3)
+        {
+            _sala = 10;
+        }
         else if (_sección == 4)
         {
             _sala = 14;
