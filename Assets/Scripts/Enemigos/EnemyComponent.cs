@@ -58,7 +58,7 @@ public class EnemyComponent : MonoBehaviour
          if (other.gameObject.GetComponent<BulletComponent>() != null)
          {
              Destroy(other.gameObject);
-             _myWayPoints.enabled = false;
+             if(_myWayPoints!=null)_myWayPoints.enabled = false;
          }
         /*if (other.GetComponent<Escenario>() != null)
         {
