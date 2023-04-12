@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 3969504159822947770}
   - component: {fileID: -78756763302822325}
   - component: {fileID: 7062035680301230432}
+  - component: {fileID: 3568092212188940606}
   m_Layer: 0
   m_Name: ParedDestruible
   m_TagString: Untagged
@@ -175,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f622d27bc3e7b7e47929b745b06b1870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 8300000, guid: 699e376bc91a8b8439ccc54d5aa0bcc5, type: 3}
 --- !u!61 &-78756763302822325
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -222,3 +224,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!95 &3568092212188940606
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133673714497026730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b53579030f6949408c2eebc1656d9f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

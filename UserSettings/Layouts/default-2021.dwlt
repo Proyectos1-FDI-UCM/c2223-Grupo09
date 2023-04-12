@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 99
+  controlID: 112
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 59
+  controlID: 105
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 98
+  controlID: 40
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 33
+  controlID: 41
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -445,9 +445,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: c6086eaa2e7df3d4abe7d68fea1d551a, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 3b53579030f6949408c2eebc1656d9f8, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 6252921250169033824, guid: c6086eaa2e7df3d4abe7d68fea1d551a, type: 2}
+  - m_Target: {fileID: -10137072379951483, guid: 3b53579030f6949408c2eebc1656d9f8, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -707,9 +707,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1054.0687, y: 588.03094, z: -3.5307798}
+    m_Target: {x: 13.615971, y: 0.69236565, z: 3.6365716}
     speed: 2
-    m_Value: {x: 1054.0687, y: 588.03094, z: -3.5307798}
+    m_Value: {x: 13.615971, y: 0.69236565, z: 3.6365716}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -760,9 +760,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 723.17865
+    m_Target: 10.397164
     speed: 2
-    m_Value: 723.17865
+    m_Value: 10.397164
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -818,9 +818,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b2a70000
-      m_LastClickedID: 42930
-      m_ExpandedIDs: 6ae8ffff0ceaffffc8f3ffff06fbffffd8600000f460000044a2000050a200009aa70000a6a70000b2a70000
+      m_SelectedIDs: f07c0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 38aaffffaab3ffffdebaffff08c6ffffdac7ffff72cbffffe0cfffff24d2ffff28d4ffffa0d7ffff4ae1ffff12e2ffff2afbffff006100000c610000b02b0100dc2c0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -977,22 +977,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\User\Documents\GitHub\c2223-Grupo09
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 16}
-    m_SelectedIDs: 4c630000
-    m_LastClickedID: 25420
-    m_ExpandedIDs: 000000003063000032630000346300004e63000000ca9a3b
+    scrollPos: {x: 0, y: 27.499023}
+    m_SelectedIDs: 60630000
+    m_LastClickedID: 25440
+    m_ExpandedIDs: 0000000046630000486300004a6300006463000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1020,7 +1020,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000306300003263000034630000
+    m_ExpandedIDs: 0000000046630000486300004a630000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1134,7 +1134,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 42930
+  m_LastSelectedObjectID: -22014
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52

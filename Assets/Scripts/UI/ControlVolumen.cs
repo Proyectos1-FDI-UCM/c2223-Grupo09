@@ -6,27 +6,27 @@ using UnityEngine.UI;
 
 public class ControlVolumen : MonoBehaviour
 {
-    public Slider volumen;
-    public float _sliderValue;
-    public Image _mute;
+    public Slider slider;      //referencia al slider
+    public float _sliderValue;  //valor que va a tomar
+    public Image _mute;         //imagen de mute
     // Start is called before the first frame update
     void Start()
     {
-        volumen.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
-        AudioListener.volume = volumen.value;
-        IsMute();
+        slider.value = 0.5f;   //comienza con el volumen a la mitad
+        AudioListener.volume = slider.value;   
+        
     }
 
-    private void ChangeSlider(float valor)
+    public void ChangeSlider(float valor)
     {
-        volumen.value = valor;
+        _sliderValue = valor;
         PlayerPrefs.SetFloat("volumenAudio", _sliderValue);
-        AudioListener.volume = _sliderValue;
+        AudioListener.volume = slider.value;
         IsMute();
 
     }
 
-    private void IsMute()
+    public void IsMute()
     {
         if (_sliderValue == 0)
         {
