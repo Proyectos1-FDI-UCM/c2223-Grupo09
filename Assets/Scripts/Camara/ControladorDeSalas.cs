@@ -112,6 +112,28 @@ public class ControladorDeSalas : MonoBehaviour
                 _numtotalEnemigos = _enemigos[9];
             }
         }
+        else if (_sección == 3)
+        {
+            if (_sala == 0)
+            {
+                Punto1.Translate(new Vector2(-7.58f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(19.3f - Punto2.position.x, 0));
+                _numtotalEnemigos = _enemigos[5];
+
+            }
+            else if (_sala == 1)
+            {
+                Punto1.Translate(new Vector2(19.3f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(63.7f - Punto2.position.x, 0));
+                _numtotalEnemigos = _enemigos[7];
+            }
+            else if (_sala == 12)
+            {
+                Punto1.Translate(new Vector2(63.7f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(100f - Punto2.position.x, 0));
+                _numtotalEnemigos = _enemigos[8];
+            }
+        }
         else if (_sección == 4)
         {
             if (_sala == 13)
@@ -173,6 +195,10 @@ public class ControladorDeSalas : MonoBehaviour
         else if (_sección == 2)
         {
             _sala = 6;
+        }
+        else if (_sección == 3)
+        {
+            _sala = 10;
         }
         else if (_sección == 4)
         {
