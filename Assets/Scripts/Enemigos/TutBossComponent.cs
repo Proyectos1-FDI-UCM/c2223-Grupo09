@@ -57,7 +57,11 @@ public class TutBossComponent : MonoBehaviour
     #region Methods
     public void IsAttacked(float damage) //Cuando el boss es atacado
     {
-        if(_boss == Tut_Boss_State.SegundaFase ) _hp -= damage;  //Se resta puntos de vida
+        if(_boss == Tut_Boss_State.SegundaFase )
+        {
+            _hp -= damage;  //Se resta puntos de vida
+            if (_hp != 0) StartCoroutine(Ouch());
+        }
     }
     private void Muerte()
     {
@@ -206,5 +210,12 @@ public class TutBossComponent : MonoBehaviour
             Instantiate(Proyectiles[2], transform.position, transform.rotation);
             Attack = true;
         }
+    }
+    IEnumerator Ouch()
+    {
+        yield return new WaitForSeconds(0.05f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 0.7f, 0.7f, 1f);
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
     }
 }

@@ -60,6 +60,7 @@ public class BossComponent : MonoBehaviour
     public void IsAttacked(float damage) //Cuando el boss es atacado
     {
         _hp -= damage;  //Se resta puntos de vida
+        if (_hp != 0) StartCoroutine(Ouch());
     }
     private void Muerte()
     {
@@ -275,5 +276,12 @@ public class BossComponent : MonoBehaviour
         //Aquí tiene que haber un cambio de escena a la escena "Fin del juego"
         //SceneManager.LoadScene("Fin del juego"); 
         Destroy(gameObject);
+    }
+    IEnumerator Ouch()
+    {
+        yield return new WaitForSeconds(0.05f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 0.85f, 0.85f, 1f);
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
     }
 }

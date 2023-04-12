@@ -73,6 +73,11 @@ public class BulletComponent : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.GetComponent<PlayerLifeComponent>() == null) Destroy(gameObject);
     }
     #endregion
 }

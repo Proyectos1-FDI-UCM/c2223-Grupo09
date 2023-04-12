@@ -49,6 +49,7 @@ public class TurretLifeComponent : MonoBehaviour
         {
             Destroy(other.gameObject);
             _hp--;
+            if(_hp!=0)StartCoroutine(Ouch());
         }
     }
 
@@ -80,6 +81,13 @@ public class TurretLifeComponent : MonoBehaviour
     public void BossDeath()
     {
         _hp = 0;
+    }
+    IEnumerator Ouch()
+    {       
+        yield return new WaitForSeconds(0.05f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 0.6f, 0.6f, 1f);
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
     }
 }
 
