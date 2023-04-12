@@ -194,6 +194,5 @@ public class PlayerLifeComponent : MonoBehaviour
     private void Update()
     {
         _myAnimator.SetBool("isDeath", _isDeath);
-        Debug.Log(_checkPoint);
     }
 }
