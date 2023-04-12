@@ -41,15 +41,13 @@ public class PlayerLifeComponent : MonoBehaviour
     [SerializeField]
     private GameObject _escudo;
     private UIPlayer _myUIplayer;
-    private int _gear;
     #endregion
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
     private bool _isDeath = false;
-    private bool _isHit = false;
+   // private bool _isHit = false;
     private float _escudoCooldown = 10.0f;
     private bool _escudoAct = false;
-    
     #endregion
     #region Methods
     public void Hit()                           //metodo llamado desde el script KillPlayer de los enemigos
@@ -113,7 +111,6 @@ public class PlayerLifeComponent : MonoBehaviour
                     _myInputComponent.enabled = true;
                     _isDeath = false;
                 }
-
             }
         }
         else if (ControladorDeSalas.Instance.Sección == 1) SceneManager.LoadScene("Boss tutorial");
@@ -197,5 +194,6 @@ public class PlayerLifeComponent : MonoBehaviour
     private void Update()
     {
         _myAnimator.SetBool("isDeath", _isDeath);
+        Debug.Log(_checkPoint);
     }
 }

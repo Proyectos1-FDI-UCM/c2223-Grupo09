@@ -39,6 +39,10 @@ public class ControladorPuertas : MonoBehaviour
         {
             _door = _sala - 6;
         }
+        else if (_seccion == 3)
+        {
+            _door = _sala - 10;
+        }
         else if (_seccion == 4)
         {
             _door = _sala - 14;
