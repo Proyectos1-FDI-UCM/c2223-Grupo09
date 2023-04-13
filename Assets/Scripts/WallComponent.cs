@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WallComponent : MonoBehaviour
 {
-    private CapsuleCollider2D _myCapsuleCollider;
+    private BoxCollider2D _myBoxCollider;
+    private Rigidbody2D _myRigidBody;
     // Start is called before the first frame update
 
     private Animator _animator;
@@ -13,14 +14,17 @@ public class WallComponent : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        _myBoxCollider = GetComponent<BoxCollider2D>();
+        _myRigidBody = GetComponent<Rigidbody2D>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<BulletComponent>() != null)
         {
+            _myRigidBody.gravityScale = 0f;
             _animator.SetBool("Muerte", true);
             AudioControler.Instance.PlaySound(explosion);
+            _myBoxCollider.enabled = false;
             StartCoroutine(Wait());
         }
     }
