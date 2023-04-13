@@ -208,7 +208,7 @@ public class BossComponent : MonoBehaviour
             f--;
         }
         Warning.color = new Color(1, 1, 1, 0);
-        Lightning.Translate(new Vector2(0, -14.5f));
+        if(Lightning !=null) Lightning.Translate(new Vector2(0, -14.5f));
         if (_boss != Boss_State.Muerto)
         {
             AudioControler.Instance.PlaySound(_rayoSound);

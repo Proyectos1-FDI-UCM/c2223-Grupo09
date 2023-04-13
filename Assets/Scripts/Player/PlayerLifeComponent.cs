@@ -46,7 +46,7 @@ public class PlayerLifeComponent : MonoBehaviour
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
     private bool _isDeath = false;
    // private bool _isHit = false;
-    private float _escudoCooldown = 4.0f;
+    private float _escudoCooldown = 5.0f;
     private bool _escudoAct = false;
     #endregion
     #region Methods

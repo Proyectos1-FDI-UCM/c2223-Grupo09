@@ -23,7 +23,7 @@ public class UIPlayer : MonoBehaviour
     private GameObject _escudoAct;
     [SerializeField]
     private GameObject _escudoDesact;
-    private float _escudoCooldown = 10.0f;
+    private float _escudoCooldown = 5.0f;
     private bool _isActive = false;
     private bool _escudoUI = false;
     private bool _isMoving = false;
