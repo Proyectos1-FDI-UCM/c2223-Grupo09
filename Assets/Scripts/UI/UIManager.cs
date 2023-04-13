@@ -91,7 +91,7 @@ public class UIManager : MonoBehaviour
     }
     void VidaExtraScore()
     {
-        if (_gearScore >= 10)
+        if (_gearScore >= 20)
         {
             _vidaDesact.SetActive(false);
             _vidaAct.SetActive(true);

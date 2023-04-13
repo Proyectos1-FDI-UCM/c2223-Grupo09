@@ -66,23 +66,23 @@ public class GameManager : MonoBehaviour
     }
     public void CompraEscudo()
     {
-        if (_gear >= 5)
+        if (_gear >= 10)
         {
             AudioControler.Instance.PlaySound(_compraEscudo);
             PlayerLifeComponent.Instance.ActivaEscudo();
-            _gear = _gear - 5;
+            _gear = _gear - 10;
         }
     }
     public void CompraVida()
     {
         if (puntos_vida_max < 6)
         {
-            if (_gear >= 10)
+            if (_gear >= 20)
             {
                 AudioControler.Instance.PlaySound(_compraVida);
                 puntos_vida++;
                 puntos_vida_max++;
-                _gear = _gear - 10;
+                _gear = _gear - 20;
             }
         }
     }

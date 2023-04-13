@@ -62,7 +62,7 @@ public class UIPlayer : MonoBehaviour
     void EscudoScore()
     {
 
-        if (_isMoving == false && GameManager.Instance.Gear >= 5)
+        if (_isMoving == false && GameManager.Instance.Gear >= 10)
         {
             _escudoDesact.SetActive(false);
             _escudoAct.SetActive(true);
