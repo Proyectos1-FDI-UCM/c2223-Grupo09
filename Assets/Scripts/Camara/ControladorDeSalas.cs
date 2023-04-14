@@ -36,7 +36,7 @@ public class ControladorDeSalas : MonoBehaviour
     {
         get { return _numtotalEnemigos; }
     }
-    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3,5,10,5,7,0,0,4,0,0};
+    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3,5,10,5,7,5,3,4,0,0};
     #endregion
     #region Methods
     private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara
@@ -140,7 +140,7 @@ public class ControladorDeSalas : MonoBehaviour
             {
                 Punto1.Translate(new Vector2(-50f - Punto1.position.x, 0));
                 Punto2.Translate(new Vector2(-8.7f - Punto2.position.x, 0));
-                _numtotalEnemigos = _enemigos[14];
+                _numtotalEnemigos = _enemigos[13];
 
             }
             if (_sala == 14)
