@@ -48,13 +48,14 @@ public class PlayerLifeComponent : MonoBehaviour
    // private bool _isHit = false;
     private float _escudoCooldown = 5.0f;
     private bool _escudoAct = false;
+    private bool _soundMade;
     #endregion
     #region Methods
     public void Hit()                           //metodo llamado desde el script KillPlayer de los enemigos
     {
         if (!invulnerable)                      //si no es invulnerable (por escudo o porque ya ha sido golpeado)
         {
-            AudioControler.Instance.PlaySound(_hitSound);
+            if(!_soundMade)AudioControler.Instance.PlaySound(_hitSound);
             GameManager.Instance.Hit();         //se resta una vida
             if (GameManager.Instance.Puntos_vida <= 0) GameOver(); //si llega a cero vidas, se activa el void de muerte
             else StartCoroutine(Invulnerable());       //si no ha llegado a cero vidas, se vuelve invulnerable  
@@ -78,7 +79,8 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     public void GameOver()                //carga la escena GameOver, metodo llamado cuando se pierden todas las vidas
     {
-        AudioControler.Instance.PlaySound(_gameOverSound);
+        if(!_soundMade) AudioControler.Instance.PlaySound(_gameOverSound);
+        _soundMade = true;
         _myMovementComponent.enabled = false;
         _myInputComponent.enabled = false;
         _myRigidbody2D.velocity = new Vector2(0f, 0f);
@@ -181,6 +183,7 @@ public class PlayerLifeComponent : MonoBehaviour
         _myUIplayer = GetComponent<UIPlayer>();
         _mySpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         _checkPoint = false;
+        _soundMade = false;
     }
 
     private void Start()       

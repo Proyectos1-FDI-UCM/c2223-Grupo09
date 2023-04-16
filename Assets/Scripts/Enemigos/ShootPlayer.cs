@@ -9,7 +9,7 @@ public class ShootPlayer : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     private float _restingSpeed;
-    private float _restingTime = 2.0f;
+    private float _restingTime = 0.5f;
     [SerializeField]
     private Transform _shootTransform;
     [SerializeField]
