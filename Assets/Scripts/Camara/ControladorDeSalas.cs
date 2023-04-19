@@ -161,6 +161,12 @@ public class ControladorDeSalas : MonoBehaviour
                 Punto2.Translate(new Vector2(94f - Punto2.position.x, 0));
                 _numtotalEnemigos = _enemigos[16];
             }
+            if (_sala == 13)
+            {
+                Punto1.Translate(new Vector2(-97f - Punto1.position.x, 0));
+                Punto2.Translate(new Vector2(-8.7f - Punto2.position.x, 0));
+                _numtotalEnemigos = _enemigos[13];
+            }
         }
     }
     public void Kill()

@@ -34,7 +34,7 @@ public class OpenDoor : MonoBehaviour
     void Update()
     {
         _puerta = ControladorDeSalas.Instance.Sala;
-        if (_enemigos[_puerta] == 0)
+        if(_puerta >0) if (_enemigos[_puerta] == 0)
         {
             AbrePuerta();
         }
