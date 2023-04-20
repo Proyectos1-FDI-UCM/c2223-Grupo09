@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputComponent : MonoBehaviour
 {
@@ -118,6 +119,11 @@ public class InputComponent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerLifeComponent.Instance.Comprar();
+        }
+        //Salir al menu principal dentro de los niveles
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MenuPrincipal");
         }
     }
 
