@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
     }
     public void Respawn()
     {
-        if (PlayerLifeComponent.Instance.CheckPoint == false && ControladorDeSalas.Instance.Sección ==0)
+        /*if (PlayerLifeComponent.Instance.CheckPoint == false && ControladorDeSalas.Instance.Sección ==0)
         {
             _gear = 0;
             puntos_vida = 3;
@@ -109,7 +109,10 @@ public class GameManager : MonoBehaviour
             puntos_vida = lastPuntos_vida;
             puntos_vida_max = lastPuntos_vida_max;
             _gear = lastGear;
-        }
+        }*/
+        puntos_vida = lastPuntos_vida;
+        puntos_vida_max = lastPuntos_vida_max;
+        _gear = lastGear;
     }
     private void Awake()
     {
