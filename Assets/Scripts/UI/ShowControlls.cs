@@ -8,6 +8,8 @@ public class ShowControlls : MonoBehaviour
     [SerializeField] private float MovX;
     [SerializeField] private float MovY;
     [SerializeField] private float Time;
+    [SerializeField] private TutorialControlesManager ControlesManager;
+    [SerializeField] private int Message;
     private bool Show = true;
     private UIManager _uiManager;
 
@@ -17,6 +19,10 @@ public class ShowControlls : MonoBehaviour
         {
             StartCoroutine(Check());            
             Show = false;
+            if (Message > 0)
+            {
+                ControlesManager.Message(Message);
+            }
         }
     }
     IEnumerator MoveUI()

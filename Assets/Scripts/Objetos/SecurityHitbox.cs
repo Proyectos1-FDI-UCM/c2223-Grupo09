@@ -25,7 +25,6 @@ public class SecurityHitbox : MonoBehaviour
         else
         {
             _myBoxCollider.enabled = true;
-        }
-        Debug.Log(_controladorDeSalas.Sala);
+        }        
     }
 }
