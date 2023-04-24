@@ -26,6 +26,7 @@ public class BossComponent : MonoBehaviour
     [SerializeField] private Transform Lightning;
     [SerializeField] private GameObject TurretPrefab;
     [SerializeField] private GameObject EnemyGenerator;
+    private GameObject GameManager;
     [SerializeField] private Transform[] Spawnpoints = new Transform[4];
     static private bool[] ActivatedSpawnpoints = { false, false, false, false };
 
@@ -93,6 +94,7 @@ public class BossComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager = GameObject.Find("GameManager");
         _maxHp = _hp;                               //El Hp máximo del boss será el hp que tenga al principio del todo
         _boss = Boss_State.FullHealth;              //El boss empieza en el estado de FullHealth
         _newBossState = Boss_State.FullHealth;      //Para evitar errores, se le da este estado también al _newBossState
@@ -130,6 +132,7 @@ public class BossComponent : MonoBehaviour
             {
                 _boss = _newBossState;          //Se cambia el estado del boss
                 _animator.SetBool("_Death", true);
+                GameManager.GetComponent<Timer>().StopTimer();
                 StartCoroutine(Muero());
 
                 //Aquí debería detenerse la música, poner un sonido de explosión, meter una animación, y poner una corutina que, tras un tiempo, pasa a la pantalla de victoria
