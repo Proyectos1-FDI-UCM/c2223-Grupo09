@@ -67,7 +67,7 @@ public class ControladorPuertas : MonoBehaviour
     void Start()
     {
         _sala = ControladorDeSalas.Instance.Sala;
-        _seccion = ControladorDeSalas.Instance.Sección;        
+        _seccion = ControladorDeSalas.Instance.Sección;
     }
 
     void LateUpdate()

@@ -14,8 +14,10 @@ public class BulletComponent : MonoBehaviour
     #endregion
 
     #region References
-    // private EnemyComponent _enemyComponent;
+    private ControladorPuertas ControladorPuertas;
+    //private EnemyComponent _enemyComponent;
     //private OpenDoor _openDoor;
+    
     #endregion
 
     #region Methods
@@ -26,7 +28,8 @@ public class BulletComponent : MonoBehaviour
     private void Start()
     {
         _speed = 30.0f;
-        // _enemyComponent = GetComponent<EnemyComponent>();
+        ControladorPuertas = GetComponent<ControladorPuertas>();
+        //_enemyComponent = GetComponent<EnemyComponent>();
     }   
     void Update()
     {
@@ -59,7 +62,10 @@ public class BulletComponent : MonoBehaviour
             if(ControladorDeSalas.Instance.Sección != 5)
             {
                 ControladorDeSalas.Instance.Kill();
-                ControladorPuertas.Instance.GetDoor();
+                if(ControladorPuertas != null)
+                {
+                    ControladorPuertas.GetDoor();
+                }
             }
             if(gameObject != null)
             {
