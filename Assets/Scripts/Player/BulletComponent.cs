@@ -15,13 +15,13 @@ public class BulletComponent : MonoBehaviour
 
     #region References
     private ControladorPuertas ControladorPuertas;
-    //private EnemyComponent _enemyComponent;
-    //private OpenDoor _openDoor;
-    
+    private EnemyComponent _enemyComponent;
+    private OpenDoor _openDoor;
+
     #endregion
 
     #region Methods
-    public float getDamage() 
+    public float getDamage()
     { return _damage; }
     public void setDir(Vector2 v)
     { _dir = v; }
@@ -29,8 +29,9 @@ public class BulletComponent : MonoBehaviour
     {
         _speed = 30.0f;
         ControladorPuertas = GetComponent<ControladorPuertas>();
-        //_enemyComponent = GetComponent<EnemyComponent>();
-    }   
+        _enemyComponent = GetComponent<EnemyComponent>();
+        _openDoor = GetComponent<OpenDoor>();
+    }
     void Update()
     {
         transform.Translate(_dir * _speed * Time.deltaTime);
@@ -54,23 +55,24 @@ public class BulletComponent : MonoBehaviour
             }
         }
         //lo he cambiado para diferenciar enemigos con boss tutorial (ambos tienen killplayer pero solo los primeros tienen enemycomponent)
-        if (collider.GetComponent<EnemyComponent>() != null) 
+        if (collider.GetComponent<EnemyComponent>() != null)
         // if (collider.GetComponent<KillPlayer>() != null)
         {
             collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
             // if (collider.GetComponent<EnemyComponent>() != null) collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
-            if(ControladorDeSalas.Instance.Sección != 5)
+            if (ControladorDeSalas.Instance.Sección != 5)
             {
                 ControladorDeSalas.Instance.Kill();
-                if(ControladorPuertas != null)
-                {
-                    ControladorPuertas.GetDoor();
-                }
+                ControladorPuertas.Instance.GetDoor();
+                /* if(ControladorPuertas != null)
+                 {
+                     ControladorPuertas.GetDoor();
+                 }*/
             }
-            if(gameObject != null)
-            {
-                Destroy(gameObject);
-            }      
+            /* if(gameObject != null)
+             {
+                 Destroy(gameObject);
+             }      */
         }
         if (collider.GetComponent<Escenario>() != null)
         {
@@ -79,11 +81,11 @@ public class BulletComponent : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
+
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.GetComponent<PlayerLifeComponent>() == null) Destroy(gameObject);
+        if (col.gameObject.GetComponent<PlayerLifeComponent>() == null) Destroy(gameObject);
     }
     #endregion
 }
