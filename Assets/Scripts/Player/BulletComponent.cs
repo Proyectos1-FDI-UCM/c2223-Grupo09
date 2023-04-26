@@ -14,9 +14,8 @@ public class BulletComponent : MonoBehaviour
     #endregion
 
     #region References
-    private ControladorPuertas ControladorPuertas;
-    private EnemyComponent _enemyComponent;
-    private OpenDoor _openDoor;
+   /* private EnemyComponent _enemyComponent;
+    private OpenDoor _openDoor;*/
 
     #endregion
 
@@ -28,9 +27,8 @@ public class BulletComponent : MonoBehaviour
     private void Start()
     {
         _speed = 30.0f;
-        ControladorPuertas = GetComponent<ControladorPuertas>();
-        _enemyComponent = GetComponent<EnemyComponent>();
-        _openDoor = GetComponent<OpenDoor>();
+       /* _enemyComponent = GetComponent<EnemyComponent>();
+        _openDoor = GetComponent<OpenDoor>();*/
     }
     void Update()
     {

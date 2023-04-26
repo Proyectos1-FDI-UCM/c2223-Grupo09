@@ -123,6 +123,7 @@ public class InputComponent : MonoBehaviour
         //Salir al menu principal dentro de los niveles
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            GameManager.Instance.Escape();
             SceneManager.LoadScene("MenuPrincipal");
         }
     }

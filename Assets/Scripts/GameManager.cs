@@ -114,6 +114,13 @@ public class GameManager : MonoBehaviour
         puntos_vida_max = lastPuntos_vida_max;
         _gear = lastGear;
     }
+    public void Escape()
+    {
+        puntos_vida = 3;
+        puntos_vida_max = 3;
+        _gear = 0;
+        GuardaDatos();
+    }
     private void Awake()
     {
         if (_instance == null)
@@ -132,5 +139,6 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        
     }
 }
