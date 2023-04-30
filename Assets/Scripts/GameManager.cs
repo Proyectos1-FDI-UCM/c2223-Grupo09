@@ -116,10 +116,8 @@ public class GameManager : MonoBehaviour
     }
     public void Escape()
     {
-        puntos_vida = 3;
-        puntos_vida_max = 3;
-        _gear = 0;
         GuardaDatos();
+        Destroy(gameObject);
     }
     private void Awake()
     {
