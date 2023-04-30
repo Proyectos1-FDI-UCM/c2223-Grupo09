@@ -17,11 +17,12 @@ public class ShowControlls : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null && Show)   //se comprueba si este tiene un Script de Life Component
         {
-            StartCoroutine(Check());            
+            if(ElementoUI !=null) StartCoroutine(Check());            
             Show = false;
             if (Message > 0)
             {
                 ControlesManager.Message(Message);
+                Destroy(gameObject);
             }
         }
     }

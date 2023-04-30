@@ -14,6 +14,9 @@ public class TutorialControlesManager : MonoBehaviour
     private bool Shift = false;
     [SerializeField] GameObject Controls_Space;
     private bool Space = false;
+    [SerializeField] GameObject Controls_H;
+    private bool H = false;
+    int shift_pressed;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,8 @@ public class TutorialControlesManager : MonoBehaviour
         Controls_Arrows.GetComponent<SpriteRenderer>().enabled = false;
         Controls_Shift.GetComponent<SpriteRenderer>().enabled = false;
         Controls_Space.GetComponent<SpriteRenderer>().enabled = false;
+        Controls_H.GetComponent<SpriteRenderer>().enabled = false;
+
     }
     // Update is called once per frame
     void Update()
@@ -29,7 +34,6 @@ public class TutorialControlesManager : MonoBehaviour
         {
             if (AD)
             {
-                AD = false;
                 StartCoroutine(Delete_AD());
             }
         }
@@ -37,7 +41,6 @@ public class TutorialControlesManager : MonoBehaviour
         {
             if (W)
             {
-                W = false;
                 StartCoroutine(Delete_W());
             }
         }
@@ -45,32 +48,28 @@ public class TutorialControlesManager : MonoBehaviour
         {
             if (Arrows && !W)
             {
-                Arrows = false;
                 StartCoroutine(Delete_Arrows());
             }
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (Shift && !Arrows)
+            if (shift_pressed>100)
             {
-                Shift = false;
-                StartCoroutine(Delete_Shift());
-            }
-        }
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            if (Shift && !Arrows)
-            {
-                Shift = false;
                 StartCoroutine(Delete_Shift());
             }
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            if (Space)
+            if (Space && !H)
             {
-                Space = false;
                 StartCoroutine(Delete_Space());
+            }
+        }
+        if (Input.GetKey(KeyCode.H))
+        {
+            if (H && !Shift)
+            {
+                StartCoroutine(Delete_H());
             }
         }
     }
@@ -89,40 +88,70 @@ public class TutorialControlesManager : MonoBehaviour
         }
         if (n == 3)
         {
-            if (Shift)
+            if (H)
             {
-                Shift = false;
-                Delete_Shift();
+                Delete_H();
             }
             Space = true;
             Controls_Space.GetComponent<SpriteRenderer>().enabled = true;
         }
+        if (n == 4)
+        {
+            if (Shift)
+            {
+                Delete_Shift();
+            }
+            H = true;
+            Controls_H.GetComponent<SpriteRenderer>().enabled = true;
+        }
+    }
+    void FixedUpdate()
+    {
+        if (Shift && !Arrows)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                shift_pressed++;
+            }
+            else if(shift_pressed>0)shift_pressed--;
+        }
     }
     IEnumerator Delete_AD()
     {
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1f);
         Destroy(Controls_AD);
         W = true;
         Controls_W.GetComponent<SpriteRenderer>().enabled = true;
     }
     IEnumerator Delete_W()
     {
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1f);
+        W = false;
         Destroy(Controls_W);
     }
     IEnumerator Delete_Arrows()
     {
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(0.8f);
+        Arrows = false;
         Destroy(Controls_Arrows);
     }
     IEnumerator Delete_Shift()
     {
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.2f);
+        Shift = false;
+        shift_pressed = 0;
         Destroy(Controls_Shift);
     }
     IEnumerator Delete_Space()
     {
         yield return new WaitForSeconds(1.6f);
+        Space = false;
         Destroy(Controls_Space);
+    }
+    IEnumerator Delete_H()
+    {
+        yield return new WaitForSeconds(1.6f);
+        H = false;
+        Destroy(Controls_H);
     }
 }
