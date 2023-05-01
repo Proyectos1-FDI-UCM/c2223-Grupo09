@@ -132,9 +132,8 @@ public class BossComponent : MonoBehaviour
             {
                 _boss = _newBossState;          //Se cambia el estado del boss
                 _animator.SetBool("_Death", true);
-                if(GameManager.GetComponent<Timer>() != null) GameManager.GetComponent<Timer>().SaveData();
-                StartCoroutine(Muero());
-
+                GameManager.GetComponent<GameManager>().LogrosCheck();                
+                StartCoroutine(Muero());                
                 //Aquí debería detenerse la música, poner un sonido de explosión, meter una animación, y poner una corutina que, tras un tiempo, pasa a la pantalla de victoria
             }
         }

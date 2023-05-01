@@ -79,12 +79,12 @@ public class TutorialControlesManager : MonoBehaviour
         if (n == 1)
         {
             Arrows = true;
-            Controls_Arrows.GetComponent<SpriteRenderer>().enabled = true;
+            if(Controls_Arrows != null)Controls_Arrows.GetComponent<SpriteRenderer>().enabled = true;
         }
         if (n == 2)
         {
             Shift = true;
-            Controls_Shift.GetComponent<SpriteRenderer>().enabled = true;
+            if (Controls_Shift != null) Controls_Shift.GetComponent<SpriteRenderer>().enabled = true;
         }
         if (n == 3)
         {
@@ -93,7 +93,7 @@ public class TutorialControlesManager : MonoBehaviour
                 Delete_H();
             }
             Space = true;
-            Controls_Space.GetComponent<SpriteRenderer>().enabled = true;
+            if (Controls_Space != null) Controls_Space.GetComponent<SpriteRenderer>().enabled = true;
         }
         if (n == 4)
         {
@@ -102,7 +102,7 @@ public class TutorialControlesManager : MonoBehaviour
                 Delete_Shift();
             }
             H = true;
-            Controls_H.GetComponent<SpriteRenderer>().enabled = true;
+            if (Controls_H != null) Controls_H.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
     void FixedUpdate()
@@ -119,39 +119,39 @@ public class TutorialControlesManager : MonoBehaviour
     IEnumerator Delete_AD()
     {
         yield return new WaitForSeconds(1f);
-        Destroy(Controls_AD);
+        if (Controls_AD != null) Destroy(Controls_AD);
         W = true;
-        Controls_W.GetComponent<SpriteRenderer>().enabled = true;
+        if (Controls_W != null) Controls_W.GetComponent<SpriteRenderer>().enabled = true;
     }
     IEnumerator Delete_W()
     {
         yield return new WaitForSeconds(1f);
         W = false;
-        Destroy(Controls_W);
+        if (Controls_W != null) Destroy(Controls_W);
     }
     IEnumerator Delete_Arrows()
     {
         yield return new WaitForSeconds(0.8f);
         Arrows = false;
-        Destroy(Controls_Arrows);
+        if (Controls_Arrows != null) Destroy(Controls_Arrows);
     }
     IEnumerator Delete_Shift()
     {
         yield return new WaitForSeconds(1.2f);
         Shift = false;
         shift_pressed = 0;
-        Destroy(Controls_Shift);
+        if (Controls_Shift != null) Destroy(Controls_Shift);
     }
     IEnumerator Delete_Space()
     {
         yield return new WaitForSeconds(1.6f);
         Space = false;
-        Destroy(Controls_Space);
+        if (Controls_Space != null) Destroy(Controls_Space);
     }
     IEnumerator Delete_H()
     {
         yield return new WaitForSeconds(1.6f);
         H = false;
-        Destroy(Controls_H);
+        if (Controls_H != null) Destroy(Controls_H);
     }
 }

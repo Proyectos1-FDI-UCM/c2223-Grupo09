@@ -46,15 +46,21 @@ public class GameManager : MonoBehaviour
     private int lastGear;
     private int lastPuntos_vida;
     private int lastPuntos_vida_max;
+    private int lastLogro2;
+    private int Logro2 =0;
+    private bool Logro6 = true;
+    private bool Logro7 = true;
     #endregion
     #region Methods
     public void OnPickGear()
     {
         _gear++;
+        Logro2++;
     }
     public void Hit()
     {
         puntos_vida--;
+        Logro7 = false;
     }
     public void Botiquin()
     {
@@ -71,6 +77,7 @@ public class GameManager : MonoBehaviour
             AudioControler.Instance.PlaySound(_compraEscudo);
             PlayerLifeComponent.Instance.ActivaEscudo();
             _gear = _gear - 10;
+            Logro6 = false;
         }
     }
     public void CompraVida()
@@ -83,18 +90,21 @@ public class GameManager : MonoBehaviour
                 puntos_vida++;
                 puntos_vida_max++;
                 _gear = _gear - 20;
+                Logro6 = false;
             }
         }
     }
     public void GuardaDatos()
     {
         lastGear = _gear;
+        lastLogro2 = Logro2;
         lastPuntos_vida = puntos_vida;
         lastPuntos_vida_max = puntos_vida_max;
     }
     public void GuardaEngranajes()
     {
         lastGear = _gear;
+        lastLogro2 = Logro2;
     }
     public void Respawn()
     {
@@ -111,8 +121,9 @@ public class GameManager : MonoBehaviour
             _gear = lastGear;
         }*/
         puntos_vida = lastPuntos_vida;
-        puntos_vida_max = lastPuntos_vida_max;
+        puntos_vida_max = lastPuntos_vida_max;       
         _gear = lastGear;
+        Logro2 = lastLogro2;
     }
     public void Escape()
     {
@@ -126,6 +137,13 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+    public void LogrosCheck()
+    {
+        if (GetComponent<Timer>() != null) GetComponent<Timer>().SaveData();
+        if (Logro2 ==85) PlayerPrefs.SetInt("Engranajes", 1);
+        if (Logro6) PlayerPrefs.SetInt("SinMejoras", 1);
+        if (Logro7) PlayerPrefs.SetInt("Tocado", 1);
     }
     #endregion
     void Start()
