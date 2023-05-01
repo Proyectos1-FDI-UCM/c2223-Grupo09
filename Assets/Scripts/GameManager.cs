@@ -145,6 +145,14 @@ public class GameManager : MonoBehaviour
         if (Logro6) PlayerPrefs.SetInt("SinMejoras", 1);
         if (Logro7) PlayerPrefs.SetInt("Tocado", 1);
     }
+    public void Cabeza()
+    {        
+        PlayerPrefs.SetInt("Cabeza", 1);
+    }
+    public void Buho()
+    {
+        PlayerPrefs.SetInt("Buho", 1);
+    }
     #endregion
     void Start()
     {

@@ -88,10 +88,7 @@ public class TutorialControlesManager : MonoBehaviour
         }
         if (n == 3)
         {
-            if (H)
-            {
-                Delete_H();
-            }
+            StartCoroutine(Delete_H());            
             Space = true;
             if (Controls_Space != null) Controls_Space.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -99,7 +96,7 @@ public class TutorialControlesManager : MonoBehaviour
         {
             if (Shift)
             {
-                Delete_Shift();
+                StartCoroutine(Delete_Shift());
             }
             H = true;
             if (Controls_H != null) Controls_H.GetComponent<SpriteRenderer>().enabled = true;

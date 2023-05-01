@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Logros : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Logros : MonoBehaviour
     [SerializeField] Image _logro6;
     [SerializeField] Image _logro7;
     [SerializeField] Image _logro8;
+    [SerializeField] Text descripción;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +26,11 @@ public class Logros : MonoBehaviour
         {
             _logro2.color = new Color(0.25f, 0.25f, 0.25f,1f);
         }
-        if (PlayerPrefs.GetInt("EncontradoCabeza") == 0)
+        if (PlayerPrefs.GetInt("Cabeza") == 0)
         {
-            _logro3.color = new Color(0.25f, 0.25f, 0.25f, 1f);
+            _logro3.color = new Color(0.35f, 0.35f, 0.35f, 1f);
         }
-        if (PlayerPrefs.GetInt("EncontradoBuho") == 0)
+        if (PlayerPrefs.GetInt("Buho") == 0)
         {
             _logro4.color = new Color(0.25f, 0.25f, 0.25f, 1f);
         }
@@ -52,34 +54,34 @@ public class Logros : MonoBehaviour
     // Update is called once per frame
     public void Logro1()
     {
-        
+        descripción.text = new string("Completa una partida en menos de 10 minutos");
     }
     public void Logro2()
     {
-        Debug.Log("2");
+        descripción.text = new string("Consigue todos los engranajes posibles en una sola partida");
     }
     public void Logro3()
     {
-        Debug.Log("3");
+        descripción.text = new string("Encuentra la piedra con forma de cabeza escondida en alguna zona del mapa");
     }
     public void Logro4()
     {
-        Debug.Log("4");
+        descripción.text = new string("Encuentra al buho con gorro escondido en alguna zona del mapa");
     }
     public void Logro5()
     {
-        Debug.Log("5");
+        descripción.text = new string("Completa una partida en menos de 5 minutos");
     }
     public void Logro6()
     {
-        Debug.Log("6");
+        descripción.text = new string("Completa una partida sin usar un solo escudo o vida extra");
     }
     public void Logro7()
     {
-        Debug.Log("7");
+        descripción.text = new string("Completa una partida sin recibir un solo golpe (se pueden usar los escudos)");
     }
     public void Logro8()
     {
-        Debug.Log("8");
+        descripción.text = new string("Completa una partida en menos de 3 minutos y 30 segundos");
     }
 }
