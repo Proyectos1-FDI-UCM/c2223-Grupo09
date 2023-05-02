@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     private Text _timerText1;
     private Text _timerText2;
     private GameObject SecurityTemporal;
+    private Transform _timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,7 @@ public class Timer : MonoBehaviour
             {
                 _timerText1.text = time.Minutes.ToString();
             }                       
-        }        
+        }
     }
     public void StartTimer()
     {
