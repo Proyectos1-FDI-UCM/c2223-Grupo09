@@ -169,6 +169,7 @@ public class MovementComponent : MonoBehaviour
     {
 
         _canJump = true;
+        WaitJump();
     }
     private void Jump()
     {
@@ -181,6 +182,10 @@ public class MovementComponent : MonoBehaviour
             _canJump = false;
 
         }
+    }
+    public IEnumerator WaitJump()
+    {
+        yield return new WaitForSeconds(0.1f);
     }
     public IEnumerator Dash()
     {
