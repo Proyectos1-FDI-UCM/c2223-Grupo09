@@ -141,7 +141,7 @@ public class PlayerLifeComponent : MonoBehaviour
             _mySpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(0.2f);
         }
-        invulnerable = false;                               //después del tiempo de espera, se le quita la invulnerabilidad al jugador [ATENCIÓN: Cuando se haga el script del escudo protector                                                   //hay que vijilar que este IEnumerator no pueda desactivar la invencibilidad antes de que se acabe el tiempo del propio escudo]
+        if(!_escudoAct)invulnerable = false;                               //después del tiempo de espera, se le quita la invulnerabilidad al jugador [ATENCIÓN: Cuando se haga el script del escudo protector                                                   //hay que vijilar que este IEnumerator no pueda desactivar la invencibilidad antes de que se acabe el tiempo del propio escudo]
     }
     IEnumerator Escudo()
     {
