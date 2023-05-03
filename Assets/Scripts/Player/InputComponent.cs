@@ -47,7 +47,7 @@ public class InputComponent : MonoBehaviour
         //Salto
         if (Input.GetKeyDown(KeyCode.W))        // GetKeyDown se utiliza una vez al pulsarse la tecla
         {
-            _movementComponent.CanJump();
+            _movementComponent.Jump();
         }
 
         //Disparar diagonal arriba izquierda

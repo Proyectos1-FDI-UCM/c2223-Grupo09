@@ -24,7 +24,7 @@ public class MovementComponent : MonoBehaviour
     [SerializeField]
     private Vector3 _feetDimension;
     private bool _coyoteTime;
-    private bool _canJump=false;
+    private bool _canJump=true;
 
     [Header("Animation")]
     private bool _isRunning = false;    //para saber si está corriendo
@@ -103,7 +103,7 @@ public class MovementComponent : MonoBehaviour
             movementX = 0f;
             Walk(0);
             Run(0);
-            Jump();
+            //Jump();
             
         }
     }
@@ -165,13 +165,7 @@ public class MovementComponent : MonoBehaviour
             _isWalking= false;  //no anda
         }
     }
-    public void CanJump()
-    {
-
-        _canJump = true;
-        WaitJump();
-    }
-    private void Jump()
+    public void Jump()
     {
         if (_canJump && _onGround)
         {
@@ -180,12 +174,14 @@ public class MovementComponent : MonoBehaviour
             _onGround = false;
             _coyoteTime = false;
             _canJump = false;
+            StartCoroutine(WaitJump());
 
         }
     }
     public IEnumerator WaitJump()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
+        _canJump = true;
     }
     public IEnumerator Dash()
     {
@@ -213,7 +209,7 @@ public class MovementComponent : MonoBehaviour
             _onGround = Physics2D.OverlapBox(_feet.position, _feetDimension, 0f, _ground);
             _canMove = true;                                    //se activa de nuevo el movimiento
             _myRigidBody2D.gravityScale = _initialGravity;      //se devuelve la gravedad inicial
-
+            _canJump = true;
             yield return new WaitForSeconds(_cooldown);         //tiempo de espera para volver a realizar el dash
             _canDash = true;                                    //se vuelve a activar el dash
         } 
