@@ -57,7 +57,7 @@ public class InputComponent : MonoBehaviour
             FlipBeforeAttack(Vector2.left);
             _shootComponent.Shoot(Vector2.up + Vector2.left);
             _lastTimeShot = 0;
-            _mySpriteRenderer.flipX = false;
+            _mySpriteRenderer.flipX = true;
         }
         //Disparar diagonal arriba derecha
         else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow)
