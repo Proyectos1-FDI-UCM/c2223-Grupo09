@@ -2,22 +2,24 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-html,body {
-  font-size: 24px;
+html, body {
+    font-size: 20px;
+    font-family: 'Cascadia Code';
+    
 }
 body {
-  padding-bottom: 1rem;
-  color: #5a5a5a;
+    padding-bottom: 1rem;
+    color: #000000;
+    background-image: url(fondo.jpg);
+    background-repeat: no-repeat;
 }
-
-
 
 
 /* CUSTOMIZE THE HEADER
 -------------------------------------------------- */
 
 img.img-header {
-  max-height: 500px;
+  max-height: 350px;
 }
 
 
@@ -31,7 +33,7 @@ img.img-header {
 
 .marketing h2 {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   margin: 1rem 0;
 
 }
