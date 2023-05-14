@@ -18,8 +18,7 @@ public class ShootPlayer : MonoBehaviour
     private AudioClip _shootSound;
     private bool _isPlaying = false;
     private EnemyComponent _enemyComponent;
-    
-
+   
     void Start()
     {
         IsShooting = false;
@@ -43,10 +42,7 @@ public class ShootPlayer : MonoBehaviour
                     _isPlaying = true;
                     StartCoroutine(Wait());
                     _isPlaying = false;
-
-
                 }
-               
                 _restingTime = _restingSpeed;                
             }
         }        
@@ -55,6 +51,4 @@ public class ShootPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
     }
-   
-    
 }

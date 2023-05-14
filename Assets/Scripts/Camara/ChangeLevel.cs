@@ -9,7 +9,7 @@ public class ChangeLevel : MonoBehaviour
     #region Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null)
+        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null) //desactivar el input
         {
             _myInputComponent = collision.GetComponent<InputComponent>();
             _myInputComponent.enabled = false;
@@ -21,7 +21,7 @@ public class ChangeLevel : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Change();
     }
-    private void Change()
+    private void Change() //cambia de nivel dependiendo de la seccion en la que se encuentre
     {
         _myInputComponent.enabled = true;
         if (ControladorDeSalas.Instance.Sección == 0)

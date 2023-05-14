@@ -42,12 +42,12 @@ public class MovementComponent : MonoBehaviour
 
     [Header("Dash")]
     [SerializeField]
-    private float _dashVelocity;
+    private float _dashVelocity; //velocidad del dash
     [SerializeField]
-    private float _dashDuration;
+    private float _dashDuration; //duracion del dash
     private float _initialGravity;
     [SerializeField]
-    private float _cooldown = 2f;
+    private float _cooldown = 2f; //cooldonw del dash
     private bool _canDash = true;
     private bool _canMove = true;
     [SerializeField]
@@ -56,7 +56,7 @@ public class MovementComponent : MonoBehaviour
     private AudioClip _jumpSound;
     #endregion
 
-    public float getDirection()
+    public float getDirection() //para saber hacia que direccion esta mirando el personaje
     {
         if (lookingRight) return 1;
         else if(!lookingRight) return -1;
@@ -66,9 +66,9 @@ public class MovementComponent : MonoBehaviour
     #region References
     private Rigidbody2D _myRigidBody2D; //referencia al rigidbody del player
     [SerializeField]
-    private TrailRenderer _myTrailRenderer;
-    private SpriteRenderer _mySpriteRenderer;
-    private Animator _myAnimator;
+    private TrailRenderer _myTrailRenderer; //estela que deja el jugador al hacer dash
+    private SpriteRenderer _mySpriteRenderer;  //referencia al SpriteRenderer del player
+    private Animator _myAnimator; //referencia a las animaciones del player
     #endregion
 
     #region Methods
@@ -103,8 +103,6 @@ public class MovementComponent : MonoBehaviour
             movementX = 0f;
             Walk(0);
             Run(0);
-            //Jump();
-            
         }
     }
 
@@ -131,18 +129,15 @@ public class MovementComponent : MonoBehaviour
     }
     public void Walk(float direction)
     {
-       // direction = Input.GetAxisRaw("Horizontal"); //este valor puede ser -1, 0 o 1 indicando si va hacia la derecha, izquierda o no hay movimiento (funciona con joystick)
         movementX = direction* _myForce;
         if (direction == 1)
         {
-            
             lookingRight = true;
             _isWalking = true;  //se aciva caminar
             _isRunning = false; //no está corriendo
         }
         else if (direction == -1)
         {
-            
             lookingRight = false;
             _isWalking = true;  //se activa caminar
             _isRunning = false; //no está corriendo
@@ -175,7 +170,6 @@ public class MovementComponent : MonoBehaviour
             _coyoteTime = false;
             _canJump = false;
             StartCoroutine(WaitJump());
-
         }
     }
     public IEnumerator WaitJump()

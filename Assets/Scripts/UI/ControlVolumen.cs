@@ -16,7 +16,6 @@ public class ControlVolumen : MonoBehaviour
         AudioListener.volume = slider.value;   
         
     }
-
     public void ChangeSlider(float valor)
     {
         _sliderValue = valor;
@@ -25,7 +24,6 @@ public class ControlVolumen : MonoBehaviour
         IsMute();
 
     }
-
     public void IsMute()
     {
         if (_sliderValue == 0)

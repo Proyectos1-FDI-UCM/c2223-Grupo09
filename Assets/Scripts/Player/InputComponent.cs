@@ -16,7 +16,6 @@ public class InputComponent : MonoBehaviour
     private MovementComponent _movementComponent;
     private ShootComponent _shootComponent;
     private SpriteRenderer _mySpriteRenderer;
-    //private PlayerLifeComponent _playerLifeComponent;
     #endregion
 
     #region Methods

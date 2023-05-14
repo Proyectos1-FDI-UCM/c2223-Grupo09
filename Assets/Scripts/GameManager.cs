@@ -6,10 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region references
-    /*[SerializeField]
-     private GameObject _player;
-
-     private PlayerLifeComponent _myLifeComponent;*/
     [SerializeField] private AudioClip _compraVida;
     [SerializeField] private AudioClip _compraEscudo;
     #endregion
@@ -52,14 +48,14 @@ public class GameManager : MonoBehaviour
     private bool Logro7 = true;
     #endregion
     #region Methods
-    public void OnPickGear()
+    public void OnPickGear() //cuando se recogen engranajes
     {
-        _gear++;
+        _gear++;//se suma el contador de engranajes
         Logro2++;
     }
-    public void Hit()
+    public void Hit() //cuando el jugador recibe daño
     {
-        puntos_vida--;
+        puntos_vida--; //se resta una vida
         Logro7 = false;
     }
     public void Botiquin()
@@ -72,60 +68,48 @@ public class GameManager : MonoBehaviour
     }
     public void CompraEscudo()
     {
-        if (_gear >= 10)
+        if (_gear >= 10) //si se tienen mas de 10 engranajes se puede comprar escudo
         {
             AudioControler.Instance.PlaySound(_compraEscudo);
             PlayerLifeComponent.Instance.ActivaEscudo();
-            _gear = _gear - 10;
+            _gear = _gear - 10; //se restan 10 engranajes al total
             Logro6 = false;
         }
     }
     public void CompraVida()
     {
-        if (puntos_vida_max < 6)
+        if (puntos_vida_max < 6) //si no se ha llegado al maximo de vidas
         {
-            if (_gear >= 20)
+            if (_gear >= 20) //si se tienen mas de 20 engranajes se puede comprar vida
             {
                 AudioControler.Instance.PlaySound(_compraVida);
-                puntos_vida++;
+                puntos_vida++; 
                 puntos_vida_max++;
-                _gear = _gear - 20;
+                _gear = _gear - 20; //se restan 20 engranajes al total
                 Logro6 = false;
             }
         }
     }
-    public void GuardaDatos()
+    public void GuardaDatos() //guardar el num de engranajes, de vidas y de vidas totales en momentos determinados
     {
         lastGear = _gear;
         lastLogro2 = Logro2;
         lastPuntos_vida = puntos_vida;
         lastPuntos_vida_max = puntos_vida_max;
     }
-    public void GuardaEngranajes()
+    public void GuardaEngranajes() 
     {
         lastGear = _gear;
         lastLogro2 = Logro2;
     }
-    public void Respawn()
+    public void Respawn()//metodo llamado al morir el jugador
     {
-        /*if (PlayerLifeComponent.Instance.CheckPoint == false && ControladorDeSalas.Instance.Sección ==0)
-        {
-            _gear = 0;
-            puntos_vida = 3;
-            puntos_vida_max = 3;
-        }
-        else
-        {
-            puntos_vida = lastPuntos_vida;
-            puntos_vida_max = lastPuntos_vida_max;
-            _gear = lastGear;
-        }*/
         puntos_vida = lastPuntos_vida;
         puntos_vida_max = lastPuntos_vida_max;       
         _gear = lastGear;
         Logro2 = lastLogro2;
     }
-    public void Escape()
+    public void Escape() //metodo llamado para cuando se quiere salir del juego
     {
         GuardaDatos();
         Destroy(gameObject);
@@ -159,10 +143,5 @@ public class GameManager : MonoBehaviour
         _gear = 0;
         puntos_vida = 3;     //siempre se empieza con tres vidas, se van perdiendo segun el daño recibido
         puntos_vida_max = 3; //siempre se empieza con tres vidas como maximo, estas pueden aumentar cuando se compren con los engranajes
-                             //  _myLifeComponent = _player.GetComponent<PlayerLifeComponent>();
-    }
-    void Update()
-    {
-        
     }
 }

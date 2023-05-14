@@ -11,7 +11,7 @@ public class UIPlayer : MonoBehaviour
     private Image _dashImage;
     [SerializeField]
     private float _dashCooldown = 0.5f;
-    private bool _isCooldown = false;
+    private bool _isCooldown = false; //durante el cooldown del dash
     private bool _canDash = false;
     [SerializeField]
     GameObject _dashActivado;
@@ -26,7 +26,7 @@ public class UIPlayer : MonoBehaviour
     private float _escudoCooldown = 5.0f;
     private bool _isActive = false;
     private bool _escudoUI = false;
-    private bool _isMoving = false;
+    private bool _isMoving = false; //durante el cooldown del escudo
     #endregion
     #region Methods
     public void CanDashUI()
@@ -39,13 +39,13 @@ public class UIPlayer : MonoBehaviour
     }
     private void DashAbility()
     {
-        if (_canDash == true && _isCooldown == false)
+        if (_canDash == true && _isCooldown == false) //si se puede hacer dash 
         {
-            _isCooldown = true;
+            _isCooldown = true; //Se activa el cooldwon
             _dashImage.fillAmount = 1;
         }
 
-        if (_isCooldown)
+        if (_isCooldown) //durante el cooldown se hace la animacion de la ruleta para informar cuanto dura el dash
         {
             _dashActivado.SetActive(false);
             _dashImage.fillAmount -= 1 / _dashCooldown * Time.deltaTime;
@@ -62,7 +62,7 @@ public class UIPlayer : MonoBehaviour
     void EscudoScore()
     {
 
-        if (_isMoving == false && GameManager.Instance.Gear >= 10)
+        if (_isMoving == false && GameManager.Instance.Gear >= 10) //informar que se puede comprar escudo cuando se tengan 10 engranajes o mas
         {
             _escudoDesact.SetActive(false);
             _escudoAct.SetActive(true);
@@ -82,7 +82,7 @@ public class UIPlayer : MonoBehaviour
             _isMoving = true;
         }
 
-        if (_isActive)
+        if (_isActive) //durante el cooldown se hace la animacion de ruleta para informar cuanto queda de la duración del escudo
         {
             _escudoDesact.SetActive(false);
             _escudoImage.fillAmount -= 1 / _escudoCooldown * Time.deltaTime;

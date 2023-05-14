@@ -5,30 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLifeComponent : MonoBehaviour
 {
-    #region properties
-    private static PlayerLifeComponent _instance;
-    public static PlayerLifeComponent Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
-    private bool _checkPoint;
-    public bool CheckPoint
-    {
-        get
-        {
-            return _checkPoint;
-        }
-    }
-    #endregion
     #region references
     [SerializeField]
-    private Vector2 _respawnSala3;                   //posicion donde hace respawn el jugador (Debería ajustarse según el nivel)
+    private Vector2 _respawnSala3;                   //posicion donde hace respawn el jugador en el tutorial, primer checkpoint
     [SerializeField]
-    private Vector2 _respawnSala4;
-    private SpriteRenderer _mySpriteRenderer;   //referencia al sprite Reneder
+    private Vector2 _respawnSala4;                  //posicion donde hace respawn el jugador en el tutorial, segundo checkpoint
+    private SpriteRenderer _mySpriteRenderer;   
     private Animator _myAnimator;
     private Rigidbody2D _myRigidbody2D;
     private MovementComponent _myMovementComponent;
@@ -45,10 +27,18 @@ public class PlayerLifeComponent : MonoBehaviour
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
     private bool _isDeath = false;
-   // private bool _isHit = false;
     private float _escudoCooldown = 5.0f;
     private bool _escudoAct = false;
     private bool _soundMade;
+    private static PlayerLifeComponent _instance;
+    public static PlayerLifeComponent Instance //acceso publico al instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    private bool _checkPoint;
     #endregion
     #region Methods
     public void Hit()                           //metodo llamado desde el script KillPlayer de los enemigos
@@ -65,14 +55,14 @@ public class PlayerLifeComponent : MonoBehaviour
     {
         GameOver();
     }
-    public void Comprar()
+    public void Comprar() //comprar escudo
     {
-        if(_escudoAct == false)
+        if(_escudoAct == false) //si no está el escudo activado
         {
             GameManager.Instance.CompraEscudo();
         }
     }
-    public void ActivaEscudo()
+    public void ActivaEscudo() //activar escudo
     {
         
         StartCoroutine(Escudo());
@@ -87,17 +77,17 @@ public class PlayerLifeComponent : MonoBehaviour
         _isDeath = true;
         StartCoroutine(Wait());
     }
-    private void Respawn()
+    private void Respawn() //respawn del jugador al morir
     {
-        if (ControladorDeSalas.Instance.Sección == 0)
+        if (ControladorDeSalas.Instance.Sección == 0) //en el tutorial
         {
-            if (_checkPoint == false)
+            if (_checkPoint == false) //si no ha alcanzado los checkpoints
             {
-                SceneManager.LoadScene("Tutorial");
+                SceneManager.LoadScene("Tutorial"); //empieza de nuevo
             }
             else
             {
-                if (ControladorDeSalas.Instance.Sala == 3)
+                if (ControladorDeSalas.Instance.Sala == 3) //primer checkpoint del tutorial
                 {
                     GameManager.Instance.GuardaEngranajes();
                     transform.position = _respawnSala3;
@@ -105,7 +95,7 @@ public class PlayerLifeComponent : MonoBehaviour
                     _myInputComponent.enabled = true;
                     _isDeath = false;
                 }
-                if (ControladorDeSalas.Instance.Sala == 4)
+                if (ControladorDeSalas.Instance.Sala == 4) //segundo checkpoint del tutorial
                 {
                     GameManager.Instance.GuardaEngranajes();
                     transform.position = _respawnSala4;
@@ -115,13 +105,14 @@ public class PlayerLifeComponent : MonoBehaviour
                 }
             }
         }
+        //en el resto de secciones no hay checkpoints, carga la esecna de nuevo al morir
         else if (ControladorDeSalas.Instance.Sección == 1) SceneManager.LoadScene("Boss tutorial");
         else if (ControladorDeSalas.Instance.Sección == 2) SceneManager.LoadScene("NIVELES");
         else if (ControladorDeSalas.Instance.Sección == 3) SceneManager.LoadScene("INTERMEDIOS");
         else if (ControladorDeSalas.Instance.Sección == 4) SceneManager.LoadScene("DIFICILES");
         else if (ControladorDeSalas.Instance.Sección == 5)
         {
-            _boss.Respawn();
+            _boss.Respawn(); //vuelve a respawnear el boss
             SceneManager.LoadScene("Boss final");
         }            
         GameManager.Instance.Respawn();
@@ -145,14 +136,14 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     IEnumerator Escudo()
     {
-        _escudoAct = true;
-        _myUIplayer.EscudoUI();
-        invulnerable = true;
-        _escudo.SetActive(true);
-        yield return new WaitForSeconds(_escudoCooldown);
-        invulnerable = false;
-        _escudo.SetActive(false);
-        _escudoAct = false;
+        _escudoAct = true; //el escudo se activa
+        _myUIplayer.EscudoUI(); 
+        invulnerable = true; //el jugador es invulnerable
+        _escudo.SetActive(true); //se activa el sprite del escudo
+        yield return new WaitForSeconds(_escudoCooldown); //se espera el cooldown
+        invulnerable = false; //el jugador deja de ser invulnerable
+        _escudo.SetActive(false); //se desactiva el sprite
+        _escudoAct = false; //escudo desactivado
     }
     IEnumerator Wait()
     {
@@ -161,7 +152,7 @@ public class PlayerLifeComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.GetComponent<Checkpoint>() != null)
+        if (collider.GetComponent<Checkpoint>() != null) //activar el checkpoint cuando se entra en contacto con él
         {
             _checkPoint = true;
             GameManager.Instance.GuardaDatos();

@@ -8,9 +8,9 @@ public class Check : MonoBehaviour
     #region Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null)
+        if (collision.gameObject.GetComponent<PlayerLifeComponent>() != null) //cuando se entra en contacto
         {
-            GameManager.Instance.GuardaDatos();
+            GameManager.Instance.GuardaDatos(); //se guarda la informacion del jugador en ese momento
         }
     }
     #endregion

@@ -19,10 +19,7 @@ public class UIManager : MonoBehaviour
     [Header("Enemigos")]
     [SerializeField]
     private TextMeshProUGUI _enemigoText;
-    //[SerializeField]
-    //private TextMeshProUGUI _contEnemigoText;
     private int _numEnemigos;
-    //private int _contEnemigos;
 
     [Header("Engranajes")]
     [SerializeField]
@@ -89,7 +86,7 @@ public class UIManager : MonoBehaviour
         _gearScore = GameManager.Instance.Gear;  //se toma el numero de engranajes del GameManager
         if (_gearScore > -1) _gearText.text = _gearScore.ToString();
     }
-    void VidaExtraScore()
+    void VidaExtraScore() //informa que se puede comprar vida cuando se tengan 20 engranajes o mas
     {
         if (_gearScore >= 20)
         {
@@ -130,6 +127,7 @@ public class UIManager : MonoBehaviour
         TotalEnemigosScore();
         GearScore();
         VidaExtraScore();
+        //la barra de vida de los bosses se muestran en las secciones correspondientes
         if (ControladorDeSalas.Instance.Sección == 1)
         {
             VidaBossTutorial();

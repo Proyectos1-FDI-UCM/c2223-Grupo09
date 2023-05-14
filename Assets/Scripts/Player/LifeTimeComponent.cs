@@ -10,10 +10,9 @@ public class LifeTimeComponent : MonoBehaviour
     #endregion
 
     #region Methods
-    // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
-        Destroy(gameObject, lifeTime); 
+        Destroy(gameObject, lifeTime); //se destruye el objeto cuando llegue su tiempo maximo de vida
     }
     #endregion
 }

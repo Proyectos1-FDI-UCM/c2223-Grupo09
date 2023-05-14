@@ -15,21 +15,19 @@ public class EnemyComponent : MonoBehaviour
     [SerializeField]
     private AudioClip _soundExplosion;
     public bool Died;
-    //[SerializeField]
-    //private GameObject _deadEffect;
     public Animator _animator;
     private bool muerte = false;
     #endregion
     #region Methods
-    public void IsAttacked(float damage)
+    public void IsAttacked(float damage) //metodo llamado para cuando se ataca a los enemigos
     {
         _hp -= damage;
-        if(_hp <= 0)
+        if(_hp <= 0) 
         {
             Died = true;
            if(_myWayPoints != null)
            {
-              _myWayPoints.enabled = false;
+              _myWayPoints.enabled = false; 
            }
             _myCapsuleCollider.enabled = false;
             muerte = true;
@@ -47,9 +45,8 @@ public class EnemyComponent : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Dead();
     }
-    private void Dead()
+    private void Dead() //muerte del enemigo, se destruye
     {
-        //Instantiate(_deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
@@ -60,11 +57,6 @@ public class EnemyComponent : MonoBehaviour
              Destroy(other.gameObject);
              if(_myWayPoints!=null)_myWayPoints.enabled = false;
          }
-        /*if (other.GetComponent<Escenario>() != null)
-        {
-            Debug.Log("entro");
-            _myWayPoints.DontGoToPlayer();
-        }*/
     }
     #endregion
     private void Start()
@@ -74,7 +66,7 @@ public class EnemyComponent : MonoBehaviour
         _animator = GetComponent<Animator>();
         
     }
-    public void BossDeath()
+    public void BossDeath() //muerte del boss
     {
         Died = true;
         _myWayPoints.enabled = false;

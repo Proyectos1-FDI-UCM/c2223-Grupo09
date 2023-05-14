@@ -104,8 +104,6 @@ public class WayPointsMovement : MonoBehaviour
         {
             siguientePosicion = player.position; //la siguiente dirección será la posición del jugador
         }
-
-
     }
     private void Flip()
     {

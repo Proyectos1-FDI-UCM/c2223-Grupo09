@@ -12,13 +12,6 @@ public class BulletComponent : MonoBehaviour
     [SerializeField]
     private Vector2 _dir;
     #endregion
-
-    #region References
-   /* private EnemyComponent _enemyComponent;
-    private OpenDoor _openDoor;*/
-
-    #endregion
-
     #region Methods
     public float getDamage()
     { return _damage; }
@@ -27,8 +20,6 @@ public class BulletComponent : MonoBehaviour
     private void Start()
     {
         _speed = 30.0f;
-       /* _enemyComponent = GetComponent<EnemyComponent>();
-        _openDoor = GetComponent<OpenDoor>();*/
     }
     void Update()
     {
@@ -36,43 +27,33 @@ public class BulletComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.GetComponent<TutBossComponent>() != null)
+        if (collider.GetComponent<TutBossComponent>() != null) //la bala entra en contacto con el boss
         {
-            collider.GetComponent<TutBossComponent>().IsAttacked(_damage);
+            collider.GetComponent<TutBossComponent>().IsAttacked(_damage); //se informa que se ha dañado al boss
             if (gameObject != null)
             {
                 Destroy(gameObject);
             }
         }
-        if (collider.GetComponent<BossComponent>() != null)
+        if (collider.GetComponent<BossComponent>() != null) //la bala entra en contacto con el boss
         {
-            collider.GetComponent<BossComponent>().IsAttacked(_damage);
+            collider.GetComponent<BossComponent>().IsAttacked(_damage); //se informa que se ha dañado al boss
             if (gameObject != null)
             {
                 Destroy(gameObject);
             }
         }
-        //lo he cambiado para diferenciar enemigos con boss tutorial (ambos tienen killplayer pero solo los primeros tienen enemycomponent)
-        if (collider.GetComponent<EnemyComponent>() != null)
-        // if (collider.GetComponent<KillPlayer>() != null)
+        if (collider.GetComponent<EnemyComponent>() != null) //la bala entra en contacto con los enemigos
         {
-            collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
-            // if (collider.GetComponent<EnemyComponent>() != null) collider.GetComponent<EnemyComponent>().IsAttacked(_damage);
+            collider.GetComponent<EnemyComponent>().IsAttacked(_damage); //se informa que se ha dañado al enemigo
             if (ControladorDeSalas.Instance.Sección != 5)
             {
-                ControladorDeSalas.Instance.Kill();
-                ControladorPuertas.Instance.GetDoor();
-                /* if(ControladorPuertas != null)
-                 {
-                     ControladorPuertas.GetDoor();
-                 }*/
+                ControladorDeSalas.Instance.Kill(); //se llama al metodo que lleva el contador de enemigos
+                ControladorPuertas.Instance.GetDoor(); //se llama al metodo que lleva el contador de enemigos para abrir las puertas
+
             }
-            /* if(gameObject != null)
-             {
-                 Destroy(gameObject);
-             }      */
         }
-        if (collider.GetComponent<Escenario>() != null)
+        if (collider.GetComponent<Escenario>() != null) //la bala se destruye al chocar con el escenario
         {
             if (gameObject != null)
             {

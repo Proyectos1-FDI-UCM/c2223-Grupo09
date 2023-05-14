@@ -7,7 +7,7 @@ public class OpenDoor : MonoBehaviour
 {
     #region references
     //private int _numEnemigos;
-    private int[] _enemigos = new int[]  {1, 2, 2, 2, 5, 1, 3, 3,5,10,5,7,5,4,4,0,0};
+    private int[] _enemigos = new int[]  {1, 2, 2, 2, 5, 1, 3, 3,5,10,5,7,5,4,4,0,0}; //enemigos de cada sala
     [SerializeField]
     private int _puerta;
     [SerializeField]
@@ -17,7 +17,7 @@ public class OpenDoor : MonoBehaviour
     private Vector2 newPosition;
     #endregion
     #region methods
-    public void ContPuerta()
+    public void ContPuerta() //metodo llamado cuando se matan enemigos que afecta al contador para saber cuando abrir la puerta
     {
         _enemigos[_puerta]--;
     }
@@ -34,9 +34,9 @@ public class OpenDoor : MonoBehaviour
     void Update()
     {
         _puerta = ControladorDeSalas.Instance.Sala;
-        if(_puerta >=0) if (_enemigos[_puerta] == 0)
+        if(_puerta >=0) if (_enemigos[_puerta] == 0) //si el num de enemigos es 0
         {
-            AbrePuerta();
+            AbrePuerta(); //se abre la puerta
         }
     }
   

@@ -14,7 +14,7 @@ public class Botiquín : MonoBehaviour
         {
             AudioControler.Instance.PlaySound(_botiquinSound);
             _myPlayerLifeComponent = collision.gameObject.GetComponent<PlayerLifeComponent>();      //se toma el Script PlayerLifeComponent de la colision (jugador)
-            GameManager.Instance.Botiquin();
+            GameManager.Instance.Botiquin();                                                        //se llama al metodo del Game Manager que se encarga de subir la vida del jugador
             Destroy(gameObject);                                                                    //Se destruye el botiquín
         }
     }

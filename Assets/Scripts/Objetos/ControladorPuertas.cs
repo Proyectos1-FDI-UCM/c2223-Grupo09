@@ -23,13 +23,13 @@ public class ControladorPuertas : MonoBehaviour
     private int _seccion;
     #endregion
     #region methods
-    public void GetDoor()
+    public void GetDoor() //metodo llamado cuando se matan enemigos para obtener la puerta de la sala en la que se esté
     {
         Conversion();
-        _openDoor = _puertas[_door].GetComponent<OpenDoor>();
+        _openDoor = _puertas[_door].GetComponent<OpenDoor>(); 
         _openDoor.ContPuerta();
     }
-    private void Conversion()
+    private void Conversion()  //convierte el numero de las puertas dependiendo de la seccion y la sala, para que empiecen desde el 1
     {
         if (_seccion == 1)
         {
@@ -72,7 +72,6 @@ public class ControladorPuertas : MonoBehaviour
 
     void LateUpdate()
     {
-        //Conversion();
         _sala = ControladorDeSalas.Instance.Sala;
         _seccion = ControladorDeSalas.Instance.Sección;
     }

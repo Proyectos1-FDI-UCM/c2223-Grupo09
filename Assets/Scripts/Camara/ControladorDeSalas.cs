@@ -32,14 +32,14 @@ public class ControladorDeSalas : MonoBehaviour
         get { return _sección; }
     }
     private int  _numtotalEnemigos;
-    public int NumEnemigos
+    public int NumEnemigos          //acceso público a la variable de _numtotalEnemigos
     {
         get { return _numtotalEnemigos; }
     }
-    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3,5,10,5,7,5,4,4,0,0};
+    private int[] _enemigos = new int[] { 1, 2, 2, 2, 5, 1, 3, 3,5,10,5,7,5,4,4,0,0}; //los enemigos de cada sala
     #endregion
     #region Methods
-    private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara
+    private void ColocaciónDePuntos()   //void al que se llama cada vez que hay una transición de sala o de sección para colocar los puntos del borde de la cámara e informar del num de enemigos de cada una de ellas
     {
         if (_sección == 0)
         {
@@ -169,7 +169,7 @@ public class ControladorDeSalas : MonoBehaviour
             }
         }
     }
-    public void Kill()
+    public void Kill() //metodo llamado para cada vez que se mata un enemigo restarlo del array
     {
         int i = Sala;
         _numtotalEnemigos = _enemigos[i];
@@ -188,7 +188,7 @@ public class ControladorDeSalas : MonoBehaviour
         {
             _instance = this;
         }  
-        
+        //dependiendo de la sección, comienza en la sala correspondiente
         if(_sección ==0)
         {
              _sala = 0;

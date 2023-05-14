@@ -11,7 +11,7 @@ public class SpawnEnemies : MonoBehaviour
     {
         _restingTime -= Time.deltaTime;
 
-        if (_restingTime <= 0)
+        if (_restingTime <= 0) //para spawnear enemigos aleatorios cada cierto tiempo
         {
             int i = Random.Range(0, 2);
             if (i == 0)
