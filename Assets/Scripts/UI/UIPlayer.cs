@@ -64,13 +64,13 @@ public class UIPlayer : MonoBehaviour
 
         if (_isMoving == false && GameManager.Instance.Gear >= 10) //informar que se puede comprar escudo cuando se tengan 10 engranajes o mas
         {
-            _escudoDesact.SetActive(false);
-            _escudoAct.SetActive(true);
+            if(_escudoDesact!=null) _escudoDesact.SetActive(false);
+            if (_escudoAct != null) _escudoAct.SetActive(true);
         }
         else
         {
-            _escudoDesact.SetActive(true);
-            _escudoAct.SetActive(false);
+            if (_escudoDesact != null) _escudoDesact.SetActive(true);
+            if (_escudoAct != null) _escudoAct.SetActive(false);
         }
     }
     private void EscudoAbility()
@@ -84,14 +84,14 @@ public class UIPlayer : MonoBehaviour
 
         if (_isActive) //durante el cooldown se hace la animacion de ruleta para informar cuanto queda de la duración del escudo
         {
-            _escudoDesact.SetActive(false);
+            if (_escudoDesact != null) _escudoDesact.SetActive(false);
             _escudoImage.fillAmount -= 1 / _escudoCooldown * Time.deltaTime;
 
             if (_escudoImage.fillAmount <= 0)
             {
                 _escudoImage.fillAmount = 0;
                 _isActive = false;
-                _escudoDesact.SetActive(true);
+                if (_escudoDesact != null) _escudoDesact.SetActive(true);
                 _escudoUI = false;
                 _isMoving=false;
             }
@@ -100,8 +100,8 @@ public class UIPlayer : MonoBehaviour
     #endregion
     void Start()
     {
-        _dashImage.fillAmount = 0;
-        _escudoImage.fillAmount = 0;
+        if(_dashImage !=null)_dashImage.fillAmount = 0;
+        if(_escudoImage!=null)_escudoImage.fillAmount = 0;
     }
     void Update()
     {

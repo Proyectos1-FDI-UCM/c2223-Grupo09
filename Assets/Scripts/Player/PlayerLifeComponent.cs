@@ -23,6 +23,7 @@ public class PlayerLifeComponent : MonoBehaviour
     [SerializeField]
     private GameObject _escudo;
     private UIPlayer _myUIplayer;
+    [SerializeField] bool EmergencyVariable;
     #endregion
     #region properties
     public bool invulnerable;      //variable que vuelve invulnerable al jugador a todo daño. Se usa cuando es golpeado, y se usará con los escudos es un futuro
@@ -180,7 +181,7 @@ public class PlayerLifeComponent : MonoBehaviour
     private void Start()       
     {
         _escudo.SetActive(false);
-        if (ControladorDeSalas.Instance.Sección == 5)
+        if(!EmergencyVariable)if (ControladorDeSalas.Instance.Sección == 5)
         {
             _boss = GameObject.Find("Final Boss").GetComponent<BossComponent>();
         }

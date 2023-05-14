@@ -13,18 +13,18 @@ public class UI_H_Pressed : MonoBehaviour
             if (position <= 35) position = 35;
             else 
             {
-                position -=5;
-                GetComponent<Transform>().Translate(new Vector2(-5, 0));
+                position -=50;
+                GetComponent<Transform>().Translate(new Vector2(-50, 0));
             }            
         }
         else
         {
 
-            if (position >= 1675) position = 1675;
+            if (position >= 1685) position = 1685;
             else
             {
-                position +=5;
-                GetComponent<Transform>().Translate(new Vector2(5, 0));
+                position +=50;
+                GetComponent<Transform>().Translate(new Vector2(50, 0));
             }
         }        
     }
